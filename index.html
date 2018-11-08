@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="./resources/favicon.ico" type="image/x-icon" />
+    <title>STRIDE</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,600" rel="stylesheet">
+
+    <script src="js/fullpage/fullpage.min.js"></script>
+    <script src="js/fullpage/fullpage.extensions.min.js"></script>
+    <link rel="stylesheet" href="js/fullpage/fullpage.css">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <div id="fullpage">
+    	<div class="section disclaimer"><p class="disclaimer"><span class="bold">22.8 million </span>children aged 5-18 years are still out of school in Pakistan</p></div>
+    	<div class="section disclaimer"><p class="disclaimer"><span class="bold">44% </span>of students enrolled in Grade 5 <span class="bold">drop-out </span> from schools before reaching Grade 10 in Pakistan</p></div>
+    	<div class="section title">
+        <div class="grayOverlay titleOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/titleSchool.jpg"/>
+        </div>
+        <p class="higherIndex">STRIDE</p>
+      </div>
+    	<div class="section">Some section</div>
+    </div>
+
+    <script>
+      new fullpage('#fullpage', {
+      	//options here
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+      	autoScrolling:true,
+      	scrollHorizontally: true
+      });
+    </script>
+  </body>
+</html>
