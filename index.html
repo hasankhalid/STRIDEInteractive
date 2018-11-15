@@ -13,7 +13,7 @@
     <script src="js/fullpage/fullpage.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
     <link rel="stylesheet" href="js/fullpage/fullpage.css">
-    <!--<link rel="stylesheet" href="./index.css">-->
+    <link rel="stylesheet" href="./index.css">
     <style type="text/css">
       .background{
         background-size: cover;
@@ -67,14 +67,15 @@
       .content {
         position: relative;
         display: flex;
-        align-items: center;
+        align-items: start;
         height: 100%;
         justify-content: center;
+        flex-direction: column;
+        padding: 20px 30px;
       }
 
       .content h1 {
         z-index: 1;
-        background-color: white;
       }
 
     </style>
@@ -84,26 +85,35 @@
     <div id="fullpage">
       <div class="section">
         <div class="background slide-1">
+          <div class="blue-overlay overlay">
+          </div>
           <div class="content">
-            <div class="blue-overlay overlay">
+            <p class="higherIndex logoPlaceholder">STRIDE</p>
+            <p class="higherIndex byIsap">a project of I-SAPS</p>
+            <p class="higherIndex titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
+            <div class="titleSocial higherIndex">
+              <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
+              <img class="socialIcon twitter" src="./resources/twitter.svg"/>
+              <img class="socialIcon" src="./resources/link-symbol.svg"/>
             </div>
-            <h1>Heading</h1> 
+            <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/> 
           </div>
         </div>
       </div>
       <div class="section">
         <div class="background slide-2">
+          <div class="yellow-overlay overlay">
+          </div>
           <div class="content">
-            <div class="yellow-overlay overlay">
-            </div>
-            <h1>Heading</h1> 
+            <p class="higherIndex titleSlide">What are the reasons for low retention?</p>
+            <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
           </div>
         </div>
       </div>
       <div class="section">
         <div class="background slide-2">
+          <div class="red-overlay overlay">
           <div class="content">
-            <div class="red-overlay overlay">
             </div>
             <h1>Heading</h1> 
           </div>
@@ -111,8 +121,8 @@
       </div>
       <div class="section">
         <div class="background slide-3">
+          <div class="green-overlay overlay">
           <div class="content">
-            <div class="green-overlay overlay">
             </div>
             <h1>Heading</h1> 
           </div>
@@ -120,8 +130,8 @@
       </div>
       <div class="section">
         <div class="background slide-4">
+          <div class="green-overlay overlay">
           <div class="content">
-            <div class="green-overlay overlay">
             </div>
             <h1>Heading</h1> 
           </div>
