@@ -170,15 +170,19 @@ html, body {
 }
 
 .slide-2{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg2.jpg);
 }
 
 .slide-3{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg3.jpg);
 }
 
 .slide-4{
   background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+}
+
+.slide-5{
+  background-color: #2196f3;
 }
 
 .blue-overlay {
@@ -220,6 +224,16 @@ html, body {
 
 .content h1 {
   z-index: 1;
+}
+
+.main-header{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    padding: 40px 30px;
+    color: #fff;
 }
 
 
