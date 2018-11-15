@@ -13,87 +13,79 @@
     <script src="js/fullpage/fullpage.min.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
     <link rel="stylesheet" href="js/fullpage/fullpage.css">
-    <!--<link rel="stylesheet" href="./index.css">-->
-    <style type="text/css">
-
-      .background-pic {
-        background-position: 50% 50%;
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        backface-visibility: hidden;
-      }
-
-      #slide-1 {
-        background-color: red;   
-      }
-
-      #slide-2 {
-        background-color: yellow;
-      }
-      #slide-3 {
-        background-color: pink;
-      }
-      #slide-4 {
-        background-color: green;
-      }
-      #slide-5 {
-        background-color: orange;
-      }
-      #slide-6 {
-        background-color: blue;
-      }
-
-      .fp-tableCell {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-
-      .abc{
-        bottom: 30px;
-        width: 100px;
-        font-size: 50px;
-        left: calc(50vw - 15px);
-      }
-
-    </style>
+    <link rel="stylesheet" href="./index.css">
   </head>
 
   <body>
     <div id="fullpage">
-    	<div class="section">
-        <div class="background-pic" id="slide-1">
+      <div class="section title">
+        <div class="disclaimerBack"></div>
+        <p id="disclaimer" class="disclaimer"><span class="bold">22.8 million </span>children aged 5-18 years are still out of school in Pakistan</p>
+        <p id="disclaimerFollow" class="disclaimer"><span class="bold">44% </span>of students enrolled in Grade 5 <span class="bold">drop-out </span> from schools before reaching Grade 10 in Pakistan</p>
+        <div class="grayOverlay titleOverlay"></div>
+        <div class="backdrop titleback">
+          <img class="titleImage" src="./resources/titleSchool.jpg"/>
         </div>
-        <div class="abc">test</div>
+        <p id="fadeFirst" class="higherIndex logoPlaceholder">STRIDE</p>
+        <p id="fadeSecond" class="higherIndex byIsap">a project of I-SAPS</p>
+        <p id="fadeThird" class="higherIndex titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
+        <div class="titleSocial higherIndex">
+          <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
+          <img class="socialIcon twitter" src="./resources/twitter.svg"/>
+          <img class="socialIcon" src="./resources/link-symbol.svg"/>
+        </div>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
+      </div>
+      <div class="section title">
+        <div class="grayOverlay titleOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/titleSchool.jpg"/>
+        </div>
+        <p class="higherIndex logoPlaceholder">STRIDE</p>
+        <p class="higherIndex byIsap">a project of I-SAPS</p>
+        <p class="higherIndex titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
+        <div class="titleSocial higherIndex">
+          <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
+          <img class="socialIcon twitter" src="./resources/twitter.svg"/>
+          <img class="socialIcon" src="./resources/link-symbol.svg"/>
+        </div>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
       <div class="section">
-        <div class="background-pic" id="slide-2">
+        <div class="blueOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/teacherClass.JPG"/>
         </div>
-        <div class="abc">test</div>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
       <div class="section">
-        <div class="background-pic" id="slide-4">
+        <div class="blueOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/teacherClass.JPG"/>
         </div>
-        <div class="abc">test</div>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
       <div class="section">
-        <div class="background-pic" id="slide-5">
+        <div class="yellowOverlay"></div>
+        <div class="grayTop grayOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/tandoorBachay.jpg"/>
         </div>
-        <div class="abc">test</div>
+        <p class="higherIndex titleSlide">What are the reasons for low retention?</p>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
       <div class="section">
-        <div class="background-pic" id="slide-6">
+        <div class="grayOverlay girlsOverlay"></div>
+        <div class="backdrop">
+          <img class="titleImage" src="./resources/cyclegirls.jpg"/>
         </div>
-        <div class="abc">test</div>
+        <p class="higherIndex titleSlide">What are the reasons for low retention?</p>
+        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
     </div>
 
     <script>
-      /*$( document ).ready(function() {
+      $( document ).ready(function() {
         setTimeout(function () {
           $("#disclaimer").fadeIn();}, 750
         );
@@ -108,19 +100,16 @@
             $(".titleImage").animate({height: '104%'}, 1750);
           });}, 9500
         );
-      });*/
+      });
     </script>
 
 
     <script>
-      $(document).ready(function(){
-        new fullpage('#fullpage', {
-          //options here
-          licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-          autoScrolling:true,
-          scrollHorizontally: true,
-          fitToSection:false
-        });
+      new fullpage('#fullpage', {
+        //options here
+        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        autoScrolling:true,
+        scrollHorizontally: true
       });
     </script>
   </body>
