@@ -151,20 +151,20 @@ html, body {
   font-size: 18px;
   font-weight: 300;
   margin: 0px;
-  margin-left: 5px;
+  margin-left: var(--text-padding-left);
 }
 
 .titlePara {
   font-size: 18px;
   font-weight: 200;
-  margin: 5px 0px;
+  margin: 5px 70px 5px 0px;
 }
 
 .para {
   font-size: 15px;
   font-weight: 200;
   margin: 5px 0px;
-  padding-left: var(--bullet-width)
+  padding-left: calc(var(--bullet-width) + var(--text-padding-left));
 }
 
 .bullet {
@@ -184,9 +184,14 @@ html, body {
   align-items: start;
 }
 
+.titleGroup {
+  padding-bottom: 18px;
+}
+
 .point {
   padding-top: 8px;
-  --bullet-width: 15px; 
+  --bullet-width: 15px;
+  --text-padding-left : 5px; 
 }
 
 #fadeFirst, #fadeSecond, #fadeThird {
@@ -277,7 +282,7 @@ html, body {
   height: calc(100% - var(--down-icon-width) - 10px);
   justify-content: center;
   flex-direction: column;
-  padding: 20px 30px;
+  padding: 70px 30px 30px 30px;
   box-sizing: border-box;
 }
 
@@ -293,6 +298,10 @@ html, body {
     z-index: 1;
     padding: var(--header-padding-v) var(--header-padding-h);
     color: #fff;
+}
+
+.white-text {
+  color: #fff;
 }
 
 
