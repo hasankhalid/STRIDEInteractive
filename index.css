@@ -2,6 +2,13 @@ html, body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+:root {
+    --header-padding-v : 40px;
+    --header-padding-h : 30px;
+    --down-icon-width : 30px; 
+}
+
+
 .bold {
   font-weight: 400;
 }
@@ -207,6 +214,11 @@ html, body {
   height: 100%;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .slide-1{
   background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
 }
@@ -262,7 +274,7 @@ html, body {
   position: relative;
   display: flex;
   align-items: start;
-  height: 100%;
+  height: calc(100% - var(--down-icon-width) - 10px);
   justify-content: center;
   flex-direction: column;
   padding: 20px 30px;
@@ -279,7 +291,7 @@ html, body {
     right: 0;
     top: 0;
     z-index: 1;
-    padding: 40px 30px;
+    padding: var(--header-padding-v) var(--header-padding-h);
     color: #fff;
 }
 
