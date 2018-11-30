@@ -135,7 +135,7 @@ html, body {
   margin: 5px 0px;
 }
 
-.titleNote {
+.titleNote, .slide-title {
   font-size: 24px;
   font-weight: 300;
   margin: 10px 0px;
@@ -275,7 +275,7 @@ html, body {
   z-index: 0;
 }
 
-.content, .content-vertical {
+.content, .content-vertical, .content-panel {
   position: relative;
   display: flex;
   align-items: start;
@@ -284,6 +284,7 @@ html, body {
   flex-direction: column;
   padding: 70px 30px 30px 30px;
   box-sizing: border-box;
+  z-index: 0;
 }
 
 .content h1 {
@@ -304,6 +305,13 @@ html, body {
   color: #fff;
 }
 
+.grey-panel {
+  
+}
+
+.slide-title-para{
+  margin-bottom: 20px;
+}
 
 @media only screen and (min-width: 475px) {
   .disclaimer {
@@ -313,9 +321,6 @@ html, body {
     text-align: center;
   }
   .byIsap {
-    text-align: center;
-  }
-  .titleNote {
     text-align: center;
   }
   .downIcon {
@@ -331,22 +336,60 @@ html, body {
   .content-vertical {
     align-items: center;
   }
+
+  .content, .content-vertical, .content-panel{
+    height: 100%;
+  }
 }
 
 @media only screen and (min-width: 900px) {
   .disclaimer {
     font-size: 28px;
   }
+
+  .grey-panel {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: darkcyan;
+    width: calc(50% + 120px);
+    z-index: -1;
+  }
+
   .byIsap {
     font-size: 18px;
     margin: 10px 0px;
   }
   .titleNote {
-    font-size: 26px;
+    font-size: 40px;
     margin: 10px 0px;
+    text-align: center;
+  }
+
+  .slide-title {
+    font-size: 50px;
+  }
+
+  .slide-title-para{
+    padding-right: 120px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+
+  .titlePara {
+    font-size: 24px;
+  }
+
+  .para {
+    font-size: 18px;
+  }
+
+  .subtitle {
+    font-size: 27px;
   }
   .logoPlaceholder {
-    font-size: 40px;
+    font-size: 80px;
     margin: 25px 0px;
   }
   .socialIcon {
@@ -362,12 +405,37 @@ html, body {
     width: 40%;
     font-size: 40px;
   }
-  .content {
+  .content, .content-panel {
     align-items: center;
     flex-direction: row;
   }
   .content-vertical {
     align-items: center;
+  }
+
+  .content, .content-vertical {
+    padding: 80px;
+  }
+
+  .content-panel{
+    padding-right: 0px;
+  }
+
+  .flex-50 {
+    flex-basis: 50%;
+  }
+
+  .flex-40 {
+    flex-basis: 40%;
+  }
+
+  .flex-60 {
+    flex-basis: 60%;
+  }
+
+  :root {
+    --header-padding-h : 80px;
+    --header-padding-v : 50px;
   }
 }
 
@@ -377,12 +445,6 @@ html, body {
   }
   .byIsap {
     font-size: 20px;
-  }
-  .titleNote {
-    font-size: 28px;
-  }
-  .logoPlaceholder {
-    font-size: 46px;
   }
   .content {
     align-items: center;
