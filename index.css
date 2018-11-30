@@ -306,7 +306,7 @@ html, body {
 }
 
 .grey-panel {
-  
+
 }
 
 .slide-title-para{
@@ -371,10 +371,13 @@ html, body {
     font-size: 50px;
   }
 
-  .slide-title-para{
-    padding-right: 120px;
-    box-sizing: border-box;
+  .slide-title-para, .bullet-slide-title{
+    max-width: 450px;
     margin-bottom: 0;
+  }
+
+  .bullet-slide-title {
+
   }
 
   .titlePara {
@@ -405,9 +408,10 @@ html, body {
     width: 40%;
     font-size: 40px;
   }
-  .content, .content-panel {
+  .content {
     align-items: center;
     flex-direction: row;
+    justify-content: space-between;
   }
   .content-vertical {
     align-items: center;
@@ -445,10 +449,6 @@ html, body {
   }
   .byIsap {
     font-size: 20px;
-  }
-  .content {
-    align-items: center;
-    flex-direction: row;
   }
   .content-vertical {
     align-items: center;
