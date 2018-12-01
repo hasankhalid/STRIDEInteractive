@@ -2,7 +2,7 @@ html, body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.section {
+.sectionPadding {
   padding: 0px 30px;
 }
 
@@ -59,6 +59,13 @@ html, body {
   background: linear-gradient(145deg, rgba(0,114,188,1) 0%, rgba(0,113,185,1) 100%);
   opacity: 0.9;
   z-index: 4;
+}
+
+#section3 {
+  background-image: url(./resources/teacherClass.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .yellowOverlay {
@@ -165,7 +172,7 @@ html, body {
 }
 
 @media only screen and (min-width: 475px) {
-  .section {
+  .sectionPadding {
     padding: 0px 50px;
   }
   .disclaimer {
@@ -187,7 +194,7 @@ html, body {
 }
 
 @media only screen and (min-width: 900px) {
-  .section {
+  .sectionPadding {
     padding: 0px 60px;
   }
   .disclaimer {
@@ -221,7 +228,7 @@ html, body {
 }
 
 @media only screen and (min-width: 1200px) {
-  .section {
+  .sectionPadding {
     padding: 0px 75px;
   }
   .disclaimer {

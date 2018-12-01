@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,300,400,500,600" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
     <script src="js/fullpage/fullpage.min.js"></script>
@@ -18,7 +17,7 @@
 
   <body>
     <div id="fullpage">
-    	<div class="section title">
+    	<div class="section">
         <div class="disclaimerBack"></div>
         <p id="disclaimer" class="disclaimer"><span class="bold">22.8 million </span>children aged 5-18 years are still out of school in Pakistan</p>
         <p id="disclaimerFollow" class="disclaimer"><span class="bold">44% </span>of students enrolled in Grade 5 <span class="bold">drop-out </span> from schools before reaching Grade 10 in Pakistan</p>
@@ -36,7 +35,7 @@
         </div>
         <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
-    	<div class="section title">
+    	<div class="section">
         <div class="grayOverlay titleOverlay"></div>
         <div class="backdrop">
           <img class="titleImage" src="./resources/titleSchool.jpg"/>
@@ -52,13 +51,6 @@
         <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
     	<div class="section">
-        <div class="blueOverlay"></div>
-        <div class="backdrop">
-          <img class="titleImage" src="./resources/teacherClass.JPG"/>
-        </div>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
-      </div>
-      <div class="section">
         <div class="blueOverlay"></div>
         <div class="backdrop">
           <img class="titleImage" src="./resources/teacherClass.JPG"/>
@@ -85,7 +77,7 @@
     </div>
 
     <script>
-      $( document ).ready(function() {
+    /*  $( document ).ready(function() {
         setTimeout(function () {
           $("#disclaimer").fadeIn();}, 750
         );
@@ -97,20 +89,24 @@
         setTimeout(function () {
           $("#disclaimerFollow").fadeOut(function() {
             $(".disclaimerBack").fadeOut();
-            $(".titleImage").animate({height: '104%'}, 1750);
+            $(".titleImage").animate({height: '100%'}, 1750);
           });}, 9500
         );
-      });
+      }); */
     </script>
 
 
     <script>
-      new fullpage('#fullpage', {
+        new fullpage('#fullpage', {
+          //options here
+          licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        });
+      /*new fullpage('#fullpage', {
       	//options here
         licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
       	autoScrolling:true,
       	scrollHorizontally: true
-      });
+      });*/
     </script>
   </body>
 </html>
