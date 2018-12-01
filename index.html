@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,300,400,500,600" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 
     <script src="js/fullpage/fullpage.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
@@ -47,7 +48,11 @@
           <div class="yellow-overlay overlay">
           </div>
           <div class="content white-text">
-            <p class=" slide-title">Proportion of Age Appropriate Children in Schools</p>
+          	<div class="column-flex slide-title-para">
+            		<p class=" slide-title">Proportion of Age Appropriate Children in Schools</p>
+            </div>
+          	<svg id="age-circle-diagram" viewBox="0 0 900 700">
+          	</svg>
           </div>
         </div>
       </div>
@@ -56,8 +61,10 @@
           <div class="green-overlay overlay">
           </div>
           <div class="content white-text">
+          	<div class="column-flex slide-title-para">
               <p class=" slide-title">What are the reasons for low retention?</p>
             </div>
+          </div>
         </div>
       </div>
       <div class="section">
@@ -120,7 +127,7 @@
         	<div class="blue-overlay overlay">
         	</div>
           <div class="content white-text">
-            <div class="column-flex flex-50 slide-title-para">
+            <div class="column-flex flex-30 slide-title-para">
               <p class=" slide-title">How STRIDE addresses these issues</p>
             </div>
             <div class="grey-panel">
@@ -182,5 +189,6 @@
           licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE'
       });
     </script>
+    <script type="text/javascript" src="./js/circle.js"></script>
   </body>
 </html>

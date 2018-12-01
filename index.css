@@ -372,7 +372,7 @@ html, body {
   }
 
   .slide-title-para, .bullet-slide-title{
-    max-width: 450px;
+    max-width: 470px;
     margin-bottom: 0;
   }
 
@@ -415,10 +415,11 @@ html, body {
   }
   .content-vertical {
     align-items: center;
+    padding: 80px;
   }
 
-  .content, .content-vertical {
-    padding: 80px;
+  .content {
+    padding : 80px 20px 80px 80px;
   }
 
   .content-panel{
@@ -429,8 +430,8 @@ html, body {
     flex-basis: 50%;
   }
 
-  .flex-40 {
-    flex-basis: 40%;
+  .flex-30 {
+    flex-basis: 30%;
   }
 
   .flex-60 {
@@ -440,6 +441,11 @@ html, body {
   :root {
     --header-padding-h : 80px;
     --header-padding-v : 50px;
+  }
+
+  #age-circle-diagram{
+    flex-basis: 60%;
+    width: 700px;
   }
 }
 
@@ -452,5 +458,5 @@ html, body {
   }
   .content-vertical {
     align-items: center;
-  }
+  }  
 }
