@@ -43,7 +43,7 @@
           </div>
         </div>
       </div>
-      <div class="section">
+      <div class="section" data-name="circles">
         <div class="background slide-2">
           <div class="yellow-overlay overlay">
           </div>
@@ -186,7 +186,19 @@
     <script>      
       var myFullpage = new fullpage('#fullpage', {
           verticalCentered: false,
-          licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE'
+          licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
+
+          afterLoad: function(origin, destination, direction){
+						var loadedSection = this;
+						
+						if(destination.item.dataset.name === 'circles'){
+							makeAgeProportionCircle();
+						}
+
+						if(origin && origin.item.dataset.name === 'circles'){
+							removeAgeProportionCircle();
+						}						
+					}
       });
     </script>
     <script type="text/javascript" src="./js/circle.js"></script>

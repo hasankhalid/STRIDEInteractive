@@ -20,7 +20,8 @@ function makeAgeProportionCircle(){
 			.attr('r', 0)
 			.attr('cx', 0)
 			.attr('cy', 0)
-			.attr('fill', (d,i) => colors[i]);
+			.attr('fill', (d,i) => colors[i])
+			.style('opacity', (d, i)=> (0.6 + (i * 0.15)));
 
 	circlesTest = circles;
 
@@ -42,8 +43,8 @@ function makeAgeProportionCircle(){
 			.attr('fill', (d,i) => colors[i])
 			.style('opacity', 0)
 			.transition()
-			.delay((d,i)=> i * 2000 + 1200)
-			.duration(400)
+			.delay((d,i)=> i * 1500 + 900)
+			.duration(600)
 			.style('opacity', '1')
 
 		legendGroups.append('text')
@@ -54,11 +55,11 @@ function makeAgeProportionCircle(){
 			//.attr('y', (d,i) => i * 50)
 			//.attr('dy', '0.5em')
 			.attr('fill', '#fff')
-			.style('font-size', '26px')
+			.attr('class', 'legend-text')
 			.style('opacity', '0')
 			.text((d)=> d.title + ':' + d.val)
 			.transition()
-			.delay((d,i)=> i * 2000 + 350)
+			.delay((d,i)=> i * 1500 + 350)
 			.duration(300)
 			.style('opacity', '1')
 			.attr('y', 0)
@@ -70,7 +71,14 @@ function makeAgeProportionCircle(){
 
 		circles.transition()
 				.ease(d3.easeQuadIn)
-				.delay((d,i)=>i * 2000)
+				.delay((d,i)=>i * 1500)
 				.duration(300)
 				.attr('r', (d)=>d);
+}
+
+function removeAgeProportionCircle(){
+	d3.select('#age-circle-diagram')
+		.selectAll('g')
+		.style('opacity',0)
+		.remove();
 }
