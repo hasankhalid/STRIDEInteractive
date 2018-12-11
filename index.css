@@ -5,7 +5,7 @@ html, body {
 :root {
     --header-padding-v : 40px;
     --header-padding-h : 30px;
-    --down-icon-width : 30px; 
+    --down-icon-width : 30px;
 }
 
 
@@ -191,7 +191,7 @@ html, body {
 .point {
   padding-top: 8px;
   --bullet-width: 15px;
-  --text-padding-left : 5px; 
+  --text-padding-left : 5px;
 }
 
 #fadeFirst, #fadeSecond, #fadeThird {
@@ -225,19 +225,27 @@ html, body {
 }
 
 .slide-1{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(./resources/titleSchool.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .slide-2{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg2.jpg);
+  background-image: url(./resources/teacherClass.JPG);
+  background-position: center;
+  background-size: cover;
 }
 
 .slide-3{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg3.jpg);
+  background-image: url(./resources/tandoorBachayCompress.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .slide-4{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(./resources/cyclegirlscompress.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 .slide-5{
@@ -248,19 +256,22 @@ html, body {
   background-color: #6f5c56;
 }
 
+.title-overlay {
+  background-image: linear-gradient(to right, #212121, #1b1b1b, #141414, #0c0c0c, #000000);  opacity: 0.4;
+}
+
 .blue-overlay {
-  background-color: blue;
-  opacity: 0.4;
+  background-image: linear-gradient(to right, #0288d1, #0182cc, #007dc7, #0077c1, #0072bc);
+  opacity: 0.80;
 }
 
 .yellow-overlay {
-  background-color: yellow;
-  opacity: 0.4;
+  background-image: linear-gradient(to right, #fdd835, #73d861, #00c5aa, #00a6d9, #007ecf);
+  opacity: 0.5;
 }
 
-.red-overlay {
-  background-color: red;
-  opacity: 0.4;
+.transport-overlay {
+  background-image: linear-gradient(to right, #212121, #1b1b1b, #141414, #0c0c0c, #000000);  opacity: 0.2;
 }
 
 .green-overlay {
@@ -463,5 +474,5 @@ html, body {
   }
   .content-vertical {
     align-items: center;
-  }  
+  }
 }

@@ -29,12 +29,12 @@
     <div id="fullpage">
       <div class="section">
         <div class="background slide-1">
-          <div class="blue-overlay overlay">
+          <div class="title-overlay overlay">
           </div>
           <div class="content-vertical white-text">
             <p class=" logoPlaceholder">STRIDE</p>
             <p class=" byIsap">a project of I-SAPS</p>
-            <p class=" titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
+            <p class=" titleNote">addresses the alarmingly low student retention and transition rates in Pakistan</p>
             <div class="titleSocial ">
               <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
               <img class="socialIcon twitter" src="./resources/twitter.svg"/>
@@ -45,7 +45,7 @@
       </div>
       <div class="section" data-name="circles">
         <div class="background slide-2">
-          <div class="yellow-overlay overlay">
+          <div class="blue-overlay overlay">
           </div>
           <div class="content white-text">
           	<div class="column-flex slide-title-para">
@@ -58,7 +58,7 @@
       </div>
       <div class="section">
         <div class="background slide-3">
-          <div class="green-overlay overlay">
+          <div class="yellow-overlay overlay">
           </div>
           <div class="content white-text">
           	<div class="column-flex slide-title-para">
@@ -69,7 +69,7 @@
       </div>
       <div class="section">
         <div class="background slide-4">
-          <div class="green-overlay overlay">
+          <div class="transport-overlay overlay">
           </div>
           <div class="content white-text">
             <div class="column-flex flex-50 slide-title-para">
@@ -183,21 +183,21 @@
     <div>
     	<img class=" downIcon" src="./resources/down-chevron.svg"/>
     </div>
-    <script>      
+    <script>
       var myFullpage = new fullpage('#fullpage', {
           verticalCentered: false,
           licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
 
           afterLoad: function(origin, destination, direction){
 						var loadedSection = this;
-						
+
 						if(destination.item.dataset.name === 'circles'){
 							makeAgeProportionCircle();
 						}
 
 						if(origin && origin.item.dataset.name === 'circles'){
 							removeAgeProportionCircle();
-						}						
+						}
 					}
       });
     </script>
