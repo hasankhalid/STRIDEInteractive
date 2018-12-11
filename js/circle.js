@@ -1,6 +1,7 @@
 function makeAgeProportionCircle(){
 
-	var colors = ['#BFCBF0', '#B2BAD5', '#C4CDE8'];
+	var colors = ['#BFCBF0', '#d5d5fc', '#f4eeee'];
+	var legendColors = ['#73a1d0', '#bcc8f1', '#eee9ee'];
 
 	var svg = d3.select('#age-circle-diagram');
 
@@ -30,8 +31,8 @@ function makeAgeProportionCircle(){
 	var legendGroups = svgGroup
 		.selectAll('g')
 			.data([{title : 'Primary',val : '65%'},
-				{title : 'Middle',val : '2%'},
-				{title : 'High',val : '15%'},
+				{title : 'Middle',val : '40%'},
+				{title : 'High',val : '30%'},
 			])
 		.enter()
 		.append('g');
@@ -40,7 +41,7 @@ function makeAgeProportionCircle(){
 			.attr('r', 15)
 			.attr('cx', 300)
 			.attr('cy', (d,i) => i * 50 - 60)
-			.attr('fill', (d,i) => colors[i])
+			.attr('fill', (d,i) => legendColors[i])
 			.style('opacity', 0)
 			.transition()
 			.delay((d,i)=> i * 1500 + 900)

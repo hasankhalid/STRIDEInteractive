@@ -225,32 +225,48 @@ html, body {
 }
 
 .slide-1{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(resources/titleSchool.jpg);
 }
 
 .slide-2{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg2.jpg);
+  background-image: url(resources/teacherClass.jpg);
 }
 
 .slide-3{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg3.jpg);
+  background-image: url(resources/Compressed.jpg);
 }
 
 .slide-4{
-  background-image: url(https://raw.githubusercontent.com/alvarotrigo/fullPage.js/master/examples/imgs/bg1.jpg);
+  background-image: url(resources/cycleGirls.jpg);
 }
 
 .slide-5{
-  background-color: #2196f3;
+  background-color: #0072BC
 }
 
 .slide-6{
-  background-color: #6f5c56;
+  background-image: linear-gradient(309deg, #424242 0%, #5F4E4E 70%);
+}
+
+.slide-7 {
+  background-image: linear-gradient(to top, #0c3483 0%, #6d8cca 100%, #4c6494 100%, #aab8d4 100%);
+}
+
+.slide-solution {
+
+}
+
+.slide-benifits {
+  background-image: url(resources/strideBenifits.jpg);
+}
+
+.slide-benifits-section {
+  background-image: url(resources/benefit.jpg);
 }
 
 .blue-overlay {
-  background-color: blue;
-  opacity: 0.4;
+  background-color: #0072BC;
+  opacity: 0.9;
 }
 
 .yellow-overlay {
@@ -265,6 +281,16 @@ html, body {
 
 .green-overlay {
   background-color: green;
+  opacity: 0.4;
+}
+
+.grey-overlay {
+  background-image: linear-gradient(to top, #424242 0%, #616161 100%);
+  opacity: 0.4;
+}
+
+.black-overlay {
+  background-color: #000;
   opacity: 0.4;
 }
 
@@ -311,7 +337,7 @@ html, body {
 
 .legend-text {
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .slide-title-para{
@@ -347,6 +373,38 @@ html, body {
   }
 }
 
+.chart-line {
+  stroke : #fff;
+  stroke-width : 5px;
+}
+
+g.circles {
+  fill: #fff;
+}
+
+.predicted-line{
+  stroke : #4043a2;
+  stroke-width : 5px; 
+}
+
+.predicted {
+  fill : #4043a2;
+}
+
+.line-years, .line-values{
+  text-anchor: middle;
+  fill: #fff;
+}
+
+.line-years{
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.line-values {
+  font-weight: 600;
+}
+
 @media only screen and (min-width: 900px) {
   .disclaimer {
     font-size: 28px;
@@ -368,16 +426,18 @@ html, body {
   }
   .titleNote {
     font-size: 40px;
+    font-weight: 400;
     margin: 10px 0px;
     text-align: center;
   }
 
   .slide-title {
     font-size: 50px;
+    font-weight: 500;
   }
 
   .slide-title-para, .bullet-slide-title{
-    max-width: 470px;
+    max-width: 600px;
     margin-bottom: 0;
   }
 
@@ -395,6 +455,7 @@ html, body {
 
   .subtitle {
     font-size: 27px;
+    font-weight: 400;
   }
   .logoPlaceholder {
     font-size: 80px;
@@ -451,6 +512,20 @@ html, body {
   #age-circle-diagram{
     flex-basis: 60%;
     width: 700px;
+    filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));
+  }
+
+  #cost-line-diagram{
+    flex-basis: 100%;
+    width: 100vw;
+    max-width: 1250px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*/
   }
 }
 
@@ -464,4 +539,15 @@ html, body {
   .content-vertical {
     align-items: center;
   }  
+}
+
+
+@media only screen and (min-width: 1900px){
+  .slide-3 {
+    background-position-y: -30vh;
+  }
+
+  .slide-4 {
+    background-position-y: -20vh;
+  }
 }
