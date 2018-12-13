@@ -1,5 +1,6 @@
 function createLineChart(){
-	var margin = {
+	//replace with getMargin()
+	var margin = getLineMargins() || {
 			left : 40,
 			right : 40,
 			top : 100,
@@ -7,8 +8,10 @@ function createLineChart(){
 		};
 
 		var svg = d3.select('#cost-line-diagram'),
-			width = 900 - margin.left - margin.right,
-			height = 700 - margin.top - margin.bottom;
+			svgWidth = svg.node().width.baseVal.value,
+			svgHeight = svg.node().height.baseVal.value,
+			width = svgWidth - margin.left - margin.right,
+			height = svgHeight - margin.top - margin.bottom;
 
 		var data = [
 			{year : 2012, val : 0},
@@ -122,11 +125,11 @@ function createLineChart(){
 			.style('opacity', 0);
 
 		valueTextNodes.append('tspan')
+			.attr('class', 'point-value')
 			.text((d)=> d.val + 20)
 			.attr('x', (d)=>x(d.year))
 			.attr('y', (d)=>y(d.val))
 			.attr('dy', '-1.2em')
-			.attr('font-size', '40px');
 
 		valueTextNodes.append('tspan')
 			.text('Rs.bn')
@@ -235,7 +238,7 @@ function createLineChart(){
 			.duration(300)
 			.style('opacity', '1')
 			.attr('transform', function(d){
-				return `translate(${getValueTextTransform(d)}, 0)`;
+				return `translate(${getValueTextTransform(d)}, 40)`;
 			});
 
 		thirdLine.transition()
@@ -257,7 +260,7 @@ function createLineChart(){
 			.duration(300)
 			.style('opacity', '1')
 			.attr('transform', function(d){
-				return `translate(${getValueTextTransform(d)}, 0)`;
+				return `translate(${getValueTextTransform(d)}, 40)`;
 			});
 
 		function getValueTextTransform(d){
@@ -265,7 +268,7 @@ function createLineChart(){
 				case 2017 : return -40;
 				case 2018 : return 50;
 				default : return 0;
-			};
+			}
 		}
 }
 
@@ -274,4 +277,38 @@ function removeLineChart(){
 		.selectAll('g')
 		.style('opacity',0)
 		.remove();
+}
+
+function getLineMargins(){
+	var windowWidth = window.innerWidth;
+
+	if(windowWidth < 350){
+		return {
+			left : 10,
+			right : 50,
+			top : 0,
+			bottom : 50
+		};
+	}else if(windowWidth < 600){
+		return {
+			left : 20,
+			right : 30,
+			top : 0,
+			bottom : 50
+		};
+	}else if(windowWidth < 1024){
+		return {
+			left : 50,
+			right : 50,
+			top : 0,
+			bottom : 50
+		};
+	}else{
+		return {
+			left : 100,
+			right : 100,
+			top : 100,
+			bottom : 150
+		};
+	}
 }

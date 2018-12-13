@@ -261,27 +261,27 @@ html, body {
 
 .background--slide-school{
   background-position: 27% 50%;
-  background-image: url(resources/titleSchool.jpg);
+  /*background-image: url(resources/titleSchool.jpg);*/
 }
 
 .background--slide-teacher{
   background-position: 26%;
-  background-image: url(resources/teacherClass.jpg);
+  /*background-image: url(resources/teacherClass.jpg);*/
 }
 
 .background--slide-kids{
   background-position: 20%;
-  background-image: url(resources/Compressed.jpg);
+  /*background-image: url(resources/Compressed.jpg);*/
 }
 
 .background--slide-cycle-girls{
   background-position: 66%;
-  background-image: url(resources/cycleGirls.jpg);
+  /*background-image: url(resources/cycleGirls.jpg);*/
 }
 
 .background--slide-benifits {
   background-position: 30%;
-  background-image: url(resources/strideBenifits.jpg);
+  /*background-image: url(resources/strideBenifits.jpg);*/
 }
 
 .background--slide-blue{
@@ -290,15 +290,15 @@ html, body {
 
 .background--slide-classroom {
   background-position: 50%;
-  background-image: url(resources/benefit.jpg);
+  /*background-image: url(resources/benefit.jpg);*/
 }
 
 .slide-6{
-  background-image: linear-gradient(309deg, #424242 0%, #5F4E4E 70%);
+  /*background-image: linear-gradient(309deg, #424242 0%, #5F4E4E 70%);*/
 }
 
 .slide-7 {
-  background-image: linear-gradient(to top, #0c3483 0%, #6d8cca 100%, #4c6494 100%, #aab8d4 100%);
+  /*background-image: linear-gradient(to top, #0c3483 0%, #6d8cca 100%, #4c6494 100%, #aab8d4 100%);*/
 }
 
 .slide-solution {
@@ -321,7 +321,7 @@ html, body {
 }
 
 .grey-overlay {
-  background-image: linear-gradient(to top, #424242 0%, #616161 100%);
+  /*background-image: linear-gradient(to top, #424242 0%, #616161 100%);*/
   opacity: 0.4;
 } 
 
@@ -398,6 +398,10 @@ g.circles {
   fill : #4043a2;
 }
 
+.point-value{
+  font-size: 35px
+}
+
 .line-years, .line-values{
   text-anchor: middle;
   fill: #fff;
@@ -405,7 +409,7 @@ g.circles {
 
 .line-years{
   font-weight: 100;
-  font-size: 18px;
+  font-size: 11px;
 }
 
 .line-values {
@@ -419,9 +423,24 @@ g.circles {
   /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*/
 }
 
+#cost-line-diagram{
+  /*left: 50vw;
+  transform: translate(-50%);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;*/
+  flex-basis: 70%;
+  width: 100%;
+  overflow: visible;
+}
+
 @media only screen and (min-width: 375px){
   .legend-text {
     font-size: 16px;
+  }
+
+  .line-years {
+    font-size: 13px;
   }
 }
 
@@ -437,6 +456,11 @@ g.circles {
   }
 
   .legend-text {
+    font-size: 18px;
+  }
+
+  .line-years{
+    font-weight: 100;
     font-size: 18px;
   }
 }
@@ -455,6 +479,18 @@ g.circles {
     height: 100%;
   }
 
+  #cost-line-diagram{
+    left: 50vw;
+    transform: translate(-50%);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .point-value{
+    font-size: 40px
+  }
+
   .content--default {
     flex-direction: row;
     align-items: center;
@@ -469,6 +505,11 @@ g.circles {
 
   .content__title-para-g{
     flex-basis: 40%;
+  }
+
+  .downIcon {
+    width: 40px;
+    left: calc(50vw - 20px);
   }
 }
 

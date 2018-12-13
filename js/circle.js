@@ -107,6 +107,8 @@ function removeAgeProportionCircle(){
 		.remove();
 }
 
+var legendBreakBoint = 760;
+
 function getDimensions(svgWidth, svgHeight){
 	var windowWidth = window.innerWidth;
 
@@ -118,7 +120,7 @@ function getDimensions(svgWidth, svgHeight){
 		dimensions.cTranslate = 'translate(50%,40%)';
 		dimensions.lRadius = 5;
 		dimensions.cRadius = cRadius * 0.8;
-	}else if(windowWidth < 600){
+	}else if(windowWidth < legendBreakBoint){
 		dimensions.cTranslate = 'translate(50%,40%)';
 		dimensions.lRadius = 10;
 		dimensions.cRadius = cRadius * 0.8;
@@ -179,8 +181,6 @@ function getVerticalLegendYPositions(selection){
 
 	return yPos;
 }
-
-var legendBreakBoint = 760;
 
 function getFinalLegendPosition(selection,maxRadius){
 
