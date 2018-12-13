@@ -2,10 +2,19 @@ html, body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
+/*svg {
+  border : 5px solid;
+}*/
+
 :root {
     --header-padding-v : 40px;
     --header-padding-h : 30px;
     --down-icon-width : 30px; 
+}
+
+/*changing fullpage css*/
+.fp-section {
+  overflow: hidden;
 }
 
 
@@ -124,7 +133,7 @@ html, body {
 }
 
 .logoPlaceholder {
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 500;
   margin: 20px 0px;
 }
@@ -135,7 +144,7 @@ html, body {
   margin: 5px 0px;
 }
 
-.titleNote, .slide-title {
+.titleNote, .content__title {
   font-size: 24px;
   font-weight: 300;
   margin: 10px 0px;
@@ -152,12 +161,6 @@ html, body {
   font-weight: 300;
   margin: 0px;
   margin-left: var(--text-padding-left);
-}
-
-.titlePara {
-  font-size: 18px;
-  font-weight: 200;
-  margin: 5px 70px 5px 0px;
 }
 
 .para {
@@ -215,33 +218,79 @@ html, body {
 
 .background{
   background-size: cover;
-  position: relative;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /*transform: scale(1.2);*/
+  /*transition: transform 0.7s cubic-bezier(0,0,.2,1);*/
+}
+
+@keyframes zoom-in{
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.background__overlay {
+  width: 100%;
   height: 100%;
 }
+
+.background__overlay--black{
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.background__overlay--blue {
+  background-color: #0072BC;
+  opacity: 0.8;
+}
+
+.background__overlay--grey{
+  background-image: linear-gradient(to top, #424242 0%, #616161 100%);
+  opacity: 0.4;
+} 
 
 .main-container {
   display: flex;
   flex-direction: column;
 }
 
-.slide-1{
+.background--slide-school{
+  background-position: 27% 50%;
   background-image: url(resources/titleSchool.jpg);
 }
 
-.slide-2{
+.background--slide-teacher{
+  background-position: 26%;
   background-image: url(resources/teacherClass.jpg);
 }
 
-.slide-3{
+.background--slide-kids{
+  background-position: 20%;
   background-image: url(resources/Compressed.jpg);
 }
 
-.slide-4{
+.background--slide-cycle-girls{
+  background-position: 66%;
   background-image: url(resources/cycleGirls.jpg);
 }
 
-.slide-5{
+.background--slide-benifits {
+  background-position: 30%;
+  background-image: url(resources/strideBenifits.jpg);
+}
+
+.background--slide-blue{
   background-color: #0072BC
+}
+
+.background--slide-classroom {
+  background-position: 50%;
+  background-image: url(resources/benefit.jpg);
 }
 
 .slide-6{
@@ -254,19 +303,6 @@ html, body {
 
 .slide-solution {
 
-}
-
-.slide-benifits {
-  background-image: url(resources/strideBenifits.jpg);
-}
-
-.slide-benifits-section {
-  background-image: url(resources/benefit.jpg);
-}
-
-.blue-overlay {
-  background-color: #0072BC;
-  opacity: 0.9;
 }
 
 .yellow-overlay {
@@ -287,34 +323,41 @@ html, body {
 .grey-overlay {
   background-image: linear-gradient(to top, #424242 0%, #616161 100%);
   opacity: 0.4;
-}
+} 
 
-.black-overlay {
-  background-color: #000;
-  opacity: 0.4;
-}
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.content, .content-vertical, .content-panel {
+.content {
   position: relative;
   display: flex;
-  align-items: start;
-  height: calc(100% - var(--down-icon-width) - 10px);
-  justify-content: center;
-  flex-direction: column;
+  height: 100%;
   padding: 70px 30px 30px 30px;
   box-sizing: border-box;
   z-index: 0;
 }
 
-.content h1 {
-  z-index: 1;
+.content--default {
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content--vertical{
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.content--white-text {
+  color: #fff;
+}
+
+.content__title-para-g{
+  margin-bottom: 20px;
+}
+
+.content__para {
+  font-size: 18px;
+  font-weight: 200;
+  margin: 5px 70px 5px 0px;
 }
 
 .main-header{
@@ -327,23 +370,136 @@ html, body {
     color: #fff;
 }
 
-.white-text {
-  color: #fff;
-}
-
 .grey-panel {
 
 }
 
 .legend-text {
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 12px;
+  alignment-baseline: middle;
+  text-align: center;
 }
 
-.slide-title-para{
-  margin-bottom: 20px;
+.chart-line {
+  stroke : #fff;
+  stroke-width : 5px;
 }
 
+g.circles {
+  fill: #fff;
+}
+
+.predicted-line{
+  stroke : #4043a2;
+  stroke-width : 5px; 
+}
+
+.predicted {
+  fill : #4043a2;
+}
+
+.line-years, .line-values{
+  text-anchor: middle;
+  fill: #fff;
+}
+
+.line-years{
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.line-values {
+  font-weight: 600;
+}
+
+#age-circle-diagram{
+  width: 100%;
+  flex-basis: 70%;
+  overflow: visible;
+  /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*/
+}
+
+@media only screen and (min-width: 375px){
+  .legend-text {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 475px){
+  
+  .content--vertical {
+    text-align: center;
+    align-items: center;
+  }
+
+  .titleNote {
+    margin: 20px 10vh;
+  }
+
+  .legend-text {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1023px){
+
+  .titleNote {
+    margin: 20px 10vh;
+  }
+
+  .legend-text {
+    font-size: 21px;
+  }
+
+  #age-circle-diagram {
+    height: 100%;
+  }
+
+  .content--default {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .content__title {
+    font-size: 34px;
+    font-weight: 500;
+    flex-basis: 40%;
+  }
+
+  .content__title-para-g{
+    flex-basis: 40%;
+  }
+}
+
+@media only screen and (min-width: 1280px){
+
+  .titleNote {
+    margin: 20px 10vh;
+  }
+
+  .legend-text {
+    font-size: 26px;
+  }
+
+  .content {
+    padding: 60px;
+  }
+
+  .content__title {
+    font-size: 40px;
+  }
+
+  .content__para {
+    font-size: 22px;
+  }
+
+  .main-header {
+    padding: 50px 50px 10px 50px;
+  }
+}
+
+/*
 @media only screen and (min-width: 475px) {
   .disclaimer {
     text-align: center;
@@ -431,7 +587,7 @@ g.circles {
     text-align: center;
   }
 
-  .slide-title {
+  .content__title {
     font-size: 50px;
     font-weight: 500;
   }
@@ -525,7 +681,7 @@ g.circles {
     left: 0;
     right: 0;
     margin: auto;
-    /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*/
+    /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*//*
   }
 }
 
@@ -550,4 +706,4 @@ g.circles {
   .slide-4 {
     background-position-y: -20vh;
   }
-}
+}*/

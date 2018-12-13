@@ -22,18 +22,19 @@
 
   <body>
     <div class="main-header">
-      <div class="logo">
+      <div class="main-header__logo">
         STRIDE
       </div>
     </div>
     <div id="fullpage">
       <div class="section">
-        <div class="background slide-1">
-          <div class="black-overlay overlay">
+        <div class="background background--slide-school">
+          <div class="background__overlay background__overlay--black">
           </div>
-          <div class="content-vertical white-text">
-            <p class=" logoPlaceholder">STRIDE</p>
-            <p class=" byIsap">a project of I-SAPS</p>
+        </div>
+        <div class="content content--vertical content--white-text">
+            <p class="logoPlaceholder">STRIDE</p>
+            <p class="byIsap">a project of I-SAPS</p>
             <p class=" titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
             <div class="titleSocial ">
               <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
@@ -41,152 +42,93 @@
               <img class="socialIcon" src="./resources/link-symbol.svg"/>
             </div>
           </div>
-        </div>
       </div>
       <div class="section" data-name="circles">
-        <div class="background slide-2">
-          <div class="blue-overlay overlay">
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
           </div>
-          <div class="content white-text">
-          	<div class="column-flex slide-title-para">
-            		<p class=" slide-title">Proportion of Age Appropriate Children in Schools</p>
-            </div>
-          	<svg id="age-circle-diagram" viewBox="0 0 900 700">
-          	</svg>
+        </div>
+        <div class="content content--default content--white-text">
+              <p class="content__title">Proportion of Age Appropriate Children in Schools
+            </p>
+            <svg id="age-circle-diagram">
+              <filter id="drop-shadow" height="130%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" color-interpolation-filters="sRGB"></feGaussianBlur>
+                <feOffset in="blur" result="offsetBlur" dy="10"></feOffset>
+                <feFlood flood-color="#000" flood-opacity="0.2"></feFlood>
+                <feComposite operator="in" in2="offsetBlur"></feComposite>
+                <feMerge>
+                  <feMergeNode></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+            </svg>
+          </div>
+      </div>
+      <div class="section">
+        <div class="background background--slide-kids">
+          <div class=" background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title"> 
+            What are the reasons for low retention?
+          </p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="background background--slide-cycle-girls">
+          <div class="background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title">Lack of Transport</p>
+            <p class="content__para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
           </div>
         </div>
       </div>
       <div class="section">
-        <div class="background slide-3">
-          <div class="grey-overlay overlay">
-          </div>
-          <div class="content white-text">
-          	<div class="column-flex slide-title-para">
-              <p class=" slide-title">What are the reasons for low retention?</p>
-            </div>
-          </div>
+        <div class="background background--slide-blue">
         </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title">Lack of Transport</p>
+       </div>
       </div>
       <div class="section">
-        <div class="background slide-4">
-          <div class="grey-overlay overlay">
-          </div>
-          <div class="content white-text">
-            <div class="column-flex flex-50 slide-title-para">
-              <p class=" slide-title">Lack of Transport</p>
-              <p class=" titlePara">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
-            </div>
+        <div class="background background--slide-benifits">
+          <div class=" background__overlay background__overlay--grey">
           </div>
         </div>
-      </div>
-      <div class="section">
-        <div class="background slide-5">
-          <div class="content white-text">
-          	<div class="column-flex slide-title-para">
-              <p class=" slide-title">Limited Access</p>
-              <p class=" titlePara">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
-            </div>
-           </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="background slide-6">
-          <div class="content white-text">
-            <div class="column-flex flex-50 slide-title-para">
-              <p class=" slide-title">Local Problems</p>
-              <p class=" titlePara">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
-            </div>
-            <div class="bullet-list flex-50">
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="background slide-solution">
-        	<div class="grey-overlay overlay">
-        	</div>
-          <div class="content white-text">
-            <div class="column-flex flex-30 slide-title-para">
-              <p class=" slide-title">How STRIDE addresses these issues</p>
-            </div>
-            <div class="grey-panel">
-            </div>
-            <div class="bullet-list flex-50">
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-              <div class=" point">
-                <div class="bullet-heading">
-                  <img class=" bullet" src="./resources/down-chevron.svg"/>
-                  <p class="subtitle">Example Problem</p>
-                </div>
-                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula. In id pretium lorem. Mauris vitae aliquam nulla. Phasellus vitae magna ac orci ornare cursus</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="background slide-benifits">
-          <div class="grey-overlay overlay">
-          </div>
-          <div class="content white-text">
-              <p class=" slide-title">Benefits of the STRIDE Approach</p>
-            </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title"> 
+            Benefits of the STRIDE Approach
+          </p>
         </div>
       </div>
       <div class="section" data-name="animline">
-        <div class="background slide-benifits-section">
-          <div class="blue-overlay overlay">
-          </div>
-          <div class="content white-text">
-            <div class="column-flex slide-title-para">
-              <p class=" slide-title">Cost Saving</p>
-              <p class=" titlePara">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
-            </div>
-            <svg id="cost-line-diagram" viewBox="0 0 900 700">
+        <div class="background background--slide-classroom">
+          <div class="background__overlay background__overlay--blue">
           </div>
         </div>
-      </div>
-      <div class="section">
-        <div class="background slide-benifits-section">
-          <div class="blue-overlay overlay">
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title">Cost Saving</p>
+            <p class="content__para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
           </div>
-          <div class="content white-text">
-              <p class=" slide-title">Enrollment Increase</p>
-            </div>
+          <svg id="cost-line-diagram" viewBox="0 0 900 700"></svg>
+        </div>
+      </div>
+      <div class="section" data-name="animline">
+        <div class="background background--slide-classroom">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title">Other Benefit</p>
+            <p class="content__para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -202,6 +144,8 @@
 
           afterLoad: function(origin, destination, direction){
 						var loadedSection = this;
+
+            //destination.style.animation 
 						
 						if(destination.item.dataset.name === 'circles'){
 							makeAgeProportionCircle();
@@ -218,7 +162,13 @@
 						if(origin && origin.item.dataset.name === 'animline'){
 							removeLineChart();
 						}						
-					}
+					},
+
+          onLeave : function(origin,destination,direction){
+            /*testD = destination;
+            origin.item.querySelector('.background').style.animation = '';
+            destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
+          }
       });
     </script>
   </body>
