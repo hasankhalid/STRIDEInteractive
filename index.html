@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,300,400,500,600" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
 
     <script src="js/fullpage/fullpage.js"></script>
@@ -24,6 +25,24 @@
     <div class="main-header">
       <div class="main-header__logo">
         STRIDE
+      </div>
+      <div class="main-header__counter">
+        <div class="main-header__current-slide"> 
+          1
+        </div>
+        <div class="main-header__sep"> 
+        </div>
+        <div class="main-header__total-slides">
+          10 
+        </div>
+        <div class="main-header__circle">
+          <svg class="main-header__svg">
+            <g class="main-header__circle-g">
+              <circle cx="0" cy="0" r="33px" stroke-width="2px"></circle>
+              <circle cx="0" cy="0" r="28px" stroke-width="4px" id="progress-circle"></circle>
+            </g>
+          </svg>
+        </div>
       </div>
     </div>
     <div id="fullpage">
@@ -65,6 +84,18 @@
             </svg>
           </div>
       </div>
+      <div class="section" data-name="barChart">
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+              <p class="content__title">Number of Schools
+            </p>
+            <svg id="num-schools-bar-chart">
+            </svg>
+          </div>
+      </div>
       <div class="section">
         <div class="background background--slide-kids">
           <div class=" background__overlay background__overlay--grey">
@@ -72,7 +103,7 @@
         </div>
         <div class="content content--default content--white-text">
           <p class="content__title"> 
-            What are the reasons for low retention?
+            What are the reasons for low retention and transition rates?
           </p>
         </div>
       </div>
@@ -137,7 +168,16 @@
     </div>
     <script type="text/javascript" src="./js/circle.js"></script>
     <script type="text/javascript" src="./js/line.js"></script>
-    <script>      
+    <script type="text/javascript" src="./js/bar.js"></script>
+    <script>
+
+      var sectionArr = Array.from(document.getElementsByClassName('section'));
+      sectionArr.forEach((d,i)=>{
+        d.setAttribute('data-index', i + 1);
+      });
+
+      initProgressCircle();
+
       var myFullpage = new fullpage('#fullpage', {
           verticalCentered: false,
           licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
@@ -161,15 +201,44 @@
 
 						if(origin && origin.item.dataset.name === 'animline'){
 							removeLineChart();
-						}						
+						}	
+
+            if(destination.item.dataset.name === 'barChart'){
+              createBarChart();
+            }
+
+            if(origin && origin.item.dataset.name === 'barChart'){
+              removeBarChart();
+            } 					
 					},
 
           onLeave : function(origin,destination,direction){
+            //console.log(destination);
+
+            var index = destination.item.dataset.index;
+            document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
+
+            updateProgressCircle(index);
             /*testD = destination;
             origin.item.querySelector('.background').style.animation = '';
             destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
           }
       });
+
+      function initProgressCircle(){
+        var circle = document.getElementById('progress-circle');
+        var circleLength = circle.getTotalLength();
+        circle.setAttribute('stroke-dasharray', `${circleLength}, ${circleLength}`);
+        circle.setAttribute('stroke-dashoffset', circleLength - ((1/sectionArr.length) * circleLength));
+      }
+
+      function updateProgressCircle(index){
+        var circle = document.getElementById('progress-circle');
+        var circleLength = circle.getTotalLength();
+
+        var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
+        circle.setAttribute('stroke-dashoffset', newOffset);
+      }
     </script>
   </body>
 </html>

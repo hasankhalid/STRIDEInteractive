@@ -7,7 +7,7 @@ html, body {
 }*/
 
 :root {
-    --header-padding-v : 40px;
+    --header-padding-v : 20px;
     --header-padding-h : 30px;
     --down-icon-width : 30px; 
 }
@@ -328,7 +328,7 @@ html, body {
 .content {
   position: relative;
   display: flex;
-  height: 100%;
+  height: calc(100% - 30px);
   padding: 70px 30px 30px 30px;
   box-sizing: border-box;
   z-index: 0;
@@ -368,6 +368,65 @@ html, body {
     z-index: 1;
     padding: var(--header-padding-v) var(--header-padding-h);
     color: #fff;
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between;*/
+}
+
+.main-header__counter {
+  margin-left: auto;
+  position: relative;
+  width : 66px;
+  height: 66px;
+  font-size: 12px;
+  transform: scale(0.8);
+  font-family: arial,sans-serif;
+}
+
+.main-header__current-slide {
+  top: 17px;
+  left: 25px;
+  position: absolute;
+}
+
+.main-header__sep {
+  height: 1.5px;
+  width: 21px;
+  border-radius: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  transform: rotate(-45deg);
+}
+
+.main-header__total-slides {
+  bottom: 20px;
+  right: 16px;
+  position: absolute;
+}
+
+.main-header__circle{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.main-header__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.main-header__circle-g{
+  transform: translate(50%,50%);
+}
+
+.main-header__circle-g circle{
+  stroke: #fff;
+  fill: none;
 }
 
 .grey-panel {
@@ -382,7 +441,7 @@ html, body {
 
 .chart-line {
   stroke : #fff;
-  stroke-width : 5px;
+  stroke-width : 3px;
 }
 
 g.circles {
@@ -391,7 +450,7 @@ g.circles {
 
 .predicted-line{
   stroke : #4043a2;
-  stroke-width : 5px; 
+  stroke-width : 3px; 
 }
 
 .predicted {
@@ -434,6 +493,20 @@ g.circles {
   overflow: visible;
 }
 
+#num-schools-bar-chart{
+  flex-basis: 70%;
+  width: 100%;
+  overflow: visible;
+}
+
+.bar-chart__g {
+  fill: #fff;
+}
+
+#progress-circle {
+  transform: rotate(-90deg);
+} 
+
 @media only screen and (min-width: 375px){
   .legend-text {
     font-size: 16px;
@@ -451,6 +524,10 @@ g.circles {
     align-items: center;
   }
 
+  .content {
+    height: 100%;
+  }
+
   .titleNote {
     margin: 20px 10vh;
   }
@@ -462,6 +539,10 @@ g.circles {
   .line-years{
     font-weight: 100;
     font-size: 18px;
+  }
+
+  .main-header__counter{
+    transform: scale(0.9);
   }
 }
 
@@ -475,6 +556,14 @@ g.circles {
     font-size: 21px;
   }
 
+  .predicted-line{
+    stroke-width : 5px; 
+  }
+
+  .chart-line {
+    stroke-width : 5px;
+  }
+
   #age-circle-diagram {
     height: 100%;
   }
@@ -485,6 +574,10 @@ g.circles {
     position: fixed;
     width: 100vw;
     height: 100vh;
+  }
+
+  #num-schools-bar-chart{
+    height: 100%;
   }
 
   .point-value{
@@ -511,6 +604,10 @@ g.circles {
     width: 40px;
     left: calc(50vw - 20px);
   }
+
+  .bar-chart__g{
+    font-size: 19px;
+  }
 }
 
 @media only screen and (min-width: 1280px){
@@ -536,7 +633,7 @@ g.circles {
   }
 
   .main-header {
-    padding: 50px 50px 10px 50px;
+    padding: 30px 60px 10px 60px;
   }
 }
 

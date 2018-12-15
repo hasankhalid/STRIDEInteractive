@@ -1,5 +1,10 @@
 function makeAgeProportionCircle(){
 
+	var circlesM = {};
+	var legendTextsM = {};
+	var legendCirclesM = {};
+	legendGroupsM = {};
+
 	var colors = ['#BFCBF0', '#d5d5fc', '#f4eeee'];
 	var legendColors = ['#73a1d0', '#bcc8f1', '#eee9ee'];
 
@@ -31,13 +36,14 @@ function makeAgeProportionCircle(){
 			.attr('r', 0)
 			.attr('cx', 0)
 			.attr('cy', 0)
-			.attr('filter',"url(#drop-shadow)")
+			//.attr('filter',"url(#drop-shadow)")
 			.attr('fill', (d,i) => colors[i])
 			.style('opacity', 0)
-			.attr('r', (d)=>rScale(d.val))
-			.style('opacity', (d, i)=> (0.6 + (i * 0.15)));
-
-	circlesTest = circles;
+			.attr('r', 0)
+			.each(function(d,i){
+				circlesM[d.title] = {el : this, radius : rScale(d.val), opacity : (0.6 + (i * 0.15))};
+			});
+			//.style('opacity', (d, i)=> (0.6 + (i * 0.15)));
 
 	//var center = height/2;
 
@@ -45,14 +51,20 @@ function makeAgeProportionCircle(){
 		.selectAll('g')
 			.data(data)
 		.enter()
-		.append('g');
+		.append('g')
+		.each(function(d){
+			legendGroupsM[d.title] = { el : this};
+		});
 			
 		legendGroups.append('circle')
 			.attr('r', dimensions.lRadius)
 			.attr('cx', 0)
 			.attr('cy', 0)
 			.attr('fill', (d,i) => legendColors[i])
-			.style('opacity', 1)
+			.style('opacity', 0)
+			.each(function(d,i){
+				legendCirclesM[d.title] = this;
+			});
 			/*.transition()
 			.delay((d,i)=> i * 1500 + 900)
 			.duration(600)
@@ -61,43 +73,46 @@ function makeAgeProportionCircle(){
 		legendGroups.append('text')
 			.attr('x', 0)
 			//.attr('dx', '1.5em')
-			.attr('y', 0)
+			.attr('y', 30)
 			//.attr('y', (d,i) => i * 50)
 			//.attr('dy', '0.5em')
 			.attr('fill', '#fff')
 			.attr('class', 'legend-text')
 			.attr('dx', `${dimensions.lRadius + getLegendPadding()}px`)
 			.attr('dy', '0.1em')
-			.style('opacity', '1')
+			.style('opacity', '0')
 			.text((d)=> d.title + ': ' + d.val + '%')
-			/*.transition()
-			.delay((d,i)=> i * 1500 + 350)
-			.duration(300)
-			.style('opacity', '1')
-			.attr('y', 0)
-			.transition()
-			.duration(400)
-			.delay(200)
-			.attr('y', (d,i) => (i - 1) * 50)
-			.attr('x', 330);*/
-
-		testLGroup = legendGroups;
+			.each(function(d,i){
+				legendTextsM[d.title] = this;
+			});
 
 		var finalLegendPosition = getFinalLegendPosition(legendGroups, maxRadius);
 
-		legendGroups.style('transform', (d,i)=>{
-			return `translate(${finalLegendPosition.x[i]}px, ${finalLegendPosition.y[i]}px)`
+		legendGroups.each((d,i)=>{
+			legendGroupsM[d.title].transform = {x :finalLegendPosition.x[i], y :finalLegendPosition.y[i]};
 		});
 
-		/*circles.transition()
-				.ease(d3.easeQuadIn)
-				.delay((d,i)=>i * 1500)
-				.duration(300)
-				.attr('r', (d)=>rScale(d))
-				.style('opacity', (d, i)=> (0.6 + (i * 0.15)))
-				.on('end', function(d){
-					this.setAttribute('filter', 'url(#drop-shadow)');
-				});*/
+		var masterTl = new TimelineMax();
+		var tl = new TimelineMax();
+
+		/*tl.to(circlesM['Primary'].el, 0.5, {attr : {r : circlesM['Primary'].radius}, ease : Power1.easeInOut, autoAlpha : circlesM['Primary'].opacity})
+			.add(()=>{circlesM['Primary'].el.setAttribute('filter',"url(#drop-shadow)")})
+			.to(legendTextsM['Primary'], 0.3, {ease : Power1.easeInOut, autoAlpha : 1, attr : {y: 0}})
+			.to(legendGroupsM['Primary'].el, 0.6, {ease : Power1.easeInOut, autoAlpha : 1, y : legendGroupsM['Primary'].transform.y, x : legendGroupsM['Primary'].transform.x}, '+=0.2')
+			.to(legendCirclesM['Primary'], 0.3, {ease : Power1.easeIn, autoAlpha : 1}, '-=0.2');*/
+
+		data.map((d)=>d.title).forEach((d)=>{
+			var tl = new TimelineMax();
+
+			tl.to(circlesM[d].el, 0.5, {attr : {r : circlesM[d].radius}, ease : Power1.easeInOut, autoAlpha : circlesM[d].opacity})
+				.add(()=>{circlesM[d].el.setAttribute('filter',"url(#drop-shadow)")})
+				.to(legendTextsM[d], 0.3, {ease : Power1.easeInOut, autoAlpha : 1, attr : {y: 0}})
+				.to(legendGroupsM[d].el, 0.6, {ease : Power1.easeInOut, autoAlpha : 1, y : legendGroupsM[d].transform.y, x : legendGroupsM[d].transform.x}, '+=0.2')
+				.to(legendCirclesM[d], 0.3, {ease : Power1.easeIn, autoAlpha : 1}, '-=0.2');
+
+			masterTl.add(tl);
+		});
+
 }
 
 function removeAgeProportionCircle(){
@@ -143,7 +158,7 @@ function getHorizontalLegendXPositions(selection, padding){
 		widths.push(this.getBBox().width);
 	});
 
-	var finalPos = [-1 * widths[0] - 30];
+	var finalPos = [-1 * widths[0] - 40];
 
 	for(var i = 0; i < widths.length - 1; i++){
 		finalPos.push(finalPos[i] + widths[i] + padding);
