@@ -27,13 +27,13 @@
         STRIDE
       </div>
       <div class="main-header__counter">
-        <div class="main-header__current-slide"> 
+        <div class="main-header__current-slide">
           1
         </div>
-        <div class="main-header__sep"> 
+        <div class="main-header__sep">
         </div>
         <div class="main-header__total-slides">
-          10 
+          10
         </div>
         <div class="main-header__circle">
           <svg class="main-header__svg">
@@ -91,7 +91,7 @@
           </div>
         </div>
         <div class="content content--default content--white-text">
-          <p class="content__title"> 
+          <p class="content__title">
             What are the reasons for low retention and transition rates?
           </p>
         </div>
@@ -146,7 +146,7 @@
           </div>
         </div>
         <div class="content content--default content--white-text">
-          <p class="content__title"> 
+          <p class="content__title">
             How STRIDE addresses these problems?
           </p>
         </div>
@@ -197,7 +197,7 @@
           </div>
         </div>
         <div class="content content--default content--white-text">
-          <p class="content__title"> 
+          <p class="content__title">
             Benefits of the STRIDE Approach
           </p>
         </div>
@@ -250,8 +250,8 @@
           afterLoad: function(origin, destination, direction){
 						var loadedSection = this;
 
-            //destination.style.animation 
-						
+            //destination.style.animation
+
 						if(destination.item.dataset.name === 'circles'){
 							makeAgeProportionCircle();
 						}
@@ -266,7 +266,7 @@
 
 						if(origin && origin.item.dataset.name === 'animline'){
 							removeLineChart();
-						}	
+						}
 
             if(destination.item.dataset.name === 'barChart'){
               createBarChart();
@@ -274,7 +274,7 @@
 
             if(origin && origin.item.dataset.name === 'barChart'){
               removeBarChart();
-            } 					
+            }
 					},
 
           onLeave : function(origin,destination,direction){
@@ -282,6 +282,7 @@
 
             var index = destination.item.dataset.index;
             updateProgressCircle(index);
+
             /*testD = destination;
             origin.item.querySelector('.background').style.animation = '';
             destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
@@ -301,7 +302,7 @@
       function updateProgressCircle(index){
 
         document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
-        
+
         var circle = document.getElementById('progress-circle');
         var circleLength = circle.getTotalLength();
 
