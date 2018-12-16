@@ -507,7 +507,22 @@ g.circles {
 #progress-circle {
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.2s ease;
-} 
+}
+
+.fade-in-transition {
+  transition : transform .7s cubic-bezier(0,0,.2,1),opacity .7s cubic-bezier(0,0,.2,1);
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.fade-in-transition--active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-in-transition--delay {
+  transition-delay: .2s;
+}
 
 @media only screen and (min-width: 375px){
   .legend-text {

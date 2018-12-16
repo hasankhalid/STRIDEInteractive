@@ -226,7 +226,7 @@ function createLineChart(){
 	var yearsArr = years.nodes();
 	var vtArr = valueTextNodes.nodes();
 
-	var tl = new TimelineMax();
+	var tl = new TimelineMax().delay(0.7);
 
 	tl.add('firstPoint', 0.2)
 		.to(pointsArr[0], 0.3, {autoAlpha : 1, ease : Power1.easeInOut}, 'firstPoint')

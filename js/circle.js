@@ -92,8 +92,7 @@ function makeAgeProportionCircle(){
 			legendGroupsM[d.title].transform = {x :finalLegendPosition.x[i], y :finalLegendPosition.y[i]};
 		});
 
-		var masterTl = new TimelineMax();
-		var tl = new TimelineMax();
+		var masterTl = new TimelineMax().delay(0.5);
 
 		/*tl.to(circlesM['Primary'].el, 0.5, {attr : {r : circlesM['Primary'].radius}, ease : Power1.easeInOut, autoAlpha : circlesM['Primary'].opacity})
 			.add(()=>{circlesM['Primary'].el.setAttribute('filter',"url(#drop-shadow)")})
