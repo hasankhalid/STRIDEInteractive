@@ -89,7 +89,7 @@ function createBarChart(){
 
 	outerGroup.style('transform', `translate(0px, ${svgMid - outerGroupMid}px)`);
 
-	var tl = new TimelineMax();
+	var tl = new TimelineMax().delay(0.7);
 
 	tl.add('start')
 		.staggerTo(outerRectM, 0.4, {autoAlpha : 0.3, ease : Power1.easeIn}, 0.3)
