@@ -127,6 +127,8 @@ function getBarHeight(){
 function removeBarChart(){
 	d3.select('#num-schools-bar-chart')
 		.selectAll('g')
+		.transition()
+		.duration(200)
 		.style('opacity',0)
 		.remove();
 }

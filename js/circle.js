@@ -92,7 +92,7 @@ function makeAgeProportionCircle(){
 			legendGroupsM[d.title].transform = {x :finalLegendPosition.x[i], y :finalLegendPosition.y[i]};
 		});
 
-		var masterTl = new TimelineMax().delay(0.5);
+		var masterTl = new TimelineMax().delay(0.8);
 
 		/*tl.to(circlesM['Primary'].el, 0.5, {attr : {r : circlesM['Primary'].radius}, ease : Power1.easeInOut, autoAlpha : circlesM['Primary'].opacity})
 			.add(()=>{circlesM['Primary'].el.setAttribute('filter',"url(#drop-shadow)")})
@@ -106,7 +106,7 @@ function makeAgeProportionCircle(){
 			tl.to(circlesM[d].el, 0.5, {attr : {r : circlesM[d].radius}, ease : Power1.easeInOut, autoAlpha : circlesM[d].opacity})
 				.add(()=>{circlesM[d].el.setAttribute('filter',"url(#drop-shadow)")})
 				.to(legendTextsM[d], 0.3, {ease : Power1.easeInOut, autoAlpha : 1, attr : {y: 0}})
-				.to(legendGroupsM[d].el, 0.6, {ease : Power1.easeInOut, autoAlpha : 1, y : legendGroupsM[d].transform.y, x : legendGroupsM[d].transform.x}, '+=0.2')
+				.to(legendGroupsM[d].el, 0.6, {ease : Power1.easeOut, autoAlpha : 1, y : legendGroupsM[d].transform.y, x : legendGroupsM[d].transform.x}, '+=0.2')
 				.to(legendCirclesM[d], 0.3, {ease : Power1.easeIn, autoAlpha : 1}, '-=0.2');
 
 			masterTl.add(tl);
