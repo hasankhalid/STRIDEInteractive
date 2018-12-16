@@ -39,7 +39,8 @@
           <svg class="main-header__svg">
             <g class="main-header__circle-g">
               <circle cx="0" cy="0" r="33px" stroke-width="2px"></circle>
-              <circle cx="0" cy="0" r="28px" stroke-width="4px" id="progress-circle"></circle>
+              <circle cx="0" cy="0" r="28px" stroke-width="5px" style="opacity: 0.2"></circle>
+              <circle cx="0" cy="0" r="28px" stroke-width="5px" id="progress-circle"></circle>
             </g>
           </svg>
         </div>
@@ -280,8 +281,6 @@
             //console.log(destination);
 
             var index = destination.item.dataset.index;
-            document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
-
             updateProgressCircle(index);
             /*testD = destination;
             origin.item.querySelector('.background').style.animation = '';
@@ -290,18 +289,24 @@
       });
 
       function initProgressCircle(){
+
+        document.getElementsByClassName('main-header__total-slides')[0].innerText = sectionArr.length;
+
         var circle = document.getElementById('progress-circle');
         var circleLength = circle.getTotalLength();
-        circle.setAttribute('stroke-dasharray', `${circleLength}, ${circleLength}`);
-        circle.setAttribute('stroke-dashoffset', circleLength - ((1/sectionArr.length) * circleLength));
+        circle.style.strokeDasharray = `${circleLength}, ${circleLength}`;
+        circle.style.strokeDashoffset = `${circleLength - ((1/sectionArr.length) * circleLength)}`;
       }
 
       function updateProgressCircle(index){
+
+        document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
+        
         var circle = document.getElementById('progress-circle');
         var circleLength = circle.getTotalLength();
 
         var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
-        circle.setAttribute('stroke-dashoffset', newOffset);
+        circle.style.strokeDashoffset = `${newOffset}`;
       }
     </script>
   </body>

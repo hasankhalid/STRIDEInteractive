@@ -378,14 +378,15 @@ html, body {
   position: relative;
   width : 66px;
   height: 66px;
-  font-size: 12px;
-  transform: scale(0.8);
+  font-size: 13px;
+  transform: scale(0.83);
   font-family: arial,sans-serif;
+  left: 15px;
 }
 
 .main-header__current-slide {
-  top: 17px;
-  left: 25px;
+  top: 13px;
+  left: 22px;
   position: absolute;
 }
 
@@ -401,7 +402,7 @@ html, body {
 }
 
 .main-header__total-slides {
-  bottom: 20px;
+  bottom: 17px;
   right: 16px;
   position: absolute;
 }
@@ -505,6 +506,7 @@ g.circles {
 
 #progress-circle {
   transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.2s ease;
 } 
 
 @media only screen and (min-width: 375px){
@@ -607,6 +609,10 @@ g.circles {
 
   .bar-chart__g{
     font-size: 19px;
+  }
+
+  .main-header__counter{
+    transform: scale(1);
   }
 }
 
