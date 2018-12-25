@@ -319,6 +319,8 @@
 
         initProgressCircle();
 
+        //init menu
+
         var downIconContainer = document.getElementById('downIconContainer');
 
         downIconContainer.addEventListener('transitionend',function(){
@@ -403,6 +405,28 @@
             }
         });
 
+        //init menu
+        populateMenu();
+        $('.menu__item').on('click', function(){
+          hideOverlay();
+          myFullpage.moveTo($(this).children()[0].innerText);
+        });
+
+        var currOverlay;
+        document.querySelector('.main-header__counter').addEventListener('click', function(){
+          showHiddenDiv('.menu');
+          currOverlay = '.menu';
+          myFullpage.setAllowScrolling(false);
+        });
+
+        document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
+
+        function hideOverlay(){
+          hideHiddenDiv(currOverlay);
+          currOverlay = null;
+          myFullpage.setAllowScrolling(true);
+        }
+
         function toggleFadeInAnimation(container){
           var els = container.querySelectorAll('.fade-in-transition');
 
@@ -474,6 +498,7 @@
         titleNames = titleNames.map((d) => d.innerText);
 
         titleNames.unshift('Home');
+        titleNames.push('Testimonials');
 
         var menu = $('.menu');
         titleNames.forEach((d,i)=>{
