@@ -11,6 +11,7 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lozad"></script>
 
     <script src="js/fullpage/fullpage.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
@@ -48,6 +49,9 @@
     </div>
     <div id="fullpage">
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
+        </div>
         <div class="background background--slide-school">
           <div class="background__overlay background__overlay--black">
           </div>
@@ -64,6 +68,9 @@
           </div>
       </div>
       <div class="section" data-name="circles">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/teacherClass.JPG"/>
+        </div>
         <div class="background background--slide-teacher">
           <div class="background__overlay background__overlay--blue">
           </div>
@@ -86,6 +93,9 @@
           </div>
       </div>
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/Compressed.jpg"/>
+        </div>
         <div class="background background--slide-kids">
           <div class=" background__overlay background__overlay--grey">
           </div>
@@ -97,6 +107,9 @@
         </div>
       </div>
       <div class="section" data-name="barChart">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/teacherClass.JPG"/>
+        </div>
         <div class="background background--slide-teacher">
           <div class="background__overlay background__overlay--blue">
           </div>
@@ -109,6 +122,9 @@
           </div>
       </div>
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/longDistance.jpg"/>
+        </div>
         <div class="background background--slide-cycle-girls">
           <div class="background__overlay background__overlay--grey">
           </div>
@@ -121,7 +137,12 @@
         </div>
       </div>
       <div class="section">
-        <div class="background background--slide-blue">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/cyclegirls.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--black">
+          </div>
         </div>
         <div class="content content--default content--white-text">
           <div class="content__title-para-g">
@@ -141,6 +162,9 @@
        </div>
       </div>
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/problemsAddress.jpeg"/>
+        </div>
         <div class="background background--slide-benifits">
           <div class=" background__overlay background__overlay--grey">
           </div>
@@ -162,7 +186,12 @@
        </div>
       </div>
       <div class="section">
-        <div class="background background--slide-blue">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
+          </div>
         </div>
         <div class="content content--default content--white-text">
           <div class="content__title-para-g">
@@ -172,7 +201,12 @@
        </div>
       </div>
       <div class="section">
-        <div class="background background--slide-blue">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/cycleboy.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--black">
+          </div>
         </div>
         <div class="content content--default content--white-text">
           <div class="content__title-para-g">
@@ -182,7 +216,12 @@
        </div>
       </div>
       <div class="section">
-        <div class="background background--slide-blue">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/CommunityEngage.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--grey">
+          </div>
         </div>
         <div class="content content--default content--white-text">
           <div class="content__title-para-g">
@@ -192,8 +231,11 @@
        </div>
       </div>
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/boystudy.jpg"/>
+        </div>
         <div class="background background--slide-benifits">
-          <div class=" background__overlay background__overlay--grey">
+          <div class=" background__overlay background__overlay--blue">
           </div>
         </div>
         <div class="content content--default content--white-text">
@@ -203,6 +245,9 @@
         </div>
       </div>
       <div class="section" data-name="animline">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
         <div class="background background--slide-classroom">
           <div class="background__overlay background__overlay--blue">
           </div>
@@ -216,6 +261,9 @@
         </div>
       </div>
       <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
         <div class="background background--slide-classroom">
           <div class="background__overlay background__overlay--blue">
           </div>
@@ -242,6 +290,9 @@
       });
 
       initProgressCircle();
+
+      const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+      observer.observe();
 
       var myFullpage = new fullpage('#fullpage', {
           verticalCentered: false,
