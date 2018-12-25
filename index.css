@@ -383,6 +383,12 @@ html, body {
   transform: scale(0.83);
   font-family: arial,sans-serif;
   left: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.main-header__counter:hover {
+  transform: scale(1);
 }
 
 .main-header__current-slide {
@@ -525,12 +531,70 @@ g.circles {
   transition-delay: .2s;
 }
 
+.fade-in-transition--delay2 {
+  transition-delay: .4s;
+}
+
+.fade-in-transition--delay3 {
+  transition-delay: .6s;
+}
+
 .fade-out-transition{
   transition: opacity .4s cubic-bezier(0,0,.2,1);
 }
 
 .fade-out-transition--active {
   opacity: 0;
+}
+
+.menu {
+  z-index: 100;
+  position: fixed;
+  height: 100vh;
+  width: 500px;
+  right: 0;
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.data-source {
+  position: fixed;
+  width: 100vw;
+  height: 100px;
+  background-color: #fff;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  bottom: 0;
+}
+
+.main-overlay {
+  position: fixed;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-slide {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.testimonial-story {
+  position: fixed;
+  width: 100vw;
+  height: 80vh;
+  bottom: 0;
+  background-color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
 }
 
 @media only screen and (min-width: 375px){
@@ -569,6 +633,10 @@ g.circles {
 
   .main-header__counter{
     transform: scale(0.9);
+  }
+
+  .main-header__counter:hover {
+    transform: scale(1.1);
   }
 }
 
@@ -638,6 +706,10 @@ g.circles {
   .main-header__counter{
     transform: scale(1);
   }
+
+  .main-header__counter:hover {
+    transform: scale(1.1);
+  }
 }
 
 @media only screen and (min-width: 1280px){
@@ -666,212 +738,3 @@ g.circles {
     padding: 30px 60px 10px 60px;
   }
 }
-
-/*
-@media only screen and (min-width: 475px) {
-  .disclaimer {
-    text-align: center;
-  }
-  .logoPlaceholder {
-    text-align: center;
-  }
-  .byIsap {
-    text-align: center;
-  }
-  .downIcon {
-    width: 40px;
-    left: calc(50vw - 20px);
-  }
-
-  .content {
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .content-vertical {
-    align-items: center;
-  }
-
-  .content, .content-vertical, .content-panel{
-    height: 100%;
-  }
-}
-
-.chart-line {
-  stroke : #fff;
-  stroke-width : 5px;
-}
-
-g.circles {
-  fill: #fff;
-}
-
-.predicted-line{
-  stroke : #4043a2;
-  stroke-width : 5px; 
-}
-
-.predicted {
-  fill : #4043a2;
-}
-
-.line-years, .line-values{
-  text-anchor: middle;
-  fill: #fff;
-}
-
-.line-years{
-  font-weight: 100;
-  font-size: 18px;
-}
-
-.line-values {
-  font-weight: 600;
-}
-
-@media only screen and (min-width: 900px) {
-  .disclaimer {
-    font-size: 28px;
-  }
-
-  .grey-panel {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background-color: darkcyan;
-    width: calc(50% + 120px);
-    z-index: -1;
-  }
-
-  .byIsap {
-    font-size: 18px;
-    margin: 10px 0px;
-  }
-  .titleNote {
-    font-size: 40px;
-    font-weight: 400;
-    margin: 10px 0px;
-    text-align: center;
-  }
-
-  .content__title {
-    font-size: 50px;
-    font-weight: 500;
-  }
-
-  .slide-title-para, .bullet-slide-title{
-    max-width: 600px;
-    margin-bottom: 0;
-  }
-
-  .bullet-slide-title {
-
-  }
-
-  .titlePara {
-    font-size: 24px;
-  }
-
-  .para {
-    font-size: 18px;
-  }
-
-  .subtitle {
-    font-size: 27px;
-    font-weight: 400;
-  }
-  .logoPlaceholder {
-    font-size: 80px;
-    margin: 25px 0px;
-  }
-  .socialIcon {
-    width: 25px;
-  }
-  .twitter {
-    margin: 0px 28px;
-  }
-  .titleSocial {
-    height: 90px;
-  }
-  .titleSlide {
-    width: 40%;
-    font-size: 40px;
-  }
-  .content {
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .content-vertical {
-    align-items: center;
-    padding: 80px;
-  }
-
-  .content {
-    padding : 80px 20px 80px 80px;
-  }
-
-  .content-panel{
-    padding-right: 0px;
-  }
-
-  .flex-50 {
-    flex-basis: 50%;
-  }
-
-  .flex-30 {
-    flex-basis: 30%;
-  }
-
-  .flex-60 {
-    flex-basis: 60%;
-  }
-
-  :root {
-    --header-padding-h : 80px;
-    --header-padding-v : 50px;
-  }
-
-  #age-circle-diagram{
-    flex-basis: 60%;
-    width: 700px;
-    filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));
-  }
-
-  #cost-line-diagram{
-    flex-basis: 100%;
-    width: 100vw;
-    max-width: 1250px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*//*
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .disclaimer {
-    font-size: 32px;
-  }
-  .byIsap {
-    font-size: 20px;
-  }
-  .content-vertical {
-    align-items: center;
-  }  
-}
-
-
-@media only screen and (min-width: 1900px){
-  .slide-3 {
-    background-position-y: -30vh;
-  }
-
-  .slide-4 {
-    background-position-y: -20vh;
-  }
-}*/

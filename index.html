@@ -22,6 +22,12 @@
   </head>
 
   <body>
+    <div class="main-overlay">
+    </div>
+    <div class="menu">
+    </div>
+    <div class="data-source">
+    </div>
     <div class="main-header">
       <div class="main-header__logo">
         STRIDE
@@ -53,10 +59,10 @@
           </div>
         </div>
         <div class="content content--vertical content--white-text">
-            <p class="logoPlaceholder">STRIDE</p>
-            <p class="byIsap">a project of I-SAPS</p>
-            <p class=" titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
-            <div class="titleSocial ">
+            <p class="logoPlaceholder fade-in-transition">STRIDE</p>
+            <p class="byIsap fade-in-transition fade-in-transition--delay">a project of I-SAPS</p>
+            <p class=" titleNote fade-in-transition fade-in-transition--delay2">addresses the alarmingly low student retention rates in Pakistan</p>
+            <div class="titleSocial fade-in-transition fade-in-transition--delay3">
               <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
               <img class="socialIcon twitter" src="./resources/twitter.svg"/>
               <img class="socialIcon" src="./resources/link-symbol.svg"/>
@@ -227,129 +233,200 @@
           </div>
         </div>
       </div>
+      <div class="section">
+        <div class="content content--default content--white-text" style="background: blue">
+          <div class="testimonial-slide">
+            <div class="testimonial-slide__section testimonial-slide--section1">
+              <div class="testimonial-slide__content">
+                <p class="testimonial-slide__title">Kalsoom's Story</p>
+                <a class="testimonial-slide__button">Learn More</a>
+              </div>
+            </div>
+            <div class="testimonial-slide__section testimonial-slide--section2">
+              <div class="testimonial-slide__content">
+                <p class="testimonial-slide__title">Gul Muhammad's Story</p>
+                <a class="testimonial-slide__button">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="downIconContainer" class="fade-out-transition">
     	<img class=" downIcon" src="./resources/down-chevron.svg"/>
+    </div>
+    <div class="testimonial-story">
+      <p>   
+      </p>
     </div>
     <script type="text/javascript" src="./js/circle.js"></script>
     <script type="text/javascript" src="./js/line.js"></script>
     <script type="text/javascript" src="./js/bar.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded',function(){
+        var sectionArr = Array.from(document.getElementsByClassName('section'));
+        sectionArr.forEach((d,i)=>{
+          d.setAttribute('data-index', i + 1);
+        });
 
-      var sectionArr = Array.from(document.getElementsByClassName('section'));
-      sectionArr.forEach((d,i)=>{
-        d.setAttribute('data-index', i + 1);
+        initProgressCircle();
+
+        var downIconContainer = document.getElementById('downIconContainer');
+
+        downIconContainer.addEventListener('transitionend',function(){
+          if(this.classList.contains('fade-out-transition--active')){
+            this.style.visibility = 'hidden';
+          }
+        });
+
+        var myFullpage = new fullpage('#fullpage', {
+            verticalCentered: false,
+            licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
+
+            afterLoad: function(origin, destination, direction){
+              var loadedSection = this;
+
+              //destination.style.animation 
+
+              if(origin && origin.item.dataset.name === 'circles'){
+                removeAgeProportionCircle();
+              }
+
+              if(destination.item.dataset.name === 'animline'){
+                createLineChart();
+              }
+
+              if(destination.item.dataset.name === 'barChart'){
+                createBarChart();
+              }
+
+              toggleFadeInAnimation(destination.item);          
+            },
+
+            onLeave : function(origin,destination,direction){
+              //console.log(destination);
+
+              if(origin && origin.item.dataset.name === 'animline'){
+                removeLineChart();
+              }
+
+              if(origin && origin.item.dataset.name === 'barChart'){
+                removeBarChart();
+              }
+
+              if(destination.item.dataset.name === 'circles'){
+                makeAgeProportionCircle();
+              }
+
+              var index = destination.item.dataset.index;
+              updateProgressCircle(index);
+
+              //fade in out downIcon
+              if(index == sectionArr.length){
+                downIconContainer.classList.add('fade-out-transition--active');
+              }else if(index == sectionArr.length - 1){
+                downIconContainer.style.visibility = 'visible';
+                downIconContainer.classList.remove('fade-out-transition--active');
+              }
+
+              toggleFadeInAnimation(origin.item);
+
+              /*setTimeout(()=>{
+                
+              }, 800);*/
+
+
+
+              /*testD = destination;
+              origin.item.querySelector('.background').style.animation = '';
+              destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
+            }
+        });
+
+        function toggleFadeInAnimation(container){
+          var els = container.querySelectorAll('.fade-in-transition');
+
+          els.forEach((d)=>{
+            d.classList.toggle('fade-in-transition--active');
+          });
+        }
+
+        function initProgressCircle(){
+
+          document.getElementsByClassName('main-header__total-slides')[0].innerText = sectionArr.length;
+
+          var circle = document.getElementById('progress-circle');
+          var circleLength = circle.getTotalLength();
+          circle.style.strokeDasharray = `${circleLength}, ${circleLength}`;
+          circle.style.strokeDashoffset = `${circleLength - ((1/sectionArr.length) * circleLength)}`;
+        }
+
+        function updateProgressCircle(index){
+
+          document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
+
+          var circle = document.getElementById('progress-circle');
+          var circleLength = circle.getTotalLength();
+
+          var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
+          circle.style.strokeDashoffset = `${newOffset}`;
+        }
+
+        //set up downIcon
+        var downIcon = document.getElementsByClassName('downIcon')[0];
+
+        downIcon.addEventListener('click', function(e){
+          myFullpage.moveSectionDown();
+        });        
       });
 
-      initProgressCircle();
+      var overlay = document.querySelector('.main-overlay');
 
-      var downIconContainer = document.getElementById('downIconContainer');
-
-      downIconContainer.addEventListener('transitionend',function(){
-        if(this.classList.contains('fade-out-transition--active')){
-          this.style.visibility = 'hidden';
+      overlay.addEventListener('transitionend', ()=>{
+        if(!overlay.style.opacity){
+          overlay.style.visibility = '';
         }
       });
 
-      var myFullpage = new fullpage('#fullpage', {
-          verticalCentered: false,
-          licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
+      function showHiddenDiv(selector){
 
-          afterLoad: function(origin, destination, direction){
-						var loadedSection = this;
+        //show div
+        var div = document.querySelector(selector);
+        div.style.transform = 'translate(0,0)';
 
-            //destination.style.animation 
+        //show overlay
+        overlay.style.visibility = 'visible';
+        overlay.style.opacity = '0.4';
+      }
 
-						if(origin && origin.item.dataset.name === 'circles'){
-							removeAgeProportionCircle();
-						}
+      function hideHiddenDiv(selector, translate){
 
-						if(destination.item.dataset.name === 'animline'){
-							createLineChart();
-						}
+        //hide div
+        var div = document.querySelector(selector);
+        div.style.transform = '';
 
-            if(destination.item.dataset.name === 'barChart'){
-              createBarChart();
-            }
+        //hide overlay
+        overlay.style.opacity = '';
+      }
 
-            toggleFadeInAnimation(destination.item); 					
-					},
+      function populateMenu(){
+        var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
 
-          onLeave : function(origin,destination,direction){
-            //console.log(destination);
+        titleNames = titleNames.map((d) => d.innerText);
 
-            if(origin && origin.item.dataset.name === 'animline'){
-              removeLineChart();
-            }
+        titleNames.unshift('Home');
 
-            if(origin && origin.item.dataset.name === 'barChart'){
-              removeBarChart();
-            }
-
-            if(destination.item.dataset.name === 'circles'){
-              makeAgeProportionCircle();
-            }
-
-            var index = destination.item.dataset.index;
-            updateProgressCircle(index);
-
-            //fade in out downIcon
-            if(index == sectionArr.length){
-              downIconContainer.classList.add('fade-out-transition--active');
-            }else if(index == sectionArr.length - 1){
-              downIconContainer.style.visibility = 'visible';
-              downIconContainer.classList.remove('fade-out-transition--active');
-            }
-
-            toggleFadeInAnimation(origin.item);
-
-            /*setTimeout(()=>{
-              
-            }, 800);*/
-
-
-
-            /*testD = destination;
-            origin.item.querySelector('.background').style.animation = '';
-            destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
-          }
-      });
-
-      function toggleFadeInAnimation(container){
-        var els = container.querySelectorAll('.fade-in-transition');
-
-        els.forEach((d)=>{
-          d.classList.toggle('fade-in-transition--active');
+        var menu = $('.menu');
+        titleNames.forEach((d,i)=>{
+          menu.append(`
+            <div class="menu__item">
+              <div class="menu__index">${i + 1}</div>
+              <div class="menu__title">${d}</div>
+            </div>`);
         });
       }
 
-      function initProgressCircle(){
 
-        document.getElementsByClassName('main-header__total-slides')[0].innerText = sectionArr.length;
-
-        var circle = document.getElementById('progress-circle');
-        var circleLength = circle.getTotalLength();
-        circle.style.strokeDasharray = `${circleLength}, ${circleLength}`;
-        circle.style.strokeDashoffset = `${circleLength - ((1/sectionArr.length) * circleLength)}`;
-      }
-
-      function updateProgressCircle(index){
-
-        document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
-
-        var circle = document.getElementById('progress-circle');
-        var circleLength = circle.getTotalLength();
-
-        var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
-        circle.style.strokeDashoffset = `${newOffset}`;
-      }
-
-      //set up downIcon
-      var downIcon = document.getElementsByClassName('downIcon')[0];
-
-      downIcon.addEventListener('click', function(e){
-        myFullpage.moveSectionDown();
-      });
     </script>
   </body>
 </html>
