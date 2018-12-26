@@ -7,106 +7,513 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:200,300,400,500,600" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lozad"></script>
 
-    <script src="js/fullpage/fullpage.min.js"></script>
+    <script src="js/fullpage/fullpage.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
     <link rel="stylesheet" href="js/fullpage/fullpage.css">
     <link rel="stylesheet" href="./index.css">
+    <style type="text/css">
+
+    </style>
   </head>
 
   <body>
-    <div id="fullpage">
-    	<div class="section">
-        <div class="disclaimerBack"></div>
-        <p id="disclaimer" class="disclaimer"><span class="bold">22.8 million </span>children aged 5-18 years are still out of school in Pakistan</p>
-        <p id="disclaimerFollow" class="disclaimer"><span class="bold">44% </span>of students enrolled in Grade 5 <span class="bold">drop-out </span> from schools before reaching Grade 10 in Pakistan</p>
-        <div class="grayOverlay titleOverlay"></div>
-        <div class="backdrop titleback">
-          <img class="titleImage" src="./resources/titleSchool.jpg"/>
-        </div>
-        <p id="fadeFirst" class="higherIndex logoPlaceholder">STRIDE</p>
-        <p id="fadeSecond" class="higherIndex byIsap">a project of I-SAPS</p>
-        <p id="fadeThird" class="higherIndex titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
-        <div class="titleSocial higherIndex">
-          <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
-          <img class="socialIcon twitter" src="./resources/twitter.svg"/>
-          <img class="socialIcon" src="./resources/link-symbol.svg"/>
-        </div>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
+    <div class="main-overlay">
+    </div>
+    <div class="menu">
+    </div>
+    <div class="data-source">
+    </div>
+    <div class="main-header">
+      <div class="main-header__logo">
+        STRIDE
       </div>
-    	<div class="section">
-        <div class="grayOverlay titleOverlay"></div>
-        <div class="backdrop">
-          <img class="titleImage" src="./resources/titleSchool.jpg"/>
+      <div class="main-header__counter">
+        <div class="main-header__current-slide">
+          1
         </div>
-        <p class="higherIndex logoPlaceholder">STRIDE</p>
-        <p class="higherIndex byIsap">a project of I-SAPS</p>
-        <p class="higherIndex titleNote">addresses the alarmingly low student retention rates in Pakistan</p>
-        <div class="titleSocial higherIndex">
-          <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
-          <img class="socialIcon twitter" src="./resources/twitter.svg"/>
-          <img class="socialIcon" src="./resources/link-symbol.svg"/>
+        <div class="main-header__sep">
         </div>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
-      </div>
-    	<div class="section">
-        <div class="blueOverlay"></div>
-        <div class="backdrop">
-          <img class="titleImage" src="./resources/teacherClass.JPG"/>
+        <div class="main-header__total-slides">
+          10
         </div>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
-      </div>
-      <div class="section">
-        <div class="yellowOverlay"></div>
-        <div class="grayTop grayOverlay"></div>
-        <div class="backdrop">
-          <img class="titleImage" src="./resources/tandoorBachay.jpg"/>
+        <div class="main-header__circle">
+          <svg class="main-header__svg">
+            <g class="main-header__circle-g">
+              <circle cx="0" cy="0" r="33px" stroke-width="2px"></circle>
+              <circle cx="0" cy="0" r="28px" stroke-width="5px" style="opacity: 0.2"></circle>
+              <circle cx="0" cy="0" r="28px" stroke-width="5px" id="progress-circle"></circle>
+            </g>
+          </svg>
         </div>
-        <p class="higherIndex titleSlide">What are the reasons for low retention?</p>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
-      </div>
-      <div class="section">
-        <div class="grayOverlay girlsOverlay"></div>
-        <div class="backdrop">
-          <img class="titleImage" src="./resources/cyclegirls.jpg"/>
-        </div>
-        <p class="higherIndex titleSlide">What are the reasons for low retention?</p>
-        <img class="higherIndex downIcon" src="./resources/down-chevron.svg"/>
       </div>
     </div>
-
+    <div id="fullpage">
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
+        </div>
+        <div class="background background--slide-school">
+          <div class="background__overlay background__overlay--black">
+          </div>
+        </div>
+        <div class="content content--vertical content--white-text">
+            <p class="logoPlaceholder fade-in-transition">STRIDE</p>
+            <p class="byIsap fade-in-transition fade-in-transition--delay">a project of I-SAPS</p>
+            <p class=" titleNote fade-in-transition fade-in-transition--delay2">addresses the alarmingly low student retention rates in Pakistan</p>
+            <div class="titleSocial fade-in-transition fade-in-transition--delay3">
+              <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
+              <img class="socialIcon twitter" src="./resources/twitter.svg"/>
+              <img class="socialIcon" src="./resources/link-symbol.svg"/>
+            </div>
+          </div>
+      </div>
+      <div class="section" data-name="circles">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/teacherClass.JPG"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+              <p class="content__title fade-in-transition">Proportion of Age Appropriate Children in Schools
+            </p>
+            <svg id="age-circle-diagram">
+              <filter id="drop-shadow" height="130%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" color-interpolation-filters="sRGB"></feGaussianBlur>
+                <feOffset in="blur" result="offsetBlur" dy="10"></feOffset>
+                <feFlood flood-color="#000" flood-opacity="0.2"></feFlood>
+                <feComposite operator="in" in2="offsetBlur"></feComposite>
+                <feMerge>
+                  <feMergeNode></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+            </svg>
+          </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/Compressed.jpg"/>
+        </div>
+        <div class="background background--slide-kids">
+          <div class=" background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title fade-in-transition">
+            What are the reasons for low retention and transition rates?
+          </p>
+        </div>
+      </div>
+      <div class="section" data-name="barChart">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/teacherClass.JPG"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+              <p class="content__title fade-in-transition">Less Post primary schools:
+            </p>
+            <svg id="num-schools-bar-chart">
+            </svg>
+          </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/longDistance.jpg"/>
+        </div>
+        <div class="background background--slide-cycle-girls">
+          <div class="background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Long Distances</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Owing to lesser post-primary schools, students have to travel long distances to access middle and secondary level schools.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/cyclegirls.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--black">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Lack of Transport</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Lack of affordable transportation facilities to access distant middle and secondary schools also discourages retention and transition to post-primary levels.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="background background--slide-blue">
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Local Problems</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Transition and retention rates are also direly affected by a host of context specific problems that are only be diagnosed through localized planning and solutions.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/problemsAddress.jpeg"/>
+        </div>
+        <div class="background background--slide-benifits">
+          <div class=" background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title fade-in-transition">
+            How STRIDE addresses these problems?
+          </p>
+        </div>
+      </div>
+      <div class="section">
+        <div class="background background--slide-blue">
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Local Planning</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">STRIDE advocates collecting quantitative and qualitative data on education to guide local planning and policy-making. This approach is guided by the belief that local problems can be best addressed by context specific solutions.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Afternoon Middle and High Schools</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Based on local needs, STRIDE identifies areas with no or less post-primary schools and establishes middle schools in existing primary schools and high schools in existing middle schools. This provides a cost effective solution to increase access to post-primary schools.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/cycleboy.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--black">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Transport</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Guided by local planning and in accordance with local needs, STRIDE also provides students with transport facilities and transport vouchers to encourage transition to post-primary schools.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/CommunityEngage.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--grey">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Community Engagement</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">To ensure successful implementation of STRIDE interventions, I-SAPS also encourages participation and buy in of the local communities in every step.</p>
+          </div>
+       </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/boystudy.jpg"/>
+        </div>
+        <div class="background background--slide-benifits">
+          <div class=" background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <p class="content__title fade-in-transition">
+            Benefits of the STRIDE Approach
+          </p>
+        </div>
+      </div>
+      <div class="section" data-name="animline">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
+        <div class="background background--slide-classroom">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">Cost Saving</p>
+            <p class="content__para fade-in-transition fade-in-transition--delay">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
+          </div>
+          <svg id="cost-line-diagram"></svg>
+        </div>
+      </div>
+      <div class="section">
+        <div class="imageContainer">
+          <img class="titleImage lozad" data-src="./resources/benefit.jpg"/>
+        </div>
+        <div class="background background--slide-classroom">
+          <div class="background__overlay background__overlay--blue">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
+          <div class="content__title-para-g">
+            <p class="content__title fade-in-transition">STRIDE intervention in Union Council Nusret Khel</p>
+            <p class="caseStudyButt content__para fade-in-transition fade-in-transition--delay">Open Case Study</p>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="content content--default content--white-text" style="background: blue">
+          <div class="testimonial-slide">
+            <div class="testimonial-slide__section testimonial-slide--section1">
+              <div class="testimonial-slide__content">
+                <p class="testimonial-slide__title">Kalsoom's Story</p>
+                <a class="testimonial-slide__button">Learn More</a>
+              </div>
+            </div>
+            <div class="testimonial-slide__section testimonial-slide--section2">
+              <div class="testimonial-slide__content">
+                <p class="testimonial-slide__title">Gul Muhammad's Story</p>
+                <a class="testimonial-slide__button">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="downIconContainer" class="fade-out-transition">
+    	<img class=" downIcon" src="./resources/down-chevron.svg"/>
+    </div>
+    <div class="testimonial-story">
+      <p>
+      </p>
+    </div>
+    <script type="text/javascript" src="./js/circle.js"></script>
+    <script type="text/javascript" src="./js/line.js"></script>
+    <script type="text/javascript" src="./js/bar.js"></script>
     <script>
-    /*  $( document ).ready(function() {
-        setTimeout(function () {
-          $("#disclaimer").fadeIn();}, 750
-        );
-        setTimeout(function () {
-          $("#disclaimer").fadeOut(function() {
-            $("#disclaimerFollow").fadeIn();
-          });}, 4750
-        );
-        setTimeout(function () {
-          $("#disclaimerFollow").fadeOut(function() {
-            $(".disclaimerBack").fadeOut();
-            $(".titleImage").animate({height: '100%'}, 1750);
-          });}, 9500
-        );
-      }); */
-    </script>
 
+      $(".caseStudyButt").click(function() {
+        window.open('./caseStudy/index.html', '_blank');
+      });
 
-    <script>
-        new fullpage('#fullpage', {
-          //options here
-          licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+      document.addEventListener('DOMContentLoaded',function(){
+        var sectionArr = Array.from(document.getElementsByClassName('section'));
+        sectionArr.forEach((d,i)=>{
+          d.setAttribute('data-index', i + 1);
         });
-      /*new fullpage('#fullpage', {
-      	//options here
-        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-      	autoScrolling:true,
-      	scrollHorizontally: true
-      });*/
+
+        initProgressCircle();
+
+        //init menu
+
+        var downIconContainer = document.getElementById('downIconContainer');
+
+        downIconContainer.addEventListener('transitionend',function(){
+          if(this.classList.contains('fade-out-transition--active')){
+            this.style.visibility = 'hidden';
+          }
+        });
+
+      const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+      observer.observe();
+
+        var myFullpage = new fullpage('#fullpage', {
+            verticalCentered: false,
+            licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
+
+            afterLoad: function(origin, destination, direction){
+              var loadedSection = this;
+            //destination.style.animation
+
+						if(destination.item.dataset.name === 'circles'){
+							makeAgeProportionCircle();
+						}
+
+              //destination.style.animation
+
+            if(origin && origin.item.dataset.name === 'circles'){
+              removeAgeProportionCircle();
+            }
+
+            if(destination.item.dataset.name === 'animline'){
+              createLineChart();
+            }
+
+						if(origin && origin.item.dataset.name === 'animline'){
+							removeLineChart();
+						}
+
+            if(destination.item.dataset.name === 'barChart'){
+              createBarChart();
+            }
+
+              toggleFadeInAnimation(destination.item);
+            },
+
+            onLeave : function(origin,destination,direction){
+              //console.log(destination);
+
+              if(origin && origin.item.dataset.name === 'animline'){
+                removeLineChart();
+              }
+
+              if(origin && origin.item.dataset.name === 'barChart'){
+                removeBarChart();
+              }
+
+              if(origin.item.dataset.name === 'circles'){
+                removeAgeProportionCircle();
+              }
+
+              var index = destination.item.dataset.index;
+              updateProgressCircle(index);
+
+              //fade in out downIcon
+              if(index == sectionArr.length){
+                downIconContainer.classList.add('fade-out-transition--active');
+              }else if(index == sectionArr.length - 1){
+                downIconContainer.style.visibility = 'visible';
+                downIconContainer.classList.remove('fade-out-transition--active');
+              }
+
+              toggleFadeInAnimation(origin.item);
+
+              /*setTimeout(()=>{
+
+              }, 800);*/
+
+
+
+              /*testD = destination;
+              origin.item.querySelector('.background').style.animation = '';
+              destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
+            }
+        });
+
+        //init menu
+        populateMenu();
+        $('.menu__item').on('click', function(){
+          hideOverlay();
+          myFullpage.moveTo($(this).children()[0].innerText);
+        });
+
+        var currOverlay;
+        document.querySelector('.main-header__counter').addEventListener('click', function(){
+          showHiddenDiv('.menu');
+          currOverlay = '.menu';
+          myFullpage.setAllowScrolling(false);
+        });
+
+        document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
+
+        function hideOverlay(){
+          hideHiddenDiv(currOverlay);
+          currOverlay = null;
+          myFullpage.setAllowScrolling(true);
+        }
+
+        function toggleFadeInAnimation(container){
+          var els = container.querySelectorAll('.fade-in-transition');
+
+          els.forEach((d)=>{
+            d.classList.toggle('fade-in-transition--active');
+          });
+        }
+
+        function initProgressCircle(){
+
+          document.getElementsByClassName('main-header__total-slides')[0].innerText = sectionArr.length;
+          var circle = document.getElementById('progress-circle');
+          var circleLength = circle.getTotalLength();
+          circle.style.strokeDasharray = `${circleLength}, ${circleLength}`;
+          circle.style.strokeDashoffset = `${circleLength - ((1/sectionArr.length) * circleLength)}`;
+        }
+
+        function updateProgressCircle(index){
+
+          document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
+
+          var circle = document.getElementById('progress-circle');
+          var circleLength = circle.getTotalLength();
+
+          var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
+          circle.style.strokeDashoffset = `${newOffset}`;
+        }
+
+        //set up downIcon
+        var downIcon = document.getElementsByClassName('downIcon')[0];
+
+        downIcon.addEventListener('click', function(e){
+          myFullpage.moveSectionDown();
+        });
+      });
+
+      var overlay = document.querySelector('.main-overlay');
+
+      overlay.addEventListener('transitionend', ()=>{
+        if(!overlay.style.opacity){
+          overlay.style.visibility = '';
+        }
+      });
+
+      function showHiddenDiv(selector){
+
+        //show div
+        var div = document.querySelector(selector);
+        div.style.transform = 'translate(0,0)';
+
+        //show overlay
+        overlay.style.visibility = 'visible';
+        overlay.style.opacity = '0.4';
+      }
+
+      function hideHiddenDiv(selector, translate){
+
+        //hide div
+        var div = document.querySelector(selector);
+        div.style.transform = '';
+
+        //hide overlay
+        overlay.style.opacity = '';
+      }
+
+      function populateMenu(){
+        var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
+
+        titleNames = titleNames.map((d) => d.innerText);
+
+        titleNames.unshift('Home');
+        titleNames.push('Testimonials');
+
+        var menu = $('.menu');
+        titleNames.forEach((d,i)=>{
+          menu.append(`
+            <div class="menu__item">
+              <div class="menu__index">${i + 1}</div>
+              <div class="menu__title">${d}</div>
+            </div>`);
+        });
+      }
     </script>
   </body>
 </html>

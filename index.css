@@ -2,9 +2,21 @@ html, body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
 
-.sectionPadding {
-  padding: 0px 30px;
+/*svg {
+  border : 5px solid;
+}*/
+
+:root {
+    --header-padding-v : 20px;
+    --header-padding-h : 30px;
+    --down-icon-width : 30px;
 }
+
+/*changing fullpage css*/
+.fp-section {
+  overflow: hidden;
+}
+
 
 .bold {
   font-weight: 400;
@@ -128,7 +140,7 @@ html, body {
 }
 
 .logoPlaceholder {
-  font-size: 38px;
+  font-size: 48px;
   font-weight: 500;
   margin: 20px 0px;
 }
@@ -139,7 +151,7 @@ html, body {
   margin: 5px 0px;
 }
 
-.titleNote {
+.titleNote, .content__title {
   font-size: 24px;
   font-weight: 300;
   margin: 10px 0px;
@@ -149,7 +161,47 @@ html, body {
   display: flex;
   height: 110px;
   justify-content: center;
-  display: none;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  margin: 0px;
+  margin-left: var(--text-padding-left);
+}
+
+.para {
+  font-size: 15px;
+  font-weight: 200;
+  margin: 5px 0px;
+  padding-left: calc(var(--bullet-width) + var(--text-padding-left));
+}
+
+.bullet {
+  width : var(--bullet-width);
+  transform: rotate(270deg);
+}
+
+.bullet-heading{
+  display: flex;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.column-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.titleGroup {
+  padding-bottom: 18px;
+}
+
+.point {
+  padding-top: 8px;
+  --bullet-width: 15px;
+  --text-padding-left : 5px;
 }
 
 #fadeFirst, #fadeSecond, #fadeThird {
@@ -169,78 +221,559 @@ html, body {
   bottom: 30px;
   width: 30px;
   left: calc(50vw - 15px);
+  cursor: pointer;
 }
 
-@media only screen and (min-width: 475px) {
-  .sectionPadding {
-    padding: 0px 50px;
+.background{
+  background-size: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /*transform: scale(1.2);*/
+  /*transition: transform 0.7s cubic-bezier(0,0,.2,1);*/
+}
+
+@keyframes zoom-in{
+  0% {
+    transform: scale(1.2);
   }
-  .disclaimer {
+  100% {
+    transform: scale(1);
+  }
+}
+
+.background__overlay {
+  width: 100%;
+  height: 100%;
+}
+
+.background__overlay--black{
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.background__overlay--blue {
+  background-color: #0072BC;
+  opacity: 0.8;
+}
+
+.background__overlay--grey{
+  background-image: linear-gradient(to top, #424242 0%, #616161 100%);
+  opacity: 0.7;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.background--slide-school{
+  background-position: 27% 50%;
+  /*background-image: url(resources/titleSchool.jpg);*/
+}
+
+.background--slide-teacher{
+  background-position: 26%;
+  /*background-image: url(resources/teacherClass.jpg);*/
+}
+
+.background--slide-kids{
+  background-position: 20%;
+  /*background-image: url(resources/Compressed.jpg);*/
+}
+
+.background--slide-cycle-girls{
+  background-position: 66%;
+  /*background-image: url(resources/cycleGirls.jpg);*/
+}
+
+.background--slide-benifits {
+  background-position: 30%;
+  /*background-image: url(resources/strideBenifits.jpg);*/
+}
+
+.background--slide-blue{
+  background-color: #0072BC
+}
+
+.background--slide-classroom {
+  background-position: 50%;
+  /*background-image: url(resources/benefit.jpg);*/
+}
+
+.slide-6{
+  /*background-image: linear-gradient(309deg, #424242 0%, #5F4E4E 70%);*/
+}
+
+.slide-7 {
+  /*background-image: linear-gradient(to top, #0c3483 0%, #6d8cca 100%, #4c6494 100%, #aab8d4 100%);*/
+}
+
+.slide-solution {
+
+}
+
+.yellow-overlay {
+  background-color: yellow;
+  opacity: 0.4;
+}
+
+.red-overlay {
+  background-color: red;
+  opacity: 0.4;
+}
+
+.green-overlay {
+  background-color: green;
+  opacity: 0.4;
+}
+
+.grey-overlay {
+  /*background-image: linear-gradient(to top, #424242 0%, #616161 100%);*/
+  opacity: 0.4;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  height: calc(100% - 30px);
+  padding: 70px 30px 30px 30px;
+  box-sizing: border-box;
+  z-index: 0;
+}
+
+.content--default {
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.content--vertical{
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.content--white-text {
+  color: #fff;
+}
+
+.content__title-para-g{
+  margin-bottom: 20px;
+}
+
+.content__para {
+  font-size: 18px;
+  font-weight: 200;
+  margin: 5px 70px 5px 0px;
+}
+
+.main-header{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    padding: var(--header-padding-v) var(--header-padding-h);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    /*justify-content: space-between;*/
+}
+
+.main-header__counter {
+  margin-left: auto;
+  position: relative;
+  width : 66px;
+  height: 66px;
+  font-size: 13px;
+  transform: scale(0.83);
+  font-family: arial,sans-serif;
+  left: 15px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.main-header__counter:hover {
+  transform: scale(1);
+}
+
+.main-header__current-slide {
+  top: 13px;
+  left: 22px;
+  position: absolute;
+}
+
+.main-header__sep {
+  height: 1.5px;
+  width: 21px;
+  border-radius: 3px;
+  background-color: #fff;
+  position: absolute;
+  top: 30px;
+  left: 24px;
+  transform: rotate(-45deg);
+}
+
+.main-header__total-slides {
+  bottom: 17px;
+  right: 16px;
+  position: absolute;
+}
+
+.main-header__circle{
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.main-header__svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.main-header__circle-g{
+  transform: translate(50%,50%);
+}
+
+.main-header__circle-g circle{
+  stroke: #fff;
+  fill: none;
+}
+
+.grey-panel {
+
+}
+
+.legend-text {
+  font-size: 12px;
+  alignment-baseline: middle;
+  text-align: center;
+}
+
+.chart-line {
+  stroke : #fff;
+  stroke-width : 3px;
+}
+
+g.circles {
+  fill: #fff;
+}
+
+.predicted-line{
+  stroke : #4043a2;
+  stroke-width : 3px;
+}
+
+.predicted {
+  fill : #4043a2;
+}
+
+.point-value{
+  font-size: 35px
+}
+
+.line-years, .line-values{
+  text-anchor: middle;
+  fill: #fff;
+}
+
+.line-years{
+  font-weight: 100;
+  font-size: 11px;
+}
+
+.line-values {
+  font-weight: 600;
+}
+
+#age-circle-diagram{
+  width: 100%;
+  flex-basis: 70%;
+  overflow: visible;
+  /*filter: drop-shadow(0 0 0.95rem rgb(0,0,0,0.1));*/
+}
+
+#cost-line-diagram{
+  /*left: 50vw;
+  transform: translate(-50%);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;*/
+  flex-basis: 70%;
+  width: 100%;
+  overflow: visible;
+}
+
+#num-schools-bar-chart{
+  flex-basis: 70%;
+  width: 100%;
+  overflow: visible;
+}
+
+.bar-chart__g {
+  fill: #fff;
+}
+
+#progress-circle {
+  transform: rotate(-90deg);
+  transition: stroke-dashoffset 0.2s ease;
+}
+
+.fade-in-transition {
+  transition : transform .7s cubic-bezier(0,0,.2,1),opacity .7s cubic-bezier(0,0,.2,1);
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+.fade-in-transition--active {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-in-transition--delay {
+  transition-delay: .2s;
+}
+
+.fade-in-transition--delay2 {
+  transition-delay: .4s;
+}
+
+.fade-in-transition--delay3 {
+  transition-delay: .6s;
+}
+
+.fade-out-transition{
+  transition: opacity .4s cubic-bezier(0,0,.2,1);
+}
+
+.fade-out-transition--active {
+  opacity: 0;
+}
+
+.menu {
+  z-index: 100;
+  position: fixed;
+  height: 100vh;
+  width: 500px;
+  right: 0;
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: scroll;
+}
+
+.data-source {
+  position: fixed;
+  width: 100vw;
+  height: 100px;
+  background-color: #fff;
+  z-index: 100;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  bottom: 0;
+}
+
+.main-overlay {
+  position: fixed;
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.testimonial-slide {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.testimonial-story {
+  position: fixed;
+  width: 100vw;
+  height: 80vh;
+  bottom: 0;
+  background-color: #fff;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.menu__title {
+  font-size: 19px;
+  padding: 20px;
+}
+
+.menu__index {
+  font-size: 40px;
+  font-weight: 600;
+  padding: 0px 20px;
+  margin: 20px 0px;
+  min-width: 50px;
+}
+
+.caseStudyButt {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 375px){
+  .legend-text {
+    font-size: 16px;
+  }
+
+  .line-years {
+    font-size: 13px;
+  }
+}
+
+@media only screen and (min-width: 475px){
+
+  .content--vertical {
     text-align: center;
+    align-items: center;
   }
-  .logoPlaceholder {
-    text-align: center;
+
+  .content {
+    height: 100%;
   }
-  .byIsap {
-    text-align: center;
-  }
+
   .titleNote {
-    text-align: center;
+    margin: 20px 10vh;
   }
+
+  .legend-text {
+    font-size: 18px;
+  }
+
+  .line-years{
+    font-weight: 100;
+    font-size: 18px;
+  }
+
+  .main-header__counter{
+    transform: scale(0.9);
+  }
+
+  .main-header__counter:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media only screen and (min-width: 1023px){
+
+  .titleNote {
+    margin: 20px 10vh;
+  }
+
+  .legend-text {
+    font-size: 21px;
+  }
+
+  .predicted-line{
+    stroke-width : 5px;
+  }
+
+  .chart-line {
+    stroke-width : 5px;
+  }
+
+  #age-circle-diagram {
+    height: 100%;
+  }
+
+  #cost-line-diagram{
+    left: 50vw;
+    transform: translate(-50%);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #num-schools-bar-chart{
+    height: 100%;
+  }
+
+  .point-value{
+    font-size: 40px
+  }
+
+  .content--default {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .content__title {
+    font-size: 34px;
+    font-weight: 500;
+    flex-basis: 40%;
+  }
+
+  .content__title-para-g{
+    flex-basis: 40%;
+  }
+
   .downIcon {
     width: 40px;
     left: calc(50vw - 20px);
   }
+
+  .bar-chart__g{
+    font-size: 19px;
+  }
+
+  .main-header__counter{
+    transform: scale(1);
+  }
+
+  .main-header__counter:hover {
+    transform: scale(1.1);
+  }
 }
 
-@media only screen and (min-width: 900px) {
-  .sectionPadding {
-    padding: 0px 60px;
-  }
-  .disclaimer {
-    font-size: 28px;
-  }
-  .byIsap {
-    font-size: 18px;
-    margin: 10px 0px;
-  }
+@media only screen and (min-width: 1280px){
+
   .titleNote {
+    margin: 20px 10vh;
+  }
+
+  .legend-text {
     font-size: 26px;
-    margin: 10px 0px;
   }
-  .logoPlaceholder {
-    font-size: 40px;
-    margin: 25px 0px;
-  }
-  .socialIcon {
-    width: 25px;
-  }
-  .twitter {
-    margin: 0px 28px;
-  }
-  .titleSocial {
-    height: 90px;
-  }
-  .titleSlide {
-    width: 40%;
-    font-size: 40px;
-  }
-}
 
-@media only screen and (min-width: 1200px) {
-  .sectionPadding {
-    padding: 0px 75px;
+  .content {
+    padding: 60px;
   }
-  .disclaimer {
-    font-size: 32px;
+
+  .content__title {
+    font-size: 40px;
   }
-  .byIsap {
-    font-size: 20px;
+
+  .content__para {
+    font-size: 22px;
   }
-  .titleNote {
-    font-size: 28px;
-  }
-  .logoPlaceholder {
-    font-size: 46px;
+
+  .main-header {
+    padding: 30px 60px 10px 60px;
   }
 }
