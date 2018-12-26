@@ -274,6 +274,26 @@ html, body {
   width: 100%;
 }
 
+/*.imageContainer--left-half {
+  width: 50%;
+  left: 0;
+}
+
+.imageContainer--right-half {
+  width: 50%;
+  right: 0;
+}*/
+
+.imageContainer--first-half {
+  height: 50%;
+  top: 0;
+}
+
+.imageContainer--second-half {
+  height: 50%;
+  top: 50%;
+}
+
 .background--slide-school{
   background-position: 27% 50%;
   /*background-image: url(resources/titleSchool.jpg);*/
@@ -565,7 +585,8 @@ g.circles {
   z-index: 100;
   position: fixed;
   height: 100vh;
-  width: 500px;
+  width: 60vw;
+  max-width: 500px;
   right: 0;
   background-color: #fff;
   transform: translateX(100%);
@@ -595,21 +616,103 @@ g.circles {
   transition: opacity 0.3s ease;
 }
 
-.testimonial-slide {
+/*.testimonial-slide {
   display: flex;
   width: 100%;
+  height: 100%;
   justify-content: space-evenly;
+}
+
+.testimonial-slide__section {
+  flex-basis: 50%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-slide__title {
+  font-size: 38px;
+}
+
+.testimonial-slide__button {
+  padding: 22px;
+  padding-top: 22px;
+  padding-right: 22px;
+  padding-bottom: 22px;
+  padding-left: 22px;
+  min-width: 170px;
+  text-align: center;
+  border-radius: 60px;
+  background-color: rgba(164, 157, 157, 0.4);
+  color: #fff;
+  font-size: 21px;
+  cursor: pointer;
 }
 
 .testimonial-story {
   position: fixed;
   width: 100vw;
-  height: 80vh;
   bottom: 0;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   transform: translateY(100%);
   transition: transform 0.3s ease;
   z-index: 100;
+  padding: 55px;
+  box-sizing: border-box;
+}*/
+
+.testimonial-slide {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.testimonial-slide__section {
+  flex-basis: 50%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-slide__title {
+  font-size: 20px;
+}
+
+.testimonial-slide__button {
+  padding: 14px;
+  text-align: center;
+  border-radius: 60px;
+  background-color: rgba(164, 157, 157, 0.4);
+  color: #fff;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.testimonial-story {
+  position: fixed;
+  width: 100vw;
+  max-height: 75vh;
+  overflow-y: scroll;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 100;
+  padding: 55px;
+  padding-top: 15px;
+  box-sizing: border-box;
+}
+
+.testimonial-story h1 {
+  font-size: 20px;
+}
+
+.testimonial-story p {
+  font-size: 15px;
 }
 
 .menu__item {

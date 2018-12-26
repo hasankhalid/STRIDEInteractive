@@ -282,19 +282,25 @@
         </div>
       </div>
       <div class="section">
-        <div class="content content--default content--white-text" style="background: blue">
+        <div class="imageContainer imageContainer--first-half">
+          <img class="titleImage lozad" data-src="./resources/kalsoom.jpg"/>
+        </div>
+        <div class="imageContainer imageContainer--second-half">
+          <img class="titleImage lozad" data-src="./resources/gul.jpg"/>
+        </div>
+        <div class="background background--slide-teacher">
+          <div class="background__overlay background__overlay--black">
+          </div>
+        </div>
+        <div class="content content--default content--white-text">
           <div class="testimonial-slide">
             <div class="testimonial-slide__section testimonial-slide--section1">
-              <div class="testimonial-slide__content">
-                <p class="testimonial-slide__title">Kalsoom's Story</p>
-                <a class="testimonial-slide__button">Learn More</a>
-              </div>
+              <p class="testimonial-slide__title">Kalsoom's Story</p>
+              <a class="testimonial-slide__button testimonial-slide__button--kalsoom">Learn More</a>
             </div>
             <div class="testimonial-slide__section testimonial-slide--section2">
-              <div class="testimonial-slide__content">
-                <p class="testimonial-slide__title">Gul Muhammad's Story</p>
-                <a class="testimonial-slide__button">Learn More</a>
-              </div>
+              <p class="testimonial-slide__title">Gul Muhammad's Story</p>
+              <a class="testimonial-slide__button testimonial-slide__button--gul">Learn More</a>
             </div>
           </div>
         </div>
@@ -303,8 +309,59 @@
     <div id="downIconContainer" class="fade-out-transition">
     	<img class=" downIcon" src="./resources/down-chevron.svg"/>
     </div>
-    <div class="testimonial-story">
+    <div class="testimonial-story testimonial-story--gul">
+      <h1>Supplementing education with work: How Gul Muhammad defied all odds?</h1>
       <p>
+        Seven years ago, Gul Muhammad attended his last class of grade 8 th in Government Middle
+        School, Ali Kach in district Kohat. Afterwards, he discontinued his education because the nearest
+        high school was more than 10 km away. Taking into consideration his family’s financial
+        conditions, he couldn’t afford to travel such a long distance on a daily basis. Therefore, he
+        decided to help his father with his work and financially support his family.
+        Many children of village Ali Kach drop-out of schools after finishing middle level education due
+        to lack of high schools nearby. Most of them, just like Gul Muhammad, in order to make ends
+        meet tend to help their parents with their work and start supporting their families financially
+        from a young age. Adding to this, those who can and want to go to school tend to drop-out
+        because the timings of their work and school clashes and work is something they cannot afford to
+        compromise on.
+        Before afternoon classes were started in his village, Gul Muhammad longed for going to school
+        and continuing his education. With each passing day, he used to think that his age will inhibit his
+        ability to learn. His mother describes his will to study as, ‘despite having no school nearby, he
+        himself use to take out some time every day and sit in his room for an hour to study.’
+        As of today, he’s 22 years old, married and also a father of two children. But this hasn’t stopped
+        him from continuing his education. Since the upgradation of the nearest middle school to a high
+        school, he goes to the farm in the morning and goes to school in the afternoon. His grade 9 th final
+        examination results came out a few months ago and, in his own words, he describes that moment
+        as ‘nothing short of a miracle’.
+        Riding on his bicycle provided to him under STRIDE, he is glad that distance is no longer an
+        issue for him. With travel time being saved, he easily manages to work as well as study. If
+        STRIDE wasn’t implemented, his dream to study further would not have become a reality.
+      </p>
+    </div>
+    <div class="testimonial-story testimonial-story--kalsoom">
+      <h1>Facilitating children with disabilities: The story of Kalsoom Nazir</h1>
+      <p>
+        Suffering from an illness often impedes one’s ability to perform day-to-day tasks. Kalsoom
+        Nazir, residing in village Sard Cheena of district Swabi, is 15 years old and is also a patient of
+        thalassemia. After finishing primary education in March 2017, her fate was hung in a balance
+        since the nearest middle school was at a distance of more than 8 km. Travelling such a distance
+        on foot was neither safe nor her illness allowed her to do so. Further adding to the burden, her
+        parents couldn’t afford a transport facility to ease her travel to and from school.
+        Despite being a constitutional right, education has become out of reach for many. Our current
+        education system hardly caters to the needs of disabled children therefore parents of such
+        children, especially those who cannot bear out-of-pocket spending, decide to discontinue their
+        education. The situation gets more worrisome in rural areas where poverty is rampant and basic
+        facilities are meagre.
+
+        Kalsoom use to think that after finishing primary education, her days will go by sitting idly at
+        home. However, as of today, she goes to school with ease and also learns adequately. Taking into
+        consideration local needs, afternoon middle classes as per STRIDE were initiated at Government
+        Girls Primary School, Sard Cheena and Kalsoom was one of the first students to have enrolled in
+        this school. Travelling to school is now no longer a problem for her as under STRIDE, a
+        rickshaw picks her up and drops her to school. Her parents are also relieved that they don’t have
+        to worry about her transport costs. “When Kalsoom finished primary, it was quite clear to us that
+        she wouldn’t be able to resume her education. But since STRIDE’s timely implementation in our
+        area, I’m glad that students who were at the risk of being a drop-out have been facilitated to
+        resume their education”, narrates Kalsoom’s mother.
       </p>
     </div>
     <script type="text/javascript" src="./js/circle.js"></script>
@@ -370,7 +427,48 @@
               toggleFadeInAnimation(destination.item);
             },
 
-            onLeave : function(origin,destination,direction){
+            onLeave : onLeave
+        });
+
+        //init menu
+        populateMenu();
+        $('.menu__item').on('click', function(){
+          hideOverlay();
+          myFullpage.moveTo($(this).children()[0].innerText);
+        });
+
+        document.querySelector('.main-header__counter').addEventListener('click', function(){
+          showHiddenDiv('.menu');
+          currOverlay = '.menu';
+          //myFullpage.setAllowScrolling(false);
+        });
+
+        document.querySelector('.testimonial-slide__button--kalsoom').addEventListener('click', function(){
+          showHiddenDiv('.testimonial-story--kalsoom');
+          currOverlay = '.testimonial-story--kalsoom';
+          //myFullpage.setAllowScrolling(false);
+        });
+
+        document.querySelector('.testimonial-slide__button--gul').addEventListener('click', function(){
+          showHiddenDiv('.testimonial-story--gul');
+          currOverlay = '.testimonial-story--gul';
+          //myFullpage.setAllowScrolling(false);
+        });
+
+        document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
+
+        var currOverlay;
+        function hideOverlay(){
+          hideHiddenDiv(currOverlay);
+          currOverlay = null;
+          //myFullpage.setAllowScrolling(true);
+        }
+
+        function onLeave(origin,destination,direction){
+
+              if(currOverlay){
+                //return false;
+              }
               //console.log(destination);
 
               if(origin && origin.item.dataset.name === 'animline'){
@@ -408,29 +506,6 @@
               origin.item.querySelector('.background').style.animation = '';
               destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
             }
-        });
-
-        //init menu
-        populateMenu();
-        $('.menu__item').on('click', function(){
-          hideOverlay();
-          myFullpage.moveTo($(this).children()[0].innerText);
-        });
-
-        var currOverlay;
-        document.querySelector('.main-header__counter').addEventListener('click', function(){
-          showHiddenDiv('.menu');
-          currOverlay = '.menu';
-          myFullpage.setAllowScrolling(false);
-        });
-
-        document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
-
-        function hideOverlay(){
-          hideHiddenDiv(currOverlay);
-          currOverlay = null;
-          myFullpage.setAllowScrolling(true);
-        }
 
         function toggleFadeInAnimation(container){
           var els = container.querySelectorAll('.fade-in-transition');
