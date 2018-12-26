@@ -73,6 +73,13 @@ html, body {
   z-index: 4;
 }
 
+#section3 {
+  background-image: url(./resources/teacherClass.JPG);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .yellowOverlay {
   position: absolute;
   top: 0;
