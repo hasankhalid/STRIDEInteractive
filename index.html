@@ -276,8 +276,8 @@
         </div>
         <div class="content content--default content--white-text">
           <div class="content__title-para-g">
-            <p class="content__title fade-in-transition">Other Benefit</p>
-            <p class="content__para fade-in-transition fade-in-transition--delay">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p>
+            <p class="content__title fade-in-transition">STRIDE intervention in Union Council Nusret Khel</p>
+            <p class="caseStudyButt content__para fade-in-transition fade-in-transition--delay">Open Case Study</p>
           </div>
         </div>
       </div>
@@ -304,13 +304,18 @@
     	<img class=" downIcon" src="./resources/down-chevron.svg"/>
     </div>
     <div class="testimonial-story">
-      <p>   
+      <p>
       </p>
     </div>
     <script type="text/javascript" src="./js/circle.js"></script>
     <script type="text/javascript" src="./js/line.js"></script>
     <script type="text/javascript" src="./js/bar.js"></script>
     <script>
+
+      $(".caseStudyButt").click(function() {
+        window.open('./caseStudy/index.html', '_blank');
+      });
+
       document.addEventListener('DOMContentLoaded',function(){
         var sectionArr = Array.from(document.getElementsByClassName('section'));
         sectionArr.forEach((d,i)=>{
@@ -328,7 +333,7 @@
             this.style.visibility = 'hidden';
           }
         });
-     
+
       const observer = lozad(); // lazy loads elements with default selector as ".lozad"
       observer.observe();
 
@@ -344,7 +349,7 @@
 							makeAgeProportionCircle();
 						}
 
-              //destination.style.animation 
+              //destination.style.animation
 
             if(origin && origin.item.dataset.name === 'circles'){
               removeAgeProportionCircle();
@@ -362,7 +367,7 @@
               createBarChart();
             }
 
-              toggleFadeInAnimation(destination.item);          
+              toggleFadeInAnimation(destination.item);
             },
 
             onLeave : function(origin,destination,direction){
@@ -394,7 +399,7 @@
               toggleFadeInAnimation(origin.item);
 
               /*setTimeout(()=>{
-                
+
               }, 800);*/
 
 
@@ -460,7 +465,7 @@
 
         downIcon.addEventListener('click', function(e){
           myFullpage.moveSectionDown();
-        });        
+        });
       });
 
       var overlay = document.querySelector('.main-overlay');

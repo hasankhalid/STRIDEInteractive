@@ -624,6 +624,11 @@ g.circles {
   min-width: 50px;
 }
 
+.caseStudyButt {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 375px){
   .legend-text {
     font-size: 16px;

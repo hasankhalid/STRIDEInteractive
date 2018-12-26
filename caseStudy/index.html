@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="./resources/favicon.ico" type="image/x-icon" />
+    <title>STRIDE Indicators</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+
+    <script src="./selectize/js/standalone/selectize.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="animate.css">
+    <link rel="stylesheet" type="text/css" href="./selectize/css/selectize.css">
+  </head>
+
+  <body>
+    <div class="strideCaseLanding">
+      <div class="landingImage">
+      </div>
+      <div class="landingOverlay">
+      </div>
+      <div class="topbar">
+        <div class="headingContain">
+          <h2 class="topbarTitle">STRIDE logo</h2>
+        </div>
+        <div class="navigationButts">
+          <span class="navigationItem">STRIDE Concept</span>
+        </div>
+      </div>
+      <div class="landingContent">
+        <div class="titleContain">
+          <h2>STRIDE intervention in Union Council Nusret Khel</h2>
+          <p>A case study</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="aboutStride">
+      <p class="aboutHead">Context</p>
+      <p class="strideDescription">According to the Khyber Pakhtunkhwa EMIS data, District Kohat had 845 public schools in 2017 but only 186 of these schools enrolled students at secondary level. Among the 32 union councils in the district, 50% did not have a middle school, 56% were without high schools while 9% union councils did not have any post-primary school.</p>
+      <p class="strideDescription">The lack of post-primary schools has resulted in a high drop-out rate for students completing grade 5. Enrolment data reveals that 44% of the student cohort enrolled in Grade 5 in 2012-13 dropped out before reaching Grade 10 in 2017-18. The government faces funding and time constraints to build new schools to improve the plummeting retention and transition rates of students. To address this,  I-SAPS has introduced a cost-effective and innovative approach called Sustainable Transition and Retention in Delivering Education (STRIDE). STRIDE aims at improving transition and retention of students beyond primary level by</p>
+      <ul>
+        <li class="strideDescription">Introducing localized planning and policy making for education</li>
+        <li class="strideDescription">Based on local needs, establishing higher level schools in existing primary and middle schools</li>
+        <li class="strideDescription">Providing transportation incentives if necessary</li>
+        <li class="strideDescription">Ensuring participation of the community in the local planning for education</li>
+      </ul>
+      <p class="strideDescription">In May 2017, I-SAPS team undertook local planning to unearth the challenge in Kohat at local (union council) level. Guided by the local planning, solutions tailored to local needs are being  implemented in 12 union councils of Kohat since September 2017. These include establishment of 15 afternoon higher level schools in existing school buildings and provision of transport facilities to encourage students to continue with schooling. Community was also involved to support the design and implementation of these solutions. For instance, localized policy analysis revealed that in village Jabbi in Union Council Nasrat Khel (which has 7 primary and 1 middle school ), all girls were unable to continue their education beyond primary school because the only middle school in the union council was 11 kilometers away. To address this, I-SAPS upgraded a primary school in the village (GGPS Jabbi) to middle level in the afternoon shift. Consequently, 31 girls who had earlier dropped out of schools, enrolled in the STRIDE school.</p>
+    </div>
+
+    <div class="inputbar">
+      <p class="aboutHead">Explore Education Indicators in Kohat</p>
+      <p class="strideDescription" style="font-weight: 300">One of the central themes of STRIDE is to enable localized policy making and planning, which cannot be made possible without collecting quantitative and qualitative data on education at the local level. The visualization that follows presents the key education indicators collected at the UC-level in district Kohat during STRIDE. Users can view the spatial distribution of two indicators at a time for year 2017 and 2018.</p>
+        <div class="selectSection">
+          <div class="selectContain">
+            <p class="selectOption">Select Indicator</p>
+            <select class="select" id="selectIndicator">
+              <option value="">Select Indicator...</option>
+            </select>
+          </div>
+          <div class="selectContain">
+            <p class="selectOption">Select Indicator</p>
+            <select class="select" id="selectIndicatorTwo">
+              <option value="">Select Indicator...</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contentContainer">
+      <div class="selectedIndicators">
+        <p class="selectedInd">Selected Indicators: <span class="indicatorOne"></span><span class="join"> and </span><span class="indicatorTwo"></span></p>
+        <p class="years">Showing comparison of for years 2018 and 2017</p>
+      </div>
+      <div class="flexContainer">
+        <div class="firstHalf">
+          <div class="mapContainer"><h2 class="sectionHeading" style="margin-bottom: 30px;">2018</h2>
+            <div class="mapContain">
+              <svg id="map2018">
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="categoryVisContain">
+          <div class="mapContainer"><h2 class="sectionHeading" style="margin-bottom: 30px;">2017</h2>
+            <div class="mapContain">
+              <svg id="map2017">
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="contentContainer footercontentcontainer">
+        <p class="exploreSTRIDE">Explore the STRIDE Story</p>
+        <div class="isapsInformation">
+          <p class="footerText institute">Institute of Social and Policy Sciences</p>
+          <p class="footerText"><i class="fas fa-map-marker-alt"></i>12 Mauve Area G-8/1, Islamabad</p>
+          <p class="footerText"><i class="fas fa-phone"></i> +92-51-111-739-739 <i class="fas fa-envelope"></i> info@i-saps.org</p>
+        </div>
+      </div>
+      <div class="footerbottombar"></div>
+    </footer>
+    <script src="./map.js"></script>
+    <script src="requiredData.js"></script>
+    <script>
+
+      initMapCreator()
+      .then((mapObj)=>{
+        window.mapObj = mapObj;
+
+        var rIndicator = 'Overall score';
+        var cIndicator = 'Drinking water';
+
+        $('.indicatorOne').text(rIndicator);
+        $('.indicatorTwo').text(cIndicator);
+
+        mapObj.createMap('#map2018', mapObj.mapData.indicatorData2018, mapObj.mapData.kohatTehsilsGeoJSON, mapObj.mapData.indicatorData, rIndicator, cIndicator);
+        mapObj.createMap('#map2017', mapObj.mapData.indicatorData2017, mapObj.mapData.kohatTehsilsGeoJSON, mapObj.mapData.indicatorData, rIndicator, cIndicator);
+
+        var selectOptions = mapObj.mapData.indicators.map((d)=>{return {text : d, value : d}});
+
+        select1 = $('#selectIndicator').selectize({
+          sortField: 'text',
+          options : selectOptions
+        });
+
+        var select2 = $('#selectIndicatorTwo').selectize({
+            sortField: 'text',
+            options : selectOptions
+        });
+
+        select1[0].selectize.setValue(rIndicator, true);
+        select2[0].selectize.setValue(cIndicator, true);
+
+        $('.select').on('change', changeIndicators);
+
+        function changeIndicators(){
+
+          var rIndicator = $('#selectIndicator').val();
+          var cIndicator = $('#selectIndicatorTwo').val();
+
+          $('.indicatorOne').text(rIndicator);
+          $('.indicatorTwo').text(cIndicator);
+
+          mapObj.createCircles('#map2018', mapObj.mapData.indicatorData2018, rIndicator, cIndicator, mapObj.mapData.indicatorData);
+
+          mapObj.createCircles('#map2017', mapObj.mapData.indicatorData2017, rIndicator, cIndicator, mapObj.mapData.indicatorData);
+        }
+      });
+      /*$('#selectIndicator').selectize({
+          sortField: 'text'
+      });
+      $('#selectIndicatorTwo').selectize({
+          sortField: 'text'
+      });
+      $('#categorySelect').selectize({
+          sortField: 'text'
+      });*/
+    </script>
+    <!--<script src="PunjabMap.js"></script>-->
+  </body>
+</html>

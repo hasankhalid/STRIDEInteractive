@@ -1,0 +1,388 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Lato', sans-serif;
+}
+
+.strideCaseLanding {
+  height: 100%;
+}
+
+.landingImage {
+  background-image: url('./resources/cyclegirls.jpg');
+  position: absolute;
+  top: 0px;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.landingOverlay {
+  background: rgb(0,114,188);
+  background: linear-gradient(145deg, #212121 0%, #000000 100%);
+  opacity: 0.35;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  width: 100%;
+}
+
+.landingContent {
+  padding: 5px 5%;
+  height: calc(100% - 50px);
+  z-index: 10;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.titleContain {
+  color: white;
+}
+
+.navigationItem {
+  color: white;
+}
+
+.aboutStride {
+  padding: 50px 5% 10px 5%;
+  color: white;
+  background-color: #616161;
+}
+
+.aboutHead {
+  font-size: 20px;
+  color: white;
+  font-weight: 300;
+}
+
+.strideDescription {
+  font-size: 14px;
+}
+
+.inputbar {
+  padding: 5px 5%;
+  background-color: #616161;
+  color: white;
+}
+
+.topbar {
+  z-index: 10;
+  position: relative;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 5px 5%;
+  justify-content: space-between;
+}
+
+.strideStory {
+  color: white;
+}
+
+.topbarTitle {
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  width: 350px;
+  margin-bottom: 0px;
+}
+
+.headingContain {
+  display: flex;
+  align-items: center;
+}
+
+.womanCircle {
+  width: 35px;
+  margin-right: 15px;
+}
+
+.logoPCSW {
+  width: 50px;
+  margin-right: 15px;
+}
+
+.contentContainer {
+  padding: 30px 5%;
+  background-color: #616161;
+}
+
+.select {
+  width: 250px;
+  font-size: 14px;
+}
+
+.selectSection, .selectContain {
+  display: flex;
+}
+
+.selectContain {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 10px;
+}
+
+.selectOption {
+  margin-bottom: 1px;
+  color: white;
+  font-size: 14px;
+}
+
+#bar-container {
+  display: flex;
+  flex-basis: 50%;
+}
+
+#bar-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+g .tick {
+  font-family: 'Rubik', sans-serif;
+  font-size: 15px;
+}
+
+.flexContainer {
+  display: flex;
+  margin-top: 20px;
+}
+
+.map-bar-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.mapContain, .barContain {
+  width: 100%;
+}
+
+.mapContain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.firstHalf {
+    width: 50%;
+}
+
+.categoryVisContain {
+  width: 50%;
+}
+
+.whole-strip, .map-bar-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background: white;
+  -webkit-box-shadow: 2px 2px 15px -1px rgba(224,224,224,1);
+  -moz-box-shadow: 2px 2px 15px -1px rgba(224,224,224,1);
+  box-shadow: 2px 2px 15px -1px rgba(224,224,224,1);
+
+}
+
+.map-bar-column {
+  margin-right: 30px;
+  background: rgb(255,255,255);
+  box-shadow: none;
+}
+
+.whole-strip {
+  margin-left: 30px;
+  background: rgb(255,255,255);
+  background: linear-gradient(125deg, rgba(255,255,255,1) 18%, rgba(255,255,255,1) 75%, rgba(250,250,250,1) 100%);
+}
+
+
+.sectionHeading {
+  font-weight: 300;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+}
+
+.disagg_type, .labelcontain {
+  color: #616161;
+}
+
+#categorySelect {
+  margin-bottom: 25px;
+}
+
+.selectedInd {
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+}
+
+.indicatorOne, .indicatorTwo {
+  font-size: 18px;
+}
+
+.join {
+  font-size: 20px;
+}
+
+.years {
+  font-size: 18px;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid;
+  border-color: #9E9E9E;
+  color: white;
+}
+
+.aboutStride {
+  font-size: 22px;
+  font-weight: 300;
+}
+
+.footerText {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.institute {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.fa-map-marker-alt {
+  margin-right: 8px;
+}
+
+.fa-envelope {
+  margin-left: 10px;
+  margin-right: 4px;
+}
+
+.exploreSTRIDE {
+  font-size: 18px;
+  font-weight: 300;
+  text-decoration: underline;
+}
+
+.woman-icon {
+  fill: #455A64;
+}
+
+.svg-contain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.g-map {
+  transform : translate(50px, 50px);
+  fill : none;
+  stroke: #616161;
+  stroke-width: 1.2px
+}
+
+.g-circles {
+  transform : translate(50px, 50px);
+  stroke: #fff;
+  stroke-width: 1px;
+}
+
+.g-outline {
+  transform : translate(50px, 50px);
+  stroke: #2196F3;
+  fill: none;
+  stroke-width: 1.2px;
+}
+
+.c-tooltip {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  width: 190px;
+  background-color: rgba(238, 238, 238, 0.6);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.c-tooltip-header {
+  background-color: rgba(94, 94, 94, 0.6);
+  color: white;
+  margin: -10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+
+.indicatorTool {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.UCNAME {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.indicatorHeading {
+  color: #212121;
+}
+
+.indicatorValue {
+  color: #455A64;
+}
+
+.footercontentcontainer {
+  background-color: white;
+  padding: 10px 5%;
+}
+
+.footerbottombar {
+  background-color: #424242;
+  height: 15px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .selectSection {
+    padding-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .flexContainer {
+    flex-direction: column;
+  }
+  .firstHalf, .categoryVisContain {
+    width: 100%;
+  }
+}
+
+
+@media only screen and (max-width: 650px) {
+  .selectSection {
+    justify-content: space-between;
+  }
+  .select {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .selectSection {
+    flex-direction: column;
+  }
+  .headingContain {
+    width: 100px;
+  }
+  .footercontentcontainer {
+    padding: 15px 5%;
+  }
+}
