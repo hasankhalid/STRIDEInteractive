@@ -395,7 +395,7 @@ html, body {
   height: 66px;
   font-size: 13px;
   transform: scale(0.83);
-  font-family: arial,sans-serif;
+  font-family: 'Roboto' ,sans-serif;
   left: 15px;
   transition: transform 0.3s ease;
   cursor: pointer;

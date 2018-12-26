@@ -33,12 +33,12 @@
           <h2 class="topbarTitle">STRIDE logo</h2>
         </div>
         <div class="navigationButts">
-          <span class="navigationItem">STRIDE Concept</span>
+          <span class="navigationItem strideconcept">STRIDE Concept</span>
         </div>
       </div>
       <div class="landingContent">
         <div class="titleContain">
-          <h2>STRIDE intervention in Union Council Nusret Khel</h2>
+          <h2>STRIDE intervention in District Kohat</h2>
           <p>A case study</p>
         </div>
       </div>
@@ -114,6 +114,10 @@
     <script src="./map.js"></script>
     <script src="requiredData.js"></script>
     <script>
+
+      $(".strideconcept").click(function() {
+        window.location = '../index.html';
+      });
 
       initMapCreator()
       .then((mapObj)=>{
