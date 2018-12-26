@@ -583,8 +583,8 @@ g.circles {
 
 .menu {
   z-index: 100;
-  position: fixed;
-  height: 100vh;
+  position: absolute;
+  height: 100%;
   width: 60vw;
   max-width: 500px;
   right: 0;
@@ -606,7 +606,7 @@ g.circles {
 }
 
 .main-overlay {
-  position: fixed;
+  position: absolute;
   z-index: 99;
   width: 100vw;
   height: 100vh;
@@ -695,7 +695,7 @@ g.circles {
 .testimonial-story {
   position: fixed;
   width: 100vw;
-  max-height: 75vh;
+  max-height: 55vh;
   overflow-y: scroll;
   bottom: 0;
   background-color: rgba(255, 255, 255, 0.8);

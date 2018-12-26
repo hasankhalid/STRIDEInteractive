@@ -23,10 +23,6 @@
   </head>
 
   <body>
-    <div class="main-overlay">
-    </div>
-    <div class="menu">
-    </div>
     <div class="data-source">
     </div>
     <div class="main-header">
@@ -54,6 +50,10 @@
       </div>
     </div>
     <div id="fullpage">
+      <div class="main-overlay">
+    </div>
+    <div class="menu scroll">
+    </div>
       <div class="section">
         <div class="imageContainer">
           <img class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
@@ -337,9 +337,9 @@
         STRIDE wasn’t implemented, his dream to study further would not have become a reality.
       </p>
     </div>
-    <div class="testimonial-story testimonial-story--kalsoom">
-      <h1>Facilitating children with disabilities: The story of Kalsoom Nazir</h1>
-      <p>
+    <div class="testimonial-story testimonial-story--kalsoom scroll">
+      <h1 class="scroll">Facilitating children with disabilities: The story of Kalsoom Nazir</h1>
+      <p class="scroll">
         Suffering from an illness often impedes one’s ability to perform day-to-day tasks. Kalsoom
         Nazir, residing in village Sard Cheena of district Swabi, is 15 years old and is also a patient of
         thalassemia. After finishing primary education in March 2017, her fate was hung in a balance
@@ -394,9 +394,13 @@
       const observer = lozad(); // lazy loads elements with default selector as ".lozad"
       observer.observe();
 
-        var myFullpage = new fullpage('#fullpage', {
+      populateMenu();
+
+        myFullpage = new fullpage('#fullpage', {
             verticalCentered: false,
             licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
+
+            normalScrollElements : '.scroll',
 
             afterLoad: function(origin, destination, direction){
               var loadedSection = this;
@@ -431,33 +435,47 @@
         });
 
         //init menu
-        populateMenu();
+        var currOverlay;
         $('.menu__item').on('click', function(){
           hideOverlay();
-          myFullpage.moveTo($(this).children()[0].innerText);
+          myFullpage.moveTo(parseInt($(this).children()[0].innerText));
         });
 
         document.querySelector('.main-header__counter').addEventListener('click', function(){
           showHiddenDiv('.menu');
           currOverlay = '.menu';
+
+          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
+          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
+          document.querySelector('.menu').style.top = topVal;
+
+          document.querySelector('.main-overlay').style.top = topVal;
           //myFullpage.setAllowScrolling(false);
         });
 
         document.querySelector('.testimonial-slide__button--kalsoom').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--kalsoom');
           currOverlay = '.testimonial-story--kalsoom';
+
+          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
+          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
+
+          document.querySelector('.main-overlay').style.top = topVal;
           //myFullpage.setAllowScrolling(false);
         });
 
         document.querySelector('.testimonial-slide__button--gul').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--gul');
           currOverlay = '.testimonial-story--gul';
+
+          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
+          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
+          document.querySelector('.main-overlay').style.top = topVal;
           //myFullpage.setAllowScrolling(false);
         });
 
         document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
 
-        var currOverlay;
         function hideOverlay(){
           hideHiddenDiv(currOverlay);
           currOverlay = null;
@@ -466,9 +484,13 @@
 
         function onLeave(origin,destination,direction){
 
+              console.log('initiated Leave');
+
               if(currOverlay){
                 //return false;
               }
+
+              console.log('started Leave');
               //console.log(destination);
 
               if(origin && origin.item.dataset.name === 'animline'){
@@ -584,8 +606,8 @@
         titleNames.forEach((d,i)=>{
           menu.append(`
             <div class="menu__item">
-              <div class="menu__index">${i + 1}</div>
-              <div class="menu__title">${d}</div>
+              <div class="menu__index scroll">${i + 1}</div>
+              <div class="menu__title scroll">${d}</div>
             </div>`);
         });
       }
