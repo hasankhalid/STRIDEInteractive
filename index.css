@@ -143,6 +143,11 @@ html, body {
   font-size: 48px;
   font-weight: 500;
   margin: 20px 0px;
+  width: 200px;
+}
+
+.logoPlaceholder img {
+  width: 100%;
 }
 
 .byIsap {
@@ -272,6 +277,11 @@ html, body {
   top: 0;
   height: 100%;
   width: 100%;
+  background-color: #000; 
+}
+
+.lozad {
+  transition: opacity 0.7s ease;
 }
 
 /*.imageContainer--left-half {
@@ -408,6 +418,14 @@ html, body {
     /*justify-content: space-between;*/
 }
 
+.main-header__logo {
+  width: 70px;
+}
+
+.main-header__logo img {
+  width: 100%;
+}
+
 .main-header__counter {
   margin-left: auto;
   position: relative;
@@ -491,12 +509,12 @@ g.circles {
 }
 
 .predicted-line{
-  stroke : #4043a2;
+  stroke : #121567;
   stroke-width : 3px;
 }
 
 .predicted {
-  fill : #4043a2;
+  fill : #121567;
 }
 
 .point-value{
@@ -583,9 +601,9 @@ g.circles {
 
 .menu {
   z-index: 100;
-  position: absolute;
+  position: fixed !important;
   height: 100%;
-  width: 60vw;
+  width: 70vw;
   max-width: 500px;
   right: 0;
   background-color: #fff;
@@ -693,7 +711,7 @@ g.circles {
 }
 
 .testimonial-story {
-  position: fixed;
+  position: fixed !important;
   width: 100vw;
   max-height: 55vh;
   overflow-y: scroll;
@@ -719,15 +737,20 @@ g.circles {
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: background-color 300ms ease;
+}
+
+.menu__item:active {
+  background-color: #ddddd8;
 }
 
 .menu__title {
   font-size: 19px;
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .menu__index {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
   padding: 0px 20px;
   margin: 20px 0px;
@@ -851,6 +874,71 @@ g.circles {
 
   .main-header__counter:hover {
     transform: scale(1.1);
+  }
+
+  .imageContainer--first-half {
+    width: 50%;
+    height: 100%;
+    left: 0;
+  }
+
+  .imageContainer--second-half {
+    width: 50%;
+    height: 100%;
+    right: 0;
+    top: 0;
+  }
+
+  .testimonial-slide {
+    flex-direction: row;
+  }
+
+  .testimonial-slide__title {
+    font-size: 38px;
+  }
+
+  .testimonial-slide__button {
+    padding: 22px;
+    padding-top: 22px;
+    padding-right: 22px;
+    padding-bottom: 22px;
+    padding-left: 22px;
+    min-width: 170px;
+    text-align: center;
+    border-radius: 60px;
+    background-color: rgba(164, 157, 157, 0.4);
+    color: #fff;
+    font-size: 21px;
+    cursor: pointer;
+  }
+
+  .menu__item:hover {
+    background-color: #f1f1ea;
+  }
+
+  .menu__index {
+    font-size: 40px;
+  }
+
+  .menu__title {
+    font-size: 22px;
+    padding: 20px 20px 20px 0px;
+  }
+
+  .testimonial-story p {
+    font-size: 20px;
+  }
+
+  .testimonial-story h1 {
+    font-size: 25px;
+  }
+
+  .logoPlaceholder {
+    width: 400px;
+  }
+
+  .main-header__logo {
+    width: 100px;
   }
 }
 

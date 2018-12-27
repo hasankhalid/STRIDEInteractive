@@ -15,6 +15,8 @@
 
     <script src="js/fullpage/fullpage.js"></script>
     <script src="js/fullpage/fullpage.extensions.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.3.1/smooth-scrollbar.js"></script>
+    
     <link rel="stylesheet" href="js/fullpage/fullpage.css">
     <link rel="stylesheet" href="./index.css">
     <style type="text/css">
@@ -23,11 +25,15 @@
   </head>
 
   <body>
+    <div class="main-overlay">
+    </div>
+    <div class="menu scroll" data-scrollbar>
+    </div>
     <div class="data-source">
     </div>
     <div class="main-header">
       <div class="main-header__logo">
-        STRIDE
+        <img src="./resources/logo.png">
       </div>
       <div class="main-header__counter">
         <div class="main-header__current-slide">
@@ -50,10 +56,6 @@
       </div>
     </div>
     <div id="fullpage">
-      <div class="main-overlay">
-    </div>
-    <div class="menu scroll">
-    </div>
       <div class="section">
         <div class="imageContainer">
           <img class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
@@ -63,7 +65,7 @@
           </div>
         </div>
         <div class="content content--vertical content--white-text">
-            <p class="logoPlaceholder fade-in-transition">STRIDE</p>
+            <p class="logoPlaceholder fade-in-transition"><img  src="./resources/logo.png"></p>
             <p class="byIsap fade-in-transition fade-in-transition--delay">a project of I-SAPS</p>
             <p class=" titleNote fade-in-transition fade-in-transition--delay2">addresses the alarmingly low student retention rates in Pakistan</p>
             <div class="titleSocial fade-in-transition fade-in-transition--delay3">
@@ -295,12 +297,12 @@
         <div class="content content--default content--white-text">
           <div class="testimonial-slide">
             <div class="testimonial-slide__section testimonial-slide--section1">
-              <p class="testimonial-slide__title">Kalsoom's Story</p>
-              <a class="testimonial-slide__button testimonial-slide__button--kalsoom">Learn More</a>
+              <p class="testimonial-slide__title fade-in-transition">Kalsoom's Story</p>
+              <a class="testimonial-slide__button testimonial-slide__button--kalsoom  fade-in-transition fade-in-transition--delay">Learn More</a>
             </div>
             <div class="testimonial-slide__section testimonial-slide--section2">
-              <p class="testimonial-slide__title">Gul Muhammad's Story</p>
-              <a class="testimonial-slide__button testimonial-slide__button--gul">Learn More</a>
+              <p class="testimonial-slide__title fade-in-transition">Gul Muhammad's Story</p>
+              <a class="testimonial-slide__button testimonial-slide__button--gul fade-in-transition fade-in-transition--delay">Learn More</a>
             </div>
           </div>
         </div>
@@ -309,7 +311,7 @@
     <div id="downIconContainer" class="fade-out-transition">
     	<img class=" downIcon" src="./resources/down-chevron.svg"/>
     </div>
-    <div class="testimonial-story testimonial-story--gul">
+    <div class="testimonial-story testimonial-story--gul" data-scrollbar>
       <h1>Supplementing education with work: How Gul Muhammad defied all odds?</h1>
       <p>
         Seven years ago, Gul Muhammad attended his last class of grade 8 th in Government Middle
@@ -337,7 +339,7 @@
         STRIDE wasn’t implemented, his dream to study further would not have become a reality.
       </p>
     </div>
-    <div class="testimonial-story testimonial-story--kalsoom scroll">
+    <div class="testimonial-story testimonial-story--kalsoom" data-scrollbar>
       <h1 class="scroll">Facilitating children with disabilities: The story of Kalsoom Nazir</h1>
       <p class="scroll">
         Suffering from an illness often impedes one’s ability to perform day-to-day tasks. Kalsoom
@@ -373,6 +375,14 @@
         window.open('./caseStudy/index.html', '_blank');
       });
 
+      $('.lozad').each(function(){
+        this.style.opacity = 0;
+      });
+
+      $('.lozad').on('load', function(){
+        this.style.opacity = 1;
+      });
+
       document.addEventListener('DOMContentLoaded',function(){
         var sectionArr = Array.from(document.getElementsByClassName('section'));
         sectionArr.forEach((d,i)=>{
@@ -400,14 +410,14 @@
             verticalCentered: false,
             licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
 
-            normalScrollElements : '.scroll',
+            //normalScrollElements : '.scroll',
 
             afterLoad: function(origin, destination, direction){
               var loadedSection = this;
             //destination.style.animation
 
 						if(destination.item.dataset.name === 'circles'){
-							makeAgeProportionCircle();
+							createAgeProportionCircle();
 						}
 
               //destination.style.animation
@@ -428,70 +438,84 @@
               createBarChart();
             }
 
-              toggleFadeInAnimation(destination.item);
+              startFadeInAnimation(destination.item);
             },
 
-            onLeave : onLeave
+            onLeave : onLeave,
+            autoScroll : true
         });
+
+        //set up overlay
+
+        const overlay = document.querySelector('.main-overlay');
+
+        overlay.addEventListener('transitionend', ()=>{
+          if(!overlay.style.opacity){
+            overlay.style.visibility = '';
+          }
+        });
+
+        var currOverlay = null; //current Overlay div
+
+        overlay.addEventListener('click', hideOverlay);
+
+        function hideOverlay(){
+          hideHiddenDiv(currOverlay);
+          currOverlay = null;
+        }
+
+        function showHiddenDiv(selector){
+
+          myFullpage.setAllowScrolling(false);
+          //show div
+          var div = document.querySelector(selector);
+          div.style.transform = 'translate(0,0)';
+
+          //show overlay
+          overlay.style.visibility = 'visible';
+          overlay.style.opacity = '0.4';
+        }
+
+        function hideHiddenDiv(selector){
+          //hide div
+          var div = document.querySelector(selector);
+          div.style.transform = '';
+
+          //hide overlay
+          overlay.style.opacity = '';
+
+          myFullpage.setAllowScrolling(true);
+        }
 
         //init menu
-        var currOverlay;
-        $('.menu__item').on('click', function(){
-          hideOverlay();
-          myFullpage.moveTo(parseInt($(this).children()[0].innerText));
+        Array.from(document.getElementsByClassName('menu__item'))
+        .forEach((d)=>{
+          d.addEventListener('click', function(){
+            //currOverlay = null;
+            myFullpage.silentMoveTo(parseInt($(this).children()[0].innerText));
+            setTimeout(()=>{
+              hideOverlay();  
+            },450);
+          });
         });
 
+        //set up menu counter
         document.querySelector('.main-header__counter').addEventListener('click', function(){
           showHiddenDiv('.menu');
           currOverlay = '.menu';
-
-          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
-          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
-          document.querySelector('.menu').style.top = topVal;
-
-          document.querySelector('.main-overlay').style.top = topVal;
-          //myFullpage.setAllowScrolling(false);
         });
 
         document.querySelector('.testimonial-slide__button--kalsoom').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--kalsoom');
           currOverlay = '.testimonial-story--kalsoom';
-
-          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
-          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
-
-          document.querySelector('.main-overlay').style.top = topVal;
-          //myFullpage.setAllowScrolling(false);
         });
 
         document.querySelector('.testimonial-slide__button--gul').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--gul');
           currOverlay = '.testimonial-story--gul';
-
-          var topVal = document.getElementById('fullpage').style.transform.split(',')[1];
-          topVal = topVal.slice(topVal.indexOf('-') + 1, topVal.length);
-          document.querySelector('.main-overlay').style.top = topVal;
-          //myFullpage.setAllowScrolling(false);
         });
 
-        document.querySelector('.main-overlay').addEventListener('click', hideOverlay);
-
-        function hideOverlay(){
-          hideHiddenDiv(currOverlay);
-          currOverlay = null;
-          //myFullpage.setAllowScrolling(true);
-        }
-
         function onLeave(origin,destination,direction){
-
-              console.log('initiated Leave');
-
-              if(currOverlay){
-                //return false;
-              }
-
-              console.log('started Leave');
-              //console.log(destination);
 
               if(origin && origin.item.dataset.name === 'animline'){
                 removeLineChart();
@@ -511,22 +535,12 @@
               //fade in out downIcon
               if(index == sectionArr.length){
                 downIconContainer.classList.add('fade-out-transition--active');
-              }else if(index == sectionArr.length - 1){
+              }else if(downIconContainer.classList.contains('fade-out-transition--active')){
                 downIconContainer.style.visibility = 'visible';
                 downIconContainer.classList.remove('fade-out-transition--active');
               }
 
-              toggleFadeInAnimation(origin.item);
-
-              /*setTimeout(()=>{
-
-              }, 800);*/
-
-
-
-              /*testD = destination;
-              origin.item.querySelector('.background').style.animation = '';
-              destination.item.querySelector('.background').style.animation = 'zoom-in 0.7s ease 0s';*/
+              startFadeOutAnimation(origin.item);
             }
 
         function toggleFadeInAnimation(container){
@@ -534,6 +548,22 @@
 
           els.forEach((d)=>{
             d.classList.toggle('fade-in-transition--active');
+          });
+        }
+
+        function startFadeInAnimation(container){
+          var els = container.querySelectorAll('.fade-in-transition');
+
+          els.forEach((d)=>{
+            d.classList.add('fade-in-transition--active');
+          });
+        }
+
+        function startFadeOutAnimation(container){
+          var els = container.querySelectorAll('.fade-in-transition');
+
+          els.forEach((d)=>{
+            d.classList.remove('fade-in-transition--active');
           });
         }
 
@@ -563,54 +593,51 @@
         downIcon.addEventListener('click', function(e){
           myFullpage.moveSectionDown();
         });
-      });
 
-      var overlay = document.querySelector('.main-overlay');
+        function populateMenu(){
+          var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
 
-      overlay.addEventListener('transitionend', ()=>{
-        if(!overlay.style.opacity){
-          overlay.style.visibility = '';
+          titleNames = titleNames.map((d) => d.innerText);
+
+          titleNames.unshift('Home');
+          titleNames.push('Testimonials');
+
+          var menu = $('.menu');
+          titleNames.forEach((d,i)=>{
+            menu.append(`
+              <div class="menu__item">
+                <div class="menu__index scroll">${i + 1}</div>
+                <div class="menu__title scroll">${d}</div>
+              </div>`);
+          });
         }
+
+        //add resizing functionality
+
+        window.onresize = function(){
+          var currSlide = document.querySelector('.fp-completely');
+
+          var currSlideName = currSlide.dataset.name;
+
+          if(currSlideName === 'animline'){
+            forceRemoveLineChart();
+            createLineChart();
+          }
+
+          if(currSlideName === 'barChart'){
+            forceRemoveBarChart();
+            createBarChart();
+          }
+
+          if(currSlideName === 'circles'){
+            forceRemoveAgeProportionCircle();
+            createAgeProportionCircle();
+          }
+        };
+
+        //init scrolling
+        Scrollbar.initAll();
       });
-
-      function showHiddenDiv(selector){
-
-        //show div
-        var div = document.querySelector(selector);
-        div.style.transform = 'translate(0,0)';
-
-        //show overlay
-        overlay.style.visibility = 'visible';
-        overlay.style.opacity = '0.4';
-      }
-
-      function hideHiddenDiv(selector, translate){
-
-        //hide div
-        var div = document.querySelector(selector);
-        div.style.transform = '';
-
-        //hide overlay
-        overlay.style.opacity = '';
-      }
-
-      function populateMenu(){
-        var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
-
-        titleNames = titleNames.map((d) => d.innerText);
-
-        titleNames.unshift('Home');
-        titleNames.push('Testimonials');
-
-        var menu = $('.menu');
-        titleNames.forEach((d,i)=>{
-          menu.append(`
-            <div class="menu__item">
-              <div class="menu__index scroll">${i + 1}</div>
-              <div class="menu__title scroll">${d}</div>
-            </div>`);
-        });
-      }
     </script>
   </body>
 </html>

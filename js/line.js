@@ -259,12 +259,25 @@ function getValueTextTransform(d){
 	}
 }
 
-function removeLineChart(){
+function forceRemoveLineChart(){
 	d3.select('#cost-line-diagram')
 		.selectAll('g')
 		.style('opacity',0)
 		.remove();
 }
+
+function removeLineChart(){
+	return new Promise(function(resolve){
+		d3.select('#cost-line-diagram')
+			.selectAll('g')
+			.transition()
+			.duration(300)
+			.style('opacity',0)
+			.remove()
+			.on('end', resolve);
+	});
+}
+
 
 function getLineMargins(){
 	var windowWidth = window.innerWidth;
