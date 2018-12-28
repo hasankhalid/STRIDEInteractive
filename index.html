@@ -378,20 +378,7 @@
     <script>
 
       $( document ).ready(function() {
-        setTimeout(function () {
-          $("#disclaimer").fadeIn();}, 750
-        );
-        setTimeout(function () {
-          $("#disclaimer").fadeOut(function() {
-            $("#disclaimerFollow").fadeIn();
-          });}, 4750
-        );
-        setTimeout(function () {
-          $("#disclaimerFollow").fadeOut(function() {
-            $(".disclaimerBack").fadeOut();
-            $(".titleImage").animate({height: '104%'}, 1750);
-          });}, 9500
-        );
+
       });
 
       $(".caseStudyButt").click(function() {
@@ -660,6 +647,27 @@
 
         //init scrolling
         Scrollbar.initAll();
+
+        //inital animation
+        myFullpage.setAllowScrolling(false);
+        myFullpage.setKeyboardScrolling(false);
+        setTimeout(function () {
+          $("#disclaimer").fadeIn();}, 750
+        );
+        setTimeout(function () {
+          $("#disclaimer").fadeOut(function() {
+            $("#disclaimerFollow").fadeIn();
+          });}, 4750
+        );
+        setTimeout(function () {
+          $("#disclaimerFollow").fadeOut(function() {
+            $(".disclaimerBack").fadeOut(function(){
+              myFullpage.setAllowScrolling(true);
+              myFullpage.setKeyboardScrolling(true);
+            });
+            $(".titleImage").animate({height: '104%'}, 1750);
+          });}, 9500
+        );
       });
     </script>
   </body>
