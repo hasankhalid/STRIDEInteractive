@@ -433,7 +433,7 @@ html, body {
   height: 66px;
   font-size: 13px;
   transform: scale(0.83);
-  font-family: arial,sans-serif;
+  font-family: 'Roboto',sans-serif;
   left: 15px;
   transition: transform 0.3s ease;
   cursor: pointer;
@@ -726,11 +726,13 @@ g.circles {
 }
 
 .testimonial-story h1 {
+  padding-top: 30px;
   font-size: 20px;
 }
 
 .testimonial-story p {
   font-size: 15px;
+  padding-bottom: 50px;
 }
 
 .menu__item {
