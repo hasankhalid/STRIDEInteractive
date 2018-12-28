@@ -1,4 +1,4 @@
-function makeAgeProportionCircle(){
+function createAgeProportionCircle(){
 
 	var circlesM = {};
 	var legendTextsM = {};
@@ -115,6 +115,18 @@ function makeAgeProportionCircle(){
 }
 
 function removeAgeProportionCircle(){
+	return new Promise(function(resolve){
+		d3.select('#age-circle-diagram')
+			.selectAll('g')
+			.transition()
+			.duration(300)
+			.style('opacity',0)
+			.remove()
+			.on('end', resolve);
+	});
+}
+
+function forceRemoveAgeProportionCircle(){
 	d3.select('#age-circle-diagram')
 		.selectAll('g')
 		.style('opacity',0)

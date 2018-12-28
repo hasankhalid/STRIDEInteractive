@@ -124,11 +124,21 @@ function getBarHeight(){
 	
 }
 
-function removeBarChart(){
+function forceRemoveBarChart(){
 	d3.select('#num-schools-bar-chart')
 		.selectAll('g')
-		.transition()
-		.duration(200)
 		.style('opacity',0)
 		.remove();
+}
+
+function removeBarChart(){
+	return new Promise(function(resolve){
+		d3.select('#num-schools-bar-chart')
+			.selectAll('g')
+			.transition()
+			.duration(300)
+			.style('opacity',0)
+			.remove()
+			.on('end', resolve);
+	});
 }
