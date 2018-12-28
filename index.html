@@ -57,6 +57,10 @@
         </div>
       </div>
     </div>
+    <div class="disclaimerBack">
+      <p id="disclaimer" class="disclaimer"><span class="bold">22.8 million </span>children aged 5-18 years are still out of school in Pakistan</p>
+      <p id="disclaimerFollow" class="disclaimer"><span class="bold">44% </span>of students enrolled in Grade 5 <span class="bold">drop-out </span> from schools before reaching Grade 10 in Pakistan</p>
+    </div>
     <div id="fullpage">
       <div class="section">
         <div class="imageContainer">
@@ -372,6 +376,23 @@
     <script type="text/javascript" src="./js/line.js"></script>
     <script type="text/javascript" src="./js/bar.js"></script>
     <script>
+
+      $( document ).ready(function() {
+        setTimeout(function () {
+          $("#disclaimer").fadeIn();}, 750
+        );
+        setTimeout(function () {
+          $("#disclaimer").fadeOut(function() {
+            $("#disclaimerFollow").fadeIn();
+          });}, 4750
+        );
+        setTimeout(function () {
+          $("#disclaimerFollow").fadeOut(function() {
+            $(".disclaimerBack").fadeOut();
+            $(".titleImage").animate({height: '104%'}, 1750);
+          });}, 9500
+        );
+      });
 
       $(".caseStudyButt").click(function() {
         window.open('./caseStudy/index.html', '_blank');

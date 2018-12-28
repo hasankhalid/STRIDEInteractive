@@ -26,10 +26,15 @@ html, body {
   line-height: 1.5;
   font-size: 24px;
   font-weight: 200;
-  position: relative;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   z-index: 10;
   color: white;
 }
+
 
 .disclaimerBack {
   position: absolute;
@@ -39,7 +44,7 @@ html, body {
   height: 100%;
   background-color: black;
   color: white;
-  z-index: 8;
+  z-index: 100;
 }
 
 .title {
@@ -277,7 +282,7 @@ html, body {
   top: 0;
   height: 100%;
   width: 100%;
-  background-color: #000; 
+  background-color: #000;
 }
 
 .lozad {
@@ -727,10 +732,12 @@ g.circles {
 
 .testimonial-story h1 {
   font-size: 20px;
+  padding-top: 30px;
 }
 
 .testimonial-story p {
   font-size: 15px;
+  padding-bottom: 50px;
 }
 
 .menu__item {
