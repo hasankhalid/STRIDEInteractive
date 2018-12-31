@@ -9,7 +9,7 @@ html, body {
 }
 
 .landingImage {
-  background-image: url('./resources/cyclegirls.jpg');
+  background-image: url('../resources/cyclegirls.jpg');
   position: absolute;
   top: 0px;
   background-position: center;
