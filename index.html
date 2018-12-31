@@ -75,9 +75,9 @@
             <p class="byIsap fade-in-transition fade-in-transition--delay">a project of I-SAPS</p>
             <p class=" titleNote fade-in-transition fade-in-transition--delay2">addresses the alarmingly low student retention rates in Pakistan</p>
             <div class="titleSocial fade-in-transition fade-in-transition--delay3">
-              <img class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
-              <img class="socialIcon twitter" src="./resources/twitter.svg"/>
-              <img class="socialIcon" src="./resources/link-symbol.svg"/>
+              <img id="facebookSocIcon" class="socialIcon" src="./resources/facebook-letter-logo.svg"/>
+              <img id="twitterSocIcon" class="socialIcon twitter" src="./resources/twitter.svg"/>
+              <img id="websiteIcon" class="socialIcon" src="./resources/link-symbol.svg"/>
             </div>
           </div>
       </div>
@@ -383,6 +383,18 @@
 
       $(".caseStudyButt").click(function() {
         window.open('./caseStudy/index.html', '_blank');
+      });
+
+      $("#facebookSocIcon").click(function() {
+        window.open('https://www.facebook.com/ISAPS.pk', '_blank');
+      });
+
+      $("#twitterSocIcon").click(function() {
+        window.open('https://twitter.com/I_SAPS', '_blank');
+      });
+
+      $("#websiteIcon").click(function() {
+        window.open('http://i-saps.org/', '_blank');
       });
 
       $('.lozad').each(function(){

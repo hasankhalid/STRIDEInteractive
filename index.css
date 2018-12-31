@@ -224,6 +224,7 @@ html, body {
 
 .socialIcon {
   width: 20px;
+  cursor: pointer;
 }
 
 .twitter {
