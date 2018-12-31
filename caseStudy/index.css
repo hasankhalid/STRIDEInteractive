@@ -18,6 +18,15 @@ html, body {
   width: 100%;
 }
 
+.logoSTRIDE {
+  height: 20px;
+  width: 83.34px;
+}
+
+.strideconcept {
+  cursor: pointer;
+}
+
 .landingOverlay {
   background: rgb(0,114,188);
   background: linear-gradient(145deg, #212121 0%, #000000 100%);

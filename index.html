@@ -64,7 +64,7 @@
     <div id="fullpage">
       <div class="section">
         <div class="imageContainer">
-          <img class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
+          <img id="titleImage" class="titleImage lozad" data-src="./resources/titleSchool.jpg"/>
         </div>
         <div class="background background--slide-school">
           <div class="background__overlay background__overlay--black">
@@ -177,7 +177,7 @@
       </div>
       <div class="section">
         <div class="imageContainer">
-          <img class="titleImage lozad" data-src="./resources/problemsAddress.jpeg"/>
+          <img id="strideProblemsAddress" class="titleImage lozad" data-src="./resources/problemsAddress.jpeg"/>
         </div>
         <div class="background background--slide-benifits">
           <div class=" background__overlay background__overlay--grey">
@@ -665,7 +665,7 @@
               myFullpage.setAllowScrolling(true);
               myFullpage.setKeyboardScrolling(true);
             });
-            $(".titleImage").animate({height: '104%'}, 1750);
+            $("#titleImage").animate({height: '104%'}, 1750);
           });}, 9500
         );
       });

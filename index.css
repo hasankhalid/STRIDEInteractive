@@ -132,6 +132,10 @@ html, body {
   height: 100%;
 }
 
+#strideProblemsAddress {
+  object-position: left;
+}
+
 #disclaimer, #disclaimerFollow {
   display: none;
 }
