@@ -991,6 +991,22 @@ g.circles {
   .containUC {
     height: 340px;
   }
+
+  .testimonial-story {
+    width: 50%;
+    height : 100%;
+    max-height: unset;
+  }
+
+  .testimonial-story--kalsoom{
+    right: 0;
+    transform: translateX(200%);
+  }
+
+  .testimonial-story--gul {
+    left: 0;
+    transform: translateX(-100%);
+  }
 }
 
 @media only screen and (min-width: 1280px){
