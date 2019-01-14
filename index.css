@@ -160,7 +160,7 @@ html, body {
 }
 
 .byIsap {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
   margin: 5px 0px;
 }
@@ -774,6 +774,33 @@ g.circles {
   cursor: pointer;
 }
 
+.containUC {
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  height: 400px;
+}
+
+.UCTitle {
+  height: 100%;
+  border-radius: 20px;
+  -webkit-box-shadow: 17px 21px 38px -16px rgba(0,0,0,0.5);
+  -moz-box-shadow: 17px 21px 38px -16px rgba(0,0,0,0.5);
+  box-shadow: 17px 21px 38px -16px rgba(0,0,0,0.5);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.UCTitle:hover {
+  -webkit-box-shadow: 25px 30px 42px -21px rgba(0,0,0,0.8);
+  -moz-box-shadow: 25px 30px 42px -21px rgba(0,0,0,0.8);
+  box-shadow: 25px 30px 42px -21px rgba(0,0,0,0.8);
+}
+
+.source_initial_stats {
+  font-size: 14px;
+}
+
 @media only screen and (min-width: 375px){
   .legend-text {
     font-size: 16px;
@@ -814,6 +841,14 @@ g.circles {
 
   .main-header__counter:hover {
     transform: scale(1.1);
+  }
+}
+
+@media only screen and (max-width: 1023px){
+  .containUC {
+    height: 340px;
+    width: 100%;
+    justify-content: space-around;
   }
 }
 
@@ -952,6 +987,10 @@ g.circles {
   .main-header__logo {
     width: 100px;
   }
+
+  .containUC {
+    height: 340px;
+  }
 }
 
 @media only screen and (min-width: 1280px){
@@ -978,5 +1017,26 @@ g.circles {
 
   .main-header {
     padding: 30px 60px 10px 60px;
+  }
+
+  .containUC {
+    height: 375px;
+  }
+}
+
+@media only screen and (max-width: 570px){
+  .hideUC {
+    display: none;
+  }
+  .containUC {
+    height: 300px;
+    justify-content: flex-start;
+  }
+}
+
+@media only screen and (max-width: 350px){
+  .containUC {
+    height: 200px;
+    justify-content: flex-start;
   }
 }

@@ -12,10 +12,10 @@ function createBarChart(){
 	var barHeight = getBarHeight() || 50;
 
 	var data = [
-		{title : 'Primary', val : 150129},
-		{title : 'Middle', val : 49090},
-		{title : 'Lower Secondary', val : 31551},
-		{title : 'Higher Secondary', val : 4133}
+		{title : 'Primary', val : 131376},
+		{title : 'Middle', val : 16928},
+		{title : 'Lower Secondary', val : 13129},
+		{title : 'Higher Secondary', val : 1998}
 	];
 
 	var svg = d3.select('#num-schools-bar-chart'),
@@ -29,7 +29,7 @@ function createBarChart(){
 	var scale = d3.scaleLinear().domain([0, maxSum]).range([0, width]);
 
 	var outerGroup = svg.append('g');
-					
+
 	var barGroup = outerGroup.selectAll('rect')
 					.data(data)
 					.enter()
@@ -57,6 +57,7 @@ function createBarChart(){
 			.attr('rx', rx)
 			.attr('ry', rx)
 			.style('opacity', 0.5)
+			.style('fill', '#CDDC39')
 			.each(function(d,i){
 				innersRectM.push({el : this, width : scale(d.val)});
 			});
@@ -121,7 +122,7 @@ function getBarMargin(){
 }
 
 function getBarHeight(){
-	
+
 }
 
 function forceRemoveBarChart(){

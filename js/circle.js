@@ -5,8 +5,11 @@ function createAgeProportionCircle(){
 	var legendCirclesM = {};
 	legendGroupsM = {};
 
-	var colors = ['#BFCBF0', '#d5d5fc', '#f4eeee'];
-	var legendColors = ['#73a1d0', '#bcc8f1', '#eee9ee'];
+	//var colors = ['#BFCBF0', '#d5d5fc', '#f4eeee'];
+	//var legendColors = ['#73a1d0', '#bcc8f1', '#eee9ee'];
+
+	var colors = ['#BFCBF0', '#CDDC39', '#f4eeee'];
+	var legendColors = ['#73a1d0', '#CDDC39', '#eee9ee'];
 
 	var svg = d3.select('#age-circle-diagram');
 
@@ -55,7 +58,7 @@ function createAgeProportionCircle(){
 		.each(function(d){
 			legendGroupsM[d.title] = { el : this};
 		});
-			
+
 		legendGroups.append('circle')
 			.attr('r', dimensions.lRadius)
 			.attr('cx', 0)

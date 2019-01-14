@@ -9,7 +9,7 @@ html, body {
 }
 
 .landingImage {
-  background-image: url('../resources/cyclegirls.jpg');
+  background-image: url('../resources/girlsplaying.jpg');
   position: absolute;
   top: 0px;
   background-position: center;
@@ -39,7 +39,7 @@ html, body {
 
 .landingContent {
   padding: 5px 5%;
-  height: calc(100% - 50px);
+  height: calc(100% - 90px);
   z-index: 10;
   position: relative;
   display: flex;
@@ -79,7 +79,7 @@ html, body {
 .topbar {
   z-index: 10;
   position: relative;
-  height: 50px;
+  height: 90px;
   display: flex;
   align-items: center;
   padding: 5px 5%;
