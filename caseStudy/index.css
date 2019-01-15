@@ -157,6 +157,7 @@ g .tick {
 .flexContainer {
   display: flex;
   margin-top: 20px;
+  position: relative;
 }
 
 .map-bar-column {
@@ -364,6 +365,29 @@ g .tick {
 .footerbottombar {
   background-color: #424242;
   height: 15px;
+}
+
+.legend-contain {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 88px;
+  max-width: 184px;
+  width: 37%;
+}
+
+#circle-legend {
+}
+
+#circle-legend svg{
+  width: 100%;
+}
+
+#color-legend {
+}
+
+#color-legend svg{
+  width: 100%;
 }
 
 .representedBy {
