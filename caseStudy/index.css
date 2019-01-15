@@ -355,6 +355,13 @@ g .tick {
   padding: 10px 5%;
 }
 
+.footerlogoscontain {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .footerbottombar {
   background-color: #424242;
   height: 15px;
@@ -383,6 +390,10 @@ g .tick {
   width: 100%;
 }
 
+.representedBy {
+  font-size: 14px;
+  color: #D4E157;
+}
 
 @media only screen and (max-width: 1000px) {
   .selectSection {
@@ -418,5 +429,13 @@ g .tick {
   }
   .footercontentcontainer {
     padding: 15px 5%;
+  }
+  .footerlogoscontain {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 70px;
+    margin-bottom: 60px;
   }
 }
