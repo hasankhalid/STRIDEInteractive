@@ -124,7 +124,7 @@
         <img style="height: 40px; margin-bottom: 5px;" src="./resources/logotwo.jpg"></img>
         <div class="plotreeContain">
           <p style="font-size: 12px; margin-bottom: 1px;">Designed and developed by</p>
-          <img style="height: 40px; margin-bottom: 5px;" src="../resources/plotree.png"></img>
+          <img style="height: 40px; margin-bottom: 5px; cursor: pointer;" id="plotree" src="../resources/plotree.png"></img>
         </div>
       </div>
       <div class="footerbottombar"></div>
@@ -135,6 +135,10 @@
 
       $(".strideconcept").click(function() {
         window.location = '../index.html';
+      });
+
+      $("#plotree").click(function() {
+        window.open('https://plotree.studio', '_blank');
       });
 
       initMapCreator()
