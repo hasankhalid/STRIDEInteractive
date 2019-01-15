@@ -53,6 +53,10 @@ async function initMapCreator(){
 	//ucLocs;
 	var bosNames = {"Attock":"Attock","Bahawalnagar":"Bahawalnagar","Bahawalpur":"Bahawalpur","Bhakkar":"Bhakkar","Chakwal":"Chakwal","Chiniot":"Chiniot","Dera Ghazi Khan":"DG Khan","Faisalabad":"Faisalabad","Gujranwala":"Gujranwala","Gujrat":"Gujrat","Hafizabad":"Hafizabad","Jhang":"Jhang","Jhelum":"Jhelum","Kasur":"Kasur","Khanewal":"Khanewal","Khushab":"Khushab","Lahore":"Lahore","Layyah":"Layyah","Lodhran":"Lodhran","Mandi Bahauddin":"Mandi Bahauddin","Mianwali":"Mianwali","Multan":"Multan","Muzaffargarh":"Muzaffargarh","Nankana Sahib":"Nankana Sahib","Narowal":"Narowal","Okara":"Okara","Pakpattan":"Pakpattan","Rahim Yar Khan":"RY Khan","Rajanpur":"Rajanpur","Rawalpindi":"Rawalpindi","Sahiwal":"Sahiwal","Sargodha":"Sargodha","Sheikhupura":"Sheikhupura","Sialkot":"Sialkot","Toba Tek Singh":"TT Singh","Vehari":"Vehari"};
 
+	var legendColors = ['#FFFFFF', '#D4E157'];
+	var circleLegend = createConcentricCircleLegend('#circle-legend', [50,100], ['','']);
+	var colorLegend = createColorLegend('#color-legend', legendColors,['','']);
+
 	async function createMap(selector, indicatorData, geoJSON, scaleArr, cIndicator, rIndicator){
 
 		//remove duplicates
@@ -166,17 +170,25 @@ async function initMapCreator(){
 			.remove();
 		});
 
+		var maxrIndVal = parseFloat(d3.max(scaleArr,(d)=>parseFloat(d[rIndicator])))
+
 		var rScale = d3.scaleSqrt().domain([
 				0,
-				parseFloat(d3.max(scaleArr,(d)=>parseFloat(d[rIndicator])))
+				maxrIndVal
 			]).range([0,20]);
 
+		updateLegendText(circleLegend, [Math.floor(maxrIndVal/2), maxrIndVal]);
+
+		var mincIndVal = parseFloat(d3.min(scaleArr,(d)=>parseFloat(d[cIndicator])));
+		var maxcIndVal = parseFloat(d3.max(scaleArr,(d)=>parseFloat(d[cIndicator])));
+		
 		var colorScale = d3.scaleLinear().domain([
-				parseFloat(d3.min(scaleArr,(d)=>parseFloat(d[cIndicator]))),
-				parseFloat(d3.max(scaleArr,(d)=>parseFloat(d[cIndicator])))
+				mincIndVal,
+				maxcIndVal
 			])
     		.range(['#FFFFFF', '#D4E157']);
 
+    	updateLegendText(colorLegend, [Math.floor(mincIndVal), Math.ceil(maxcIndVal)]);
 
 		forceSim(indicatorData, rScale, rIndicator);
 
@@ -399,6 +411,102 @@ async function initMapCreator(){
 				.style('opacity', 0)
 				.remove();
 		}
+	}
+
+	function createConcentricCircleLegend(selector, intervalArr, valArr){
+		var legendSVG = d3.select(selector)
+			.append('svg')
+			.attr('viewBox', '-25 -42 110 70')
+			.attr("preserveAspectRatio", "xMinYMid meet")
+			.style('fill', '#fff');
+
+		var rScale = d3.scaleSqrt().domain([0,100]).range([0,22]);
+		legendSVG.selectAll('circle')
+			.data(intervalArr)
+			.enter()
+			.append('circle')
+			.attr('cx', 0)
+			.attr('cy', (d)=>rScale(100) - rScale(d))
+			.attr('r', (d)=>rScale(d))
+			.attr('fill', 'none')
+			.attr('stroke', '#fff')
+			.attr('stroke-width', '2');
+
+		legendSVG.selectAll('text')
+			.data(valArr)
+			.enter()
+			.append('text')
+			.text((d)=>d)
+			.attr('x', 34)
+			.attr('y', (d, i)=>rScale(100) - rScale(intervalArr[i]))
+			.attr('dy', (d,i)=>getCircleLegendDY(i, intervalArr.length));
+
+		return legendSVG;
+	}
+
+	function getCircleLegendDY(i,num){
+		if(i < Math.floor(num/2)){
+			return 10;
+		}else{
+			return -10;
+		}
+	}
+
+	function createColorLegend(selector, intervalArr, valArr){
+		var legendSVG = d3.select(selector)
+			.append('svg')
+			.attr('viewBox', '0 0 100 100')
+			.style('fill', '#fff');
+
+		gradient = legendSVG.append('defs')
+			.append('linearGradient')
+			.attr('id', 'legendGrad')
+			.attr('x1', '0%')
+			.attr('x2', '0%')
+			.attr('y1', '0%')
+			.attr('y2', '100%');
+
+		gradient.selectAll('stop')
+			.data(intervalArr)
+			.enter()
+			.append('stop')
+			.attr('offset', (d,i)=>Math.floor(i/(intervalArr.length - 1) * 100) + '%')
+			.style('stop-color', (d)=>d)
+			.style('stop-opacity', 1);
+
+		legendSVG.append('rect')
+			.attr('width',30)
+			.attr('height',100)
+			.attr('fill', 'url(#legendGrad)');
+
+		legendSVG.selectAll('text')
+			.data(valArr)
+			.enter()
+			.append('text')
+			.attr('x',40)
+			.attr('y', (d,i)=>Math.floor(i/(valArr.length - 1) * 100))
+			.attr('dy', (d,i)=>getColorLegendDY(i, valArr.length))
+			.style('dominant-baseline', 'middle')
+			.text((d)=>d);
+
+		return legendSVG;
+	}
+
+	function getColorLegendDY(i, num){
+		if(i === num - 1){
+			return '-1em';
+		}else if(i === 0){
+			return '1em';
+		}else{
+			return 0;
+		}
+	}
+
+	function updateLegendText(legendSVG, valArr){
+		legendSVG
+			.selectAll('text')
+			.data(valArr)
+			.text((d)=>d);
 	}
 
 	return {
