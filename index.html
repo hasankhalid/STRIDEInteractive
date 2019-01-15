@@ -703,10 +703,13 @@
         function populateMenu(){
           var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
 
+          var popped = titleNames.pop();
+
           titleNames = titleNames.map((d) => d.innerText);
 
           titleNames.unshift('Home');
           titleNames.push('Testimonials');
+          titleNames.push(popped.innerText);
 
           var menu = $('.menu');
           titleNames.forEach((d,i)=>{
