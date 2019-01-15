@@ -268,8 +268,8 @@ html, body {
 }
 
 .background__overlay--black--title {
-  background-color: #000;
-  opacity: 0.6;
+  background-color: #141414;
+  opacity: 0.625;
 }
 
 .background__overlay--blue {
