@@ -357,9 +357,15 @@ g .tick {
 
 .footerlogoscontain {
   display: flex;
-  height: 60px;
   justify-content: space-between;
+  align-items: flex-end;
   margin-bottom: 20px;
+}
+
+.plotreeContain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footerbottombar {
@@ -434,6 +440,15 @@ g .tick {
   .select {
     width: 200px;
   }
+  .footerlogoscontain {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .plotreeContain {
+    align-items: flex-start;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -442,13 +457,5 @@ g .tick {
   }
   .footercontentcontainer {
     padding: 15px 5%;
-  }
-  .footerlogoscontain {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: 70px;
-    margin-bottom: 60px;
   }
 }
