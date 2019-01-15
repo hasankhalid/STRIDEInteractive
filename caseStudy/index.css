@@ -367,13 +367,12 @@ g .tick {
   height: 15px;
 }
 
-.legend-contain {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  bottom: 88px;
-  max-width: 184px;
-  width: 37%;
+#circle-legend {
+  width: 100px;
+}
+
+#color-legend {
+  width: 60px;
 }
 
 #circle-legend {
@@ -390,9 +389,20 @@ g .tick {
   width: 100%;
 }
 
+.indicator_legend {
+  display: flex;
+}
+
 .representedBy {
   font-size: 14px;
   color: #D4E157;
+}
+
+.colorLegendContainer {
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -408,6 +418,12 @@ g .tick {
   .firstHalf, .categoryVisContain {
     width: 100%;
   }
+  .selectSection {
+    flex-direction: column;
+  }
+  .colorLegendContainer {
+    width: 100px;
+  }
 }
 
 
@@ -421,9 +437,6 @@ g .tick {
 }
 
 @media only screen and (max-width: 550px) {
-  .selectSection {
-    flex-direction: column;
-  }
   .headingContain {
     width: 100px;
   }

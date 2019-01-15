@@ -181,7 +181,7 @@ async function initMapCreator(){
 
 		var mincIndVal = parseFloat(d3.min(scaleArr,(d)=>parseFloat(d[cIndicator])));
 		var maxcIndVal = parseFloat(d3.max(scaleArr,(d)=>parseFloat(d[cIndicator])));
-		
+
 		var colorScale = d3.scaleLinear().domain([
 				mincIndVal,
 				maxcIndVal
