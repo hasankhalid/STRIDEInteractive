@@ -81,10 +81,7 @@
             </div>
           </div>
       </div>
-      <div class="section" data-name="circles">
-        <div class="imageContainer">
-          <img class="titleImage lozad" data-src="./resources/schoolkids.jpg"/>
-        </div>
+      <div class="section section_background" data-name="circles" id="ageProportion">
         <div class="background background--slide-teacher">
           <div class="background__overlay background__overlay--blue">
           </div>
@@ -109,10 +106,7 @@
           </div>
         </div>
       </div>
-      <div class="section">
-        <div class="imageContainer">
-          <img class="titleImage lozad" data-src="./resources/empty.jpg"/>
-        </div>
+      <div class="section section_background" id="empty">
         <div class="background background--slide-kids">
           <div class=" background__overlay background__overlay--black">
           </div>
@@ -460,6 +454,12 @@
       $("#websiteIcon").click(function() {
         window.open('http://i-saps.org/', '_blank');
       });
+
+      $('.lozad').on('load', function(){
+        this.style.opacity = 1;
+      });
+
+
       document.addEventListener('DOMContentLoaded',function(){
         var sectionArr = Array.from(document.getElementsByClassName('section'));
         sectionArr.forEach((d,i)=>{

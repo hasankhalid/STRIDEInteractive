@@ -96,7 +96,7 @@ function createBarChart(){
 		.staggerTo(outerRectM, 0.4, {autoAlpha : 0.3, ease : Power1.easeIn}, 0.3)
 		.staggerTo(titlesM, 0.4, {autoAlpha : 1, ease : Power1.easeIn}, 0.3, "start+=0.05")
 		.add('scene2')
-		.staggerTo(innersRectM.map((d)=>d.el), 0.3, {ease : Power1.easeIn, cycle : {width : innersRectM.map((d)=>d.width)}}, 0.2)
+		.staggerTo(innersRectM.map((d)=>d.el), 0.3, {ease : Power1.easeIn, cycle : {attr : function(i){ return {width : innersRectM[i].width};}}}, 0.2)
 		.staggerTo(valuesM, 0.3, {autoAlpha : 1, ease : Power1.easeIn}, 0.3, "scene2+=0.05");
 
 }

@@ -132,6 +132,19 @@ html, body {
   height: 100%;
 }
 
+.section_background {
+  background-position: center;
+  background-size: cover;
+}
+
+#ageProportion {
+  background-image: url('./resources/schoolkids.jpg');
+}
+
+#empty {
+  background-image: url('./resources/empty.jpg');  
+}
+
 #strideProblemsAddress {
   object-position: left;
 }
@@ -293,6 +306,11 @@ html, body {
   height: 100%;
   width: 100%;
   background-color: #000;
+}
+
+.lozad {
+  opacity: 0;
+  transition: 1s ease;
 }
 
 /*.imageContainer--left-half {
