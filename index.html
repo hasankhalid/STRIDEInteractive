@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="js/fullpage/fullpage.css">
     <link rel="stylesheet" href="./index.css">
     <style type="text/css">
-
     </style>
   </head>
 
@@ -65,7 +64,7 @@
     <div id="fullpage">
       <div class="section">
         <div class="imageContainer">
-          <img id="titleImage" class="titleImage" data-src="./resources/titleSchool.jpg"/>
+          <img id="titleImage" class="titleImage" src="./resources/titleSchool.jpg"/>
         </div>
         <div class="background background--slide-school">
           <div class="background__overlay background__overlay--black--title">
@@ -441,151 +440,102 @@
     <script type="text/javascript" src="./js/line.js"></script>
     <script type="text/javascript" src="./js/bar.js"></script>
     <script>
-
       $( document ).ready(function() {
-
       });
-
       $(".caseStudyButt").click(function() {
         window.open('./caseStudy/index.html', '_blank');
       });
-
       $("#facebookSocIcon").click(function() {
         window.open('https://www.facebook.com/ISAPS.pk', '_blank');
       });
-
       $("#twitterSocIcon").click(function() {
         window.open('https://twitter.com/I_SAPS', '_blank');
       });
-
       $("#KohatUC").click(function() {
         window.open('./Kohat.pdf', '_blank');
       });
-
       $("#MuzaffargarhUC").click(function() {
         window.open('./Muzaffargarh.pdf', '_blank');
       });
-
       $("#websiteIcon").click(function() {
         window.open('http://i-saps.org/', '_blank');
       });
-
-      $('.lozad').each(function(){
-        this.style.opacity = 0;
-      });
-
-      $('.lozad').on('load', function(){
-        this.style.opacity = 1;
-      });
-
       document.addEventListener('DOMContentLoaded',function(){
         var sectionArr = Array.from(document.getElementsByClassName('section'));
         sectionArr.forEach((d,i)=>{
           d.setAttribute('data-index', i + 1);
         });
-
         initProgressCircle();
-
         //init menu
-
         var downIconContainer = document.getElementById('downIconContainer');
-
         downIconContainer.addEventListener('transitionend',function(){
           if(this.classList.contains('fade-out-transition--active')){
             this.style.visibility = 'hidden';
           }
         });
-
       const observer = lozad(); // lazy loads elements with default selector as ".lozad"
       observer.observe();
-
       populateMenu();
-
         myFullpage = new fullpage('#fullpage', {
             verticalCentered: false,
             licenseKey : 'OPEN-SOURCE-GPLV3-LICENSE',
-
+            lazyLoading: false,
             //normalScrollElements : '.scroll',
-
             afterLoad: function(origin, destination, direction){
               var loadedSection = this;
             //destination.style.animation
-
 						if(destination.item.dataset.name === 'circles'){
 							createAgeProportionCircle();
 						}
-
               //destination.style.animation
-
             if(origin && origin.item.dataset.name === 'circles'){
               removeAgeProportionCircle();
             }
-
             if(destination.item.dataset.name === 'animline'){
               createLineChart();
             }
-
 						if(origin && origin.item.dataset.name === 'animline'){
 							removeLineChart();
 						}
-
             if(destination.item.dataset.name === 'barChart'){
               createBarChart();
             }
-
               startFadeInAnimation(destination.item);
             },
-
             onLeave : onLeave,
             autoScroll : true
         });
-
         //set up overlay
-
         const overlay = document.querySelector('.main-overlay');
-
         overlay.addEventListener('transitionend', ()=>{
           if(!overlay.style.opacity){
             overlay.style.visibility = '';
           }
         });
-
         var currOverlay = null; //current Overlay div
-
         overlay.addEventListener('click', hideOverlay);
-
         function hideOverlay(){
           hideHiddenDiv(currOverlay);
           currOverlay = null;
         }
-
-
-
         function showHiddenDiv(selector){
-
           myFullpage.setAllowScrolling(false);
           //show div
           var div = document.querySelector(selector);
           div.style.transform = 'translate(0,0)';
-
           //show overlay
           overlay.style.visibility = 'visible';
           overlay.style.opacity = '0.4';
         }
-
         window.showHiddenDiv = showHiddenDiv;
-
         function hideHiddenDiv(selector){
           //hide div
           var div = document.querySelector(selector);
           div.style.transform = '';
-
           //hide overlay
           overlay.style.opacity = '';
-
           myFullpage.setAllowScrolling(true);
         }
-
         //init menu
         Array.from(document.getElementsByClassName('menu__item'))
         .forEach((d)=>{
@@ -597,47 +547,36 @@
             },450);
           });
         });
-
         //set up menu counter
         document.querySelector('.main-header__counter').addEventListener('click', function(){
           showHiddenDiv('.menu');
           currOverlay = '.menu';
         });
-
         document.querySelector('.testimonial-slide__button--kalsoom').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--kalsoom');
           currOverlay = '.testimonial-story--kalsoom';
         });
-
         document.querySelector('.testimonial-slide__button--gul').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--gul');
           currOverlay = '.testimonial-story--gul';
         });
-
         $('.data-source-btn').on('click', function(){
           showHiddenDiv('.data-source');
           currOverlay = '.data-source';
-
           document.querySelector('.data-source .data-source__str').innerText = this.dataset.src;
         });
-
         function onLeave(origin,destination,direction){
-
               if(origin && origin.item.dataset.name === 'animline'){
                 removeLineChart();
               }
-
               if(origin && origin.item.dataset.name === 'barChart'){
                 removeBarChart();
               }
-
               if(origin.item.dataset.name === 'circles'){
                 removeAgeProportionCircle();
               }
-
               var index = destination.item.dataset.index;
               updateProgressCircle(index);
-
               //fade in out downIcon
               if(index == sectionArr.length){
                 downIconContainer.classList.add('fade-out-transition--active');
@@ -645,72 +584,52 @@
                 downIconContainer.style.visibility = 'visible';
                 downIconContainer.classList.remove('fade-out-transition--active');
               }
-
               startFadeOutAnimation(origin.item);
             }
-
         function toggleFadeInAnimation(container){
           var els = container.querySelectorAll('.fade-in-transition');
-
           els.forEach((d)=>{
             d.classList.toggle('fade-in-transition--active');
           });
         }
-
         function startFadeInAnimation(container){
           var els = container.querySelectorAll('.fade-in-transition');
-
           els.forEach((d)=>{
             d.classList.add('fade-in-transition--active');
           });
         }
-
         function startFadeOutAnimation(container){
           var els = container.querySelectorAll('.fade-in-transition');
-
           els.forEach((d)=>{
             d.classList.remove('fade-in-transition--active');
           });
         }
-
         function initProgressCircle(){
-
           document.getElementsByClassName('main-header__total-slides')[0].innerText = sectionArr.length;
           var circle = document.getElementById('progress-circle');
           var circleLength = circle.getTotalLength();
           circle.style.strokeDasharray = `${circleLength}, ${circleLength}`;
           circle.style.strokeDashoffset = `${circleLength - ((1/sectionArr.length) * circleLength)}`;
         }
-
         function updateProgressCircle(index){
-
           document.getElementsByClassName('main-header__current-slide')[0].innerText = index;
-
           var circle = document.getElementById('progress-circle');
           var circleLength = circle.getTotalLength();
-
           var newOffset = circleLength - (((index)/sectionArr.length) * circleLength);
           circle.style.strokeDashoffset = `${newOffset}`;
         }
-
         //set up downIcon
         var downIcon = document.getElementsByClassName('downIcon')[0];
-
         downIcon.addEventListener('click', function(e){
           myFullpage.moveSectionDown();
         });
-
         function populateMenu(){
           var titleNames = Array.from(document.querySelectorAll('.section .content__title'));
-
           var popped = titleNames.pop();
-
           titleNames = titleNames.map((d) => d.innerText);
-
           titleNames.unshift('Home');
           titleNames.push('Testimonials');
           titleNames.push(popped.innerText);
-
           var menu = $('.menu');
           titleNames.forEach((d,i)=>{
             menu.append(`
@@ -720,33 +639,25 @@
               </div>`);
           });
         }
-
         //add resizing functionality
-
         window.onresize = function(){
           var currSlide = document.querySelector('.fp-completely');
-
           var currSlideName = currSlide.dataset.name;
-
           if(currSlideName === 'animline'){
             forceRemoveLineChart();
             createLineChart();
           }
-
           if(currSlideName === 'barChart'){
             forceRemoveBarChart();
             createBarChart();
           }
-
           if(currSlideName === 'circles'){
             forceRemoveAgeProportionCircle();
             createAgeProportionCircle();
           }
         };
-
         //init scrolling
         Scrollbar.initAll();
-
         //inital animation
         myFullpage.setAllowScrolling(false);
         myFullpage.setKeyboardScrolling(false);
