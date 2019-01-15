@@ -32,6 +32,7 @@
     <div class="menu scroll" data-scrollbar>
     </div>
     <div class="data-source">
+      <p><span class="data-source__bold">Source: </span><span class="data-source__str"></span></p>
     </div>
     <div class="main-header">
       <div class="main-header__logo">
@@ -90,21 +91,24 @@
           </div>
         </div>
         <div class="content content--default content--white-text">
-              <p class="content__title fade-in-transition">Proportion of Age Appropriate Children in Schools in Pakistan
-            </p>
-            <svg id="age-circle-diagram">
-              <filter id="drop-shadow" height="130%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" color-interpolation-filters="sRGB"></feGaussianBlur>
-                <feOffset in="blur" result="offsetBlur" dy="10"></feOffset>
-                <feFlood flood-color="#000" flood-opacity="0.2"></feFlood>
-                <feComposite operator="in" in2="offsetBlur"></feComposite>
-                <feMerge>
-                  <feMergeNode></feMergeNode>
-                  <feMergeNode in="SourceGraphic"></feMergeNode>
-                </feMerge>
-              </filter>
-            </svg>
+          <p class="content__title fade-in-transition">Proportion of Age Appropriate  Children in Schools in Pakistan
+          </p>
+          <svg id="age-circle-diagram">
+            <filter id="drop-shadow" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" color-interpolation-filters="sRGB"></feGaussianBlur>
+              <feOffset in="blur" result="offsetBlur" dy="10"></feOffset>
+              <feFlood flood-color="#000" flood-opacity="0.2"></feFlood>
+              <feComposite operator="in" in2="offsetBlur"></feComposite>
+              <feMerge>
+                <feMergeNode></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+              </feMerge>
+            </filter>
+          </svg>
+          <div class="data-source-btn" data-src="Sample Text Source">
+            Source
           </div>
+        </div>
       </div>
       <div class="section">
         <div class="imageContainer">
@@ -135,10 +139,13 @@
           </div>
         </div>
         <div class="content content--default content--white-text">
-              <p class="content__title fade-in-transition">Less Post primary schools:<br/></p>
-            <svg id="num-schools-bar-chart">
-            </svg>
+          <p class="content__title fade-in-transition">Less Post primary schools:<br/></p>
+          <svg id="num-schools-bar-chart">
+          </svg>
+          <div class="data-source-btn" data-src="Pakistan Education Statistics 2016-17">
+            Source
           </div>
+        </div>
       </div>
       <div class="section">
         <div class="imageContainer">
@@ -297,6 +304,9 @@
           <!--  <p class="content__para fade-in-transition fade-in-transition--delay">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis orci ligula.</p> -->
           </div>
           <svg id="cost-line-diagram"></svg>
+          <div class="data-source-btn" data-src="Sample Text Source">
+            Source
+          </div>
         </div>
       </div>
       <div class="section">
@@ -519,6 +529,8 @@
           currOverlay = null;
         }
 
+
+
         function showHiddenDiv(selector){
 
           myFullpage.setAllowScrolling(false);
@@ -530,6 +542,8 @@
           overlay.style.visibility = 'visible';
           overlay.style.opacity = '0.4';
         }
+
+        window.showHiddenDiv = showHiddenDiv;
 
         function hideHiddenDiv(selector){
           //hide div
@@ -568,6 +582,13 @@
         document.querySelector('.testimonial-slide__button--gul').addEventListener('click', function(){
           showHiddenDiv('.testimonial-story--gul');
           currOverlay = '.testimonial-story--gul';
+        });
+
+        $('.data-source-btn').on('click', function(){
+          showHiddenDiv('.data-source');
+          currOverlay = '.data-source';
+
+          document.querySelector('.data-source .data-source__str').innerText = this.dataset.src;
         });
 
         function onLeave(origin,destination,direction){

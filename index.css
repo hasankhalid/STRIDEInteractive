@@ -630,12 +630,40 @@ g.circles {
 .data-source {
   position: fixed;
   width: 100vw;
-  height: 100px;
+  min-height: 100px;
   background-color: #fff;
   z-index: 100;
   transform: translateY(100%);
   transition: transform 0.3s ease;
   bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.data-source p {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.data-source-btn {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  margin: 10px 20px;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.data-source-btn:hover {
+  opacity: 1;
+}
+
+.data-source__bold {
+  font-weight: 600;
 }
 
 .main-overlay {
@@ -847,6 +875,10 @@ g.circles {
   .main-header__counter:hover {
     transform: scale(1.1);
   }
+
+  .data-source-btn {
+    bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 1023px){
@@ -995,6 +1027,22 @@ g.circles {
 
   .containUC {
     height: 340px;
+  }
+
+  .testimonial-story {
+    width: 50%;
+    height : 100%;
+    max-height: unset;
+  }
+
+  .testimonial-story--kalsoom{
+    right: 0;
+    transform: translateX(200%);
+  }
+
+  .testimonial-story--gul {
+    left: 0;
+    transform: translateX(-100%);
   }
 }
 
