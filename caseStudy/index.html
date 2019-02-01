@@ -66,13 +66,13 @@
           <div class="indicator_legend">
             <div id="circle-legend"></div>
             <div class="selectContain">
-              <p class="selectOption">Radius Indicator</p>
+              <p class="selectOption">Choose Indicator</p>
               <select class="select" id="selectIndicator">
                 <option value="">Select Indicator...</option>
               </select>
             </div>
           </div>
-          <div class="indicator_legend">
+          <div class="indicator_legend" style="display: none;">
             <div class="colorLegendContainer">
               <div id="color-legend"></div>
             </div>
@@ -174,7 +174,7 @@
         function changeIndicators(){
 
           var rIndicator = $('#selectIndicator').val();
-          var cIndicator = $('#selectIndicatorTwo').val();
+          var cIndicator = $('#selectIndicator').val();
 
           $('.indicatorOne').text(rIndicator);
           $('.indicatorTwo').text(cIndicator);

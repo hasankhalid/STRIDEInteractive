@@ -80,7 +80,7 @@ function createBarChart(){
 			.attr('dy', '0.3em')
 			.attr('text-anchor', 'end')
 			.style('opacity', 0)
-			.html((d)=>d.val)
+			.html((d)=>d.val.toLocaleString())
 			.each(function(){
 				valuesM.push(this);
 			});

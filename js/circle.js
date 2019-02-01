@@ -23,9 +23,9 @@ function createAgeProportionCircle(){
 	var svgGroup = svg.append('g');
 
 	var data = [
-		{val : 61, title : 'Primary'},
+		{val : 57, title : 'Primary'},
 		{val : 22, title : 'Middle'},
-		{val : 15, title : 'High'}
+		{val : 13, title : 'High'}
 	];
 
 	var rScale = d3.scaleSqrt().domain([0, d3.max(data, (d)=>d.val)]).range([0,maxRadius]);

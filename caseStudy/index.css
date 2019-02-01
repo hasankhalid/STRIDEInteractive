@@ -9,7 +9,7 @@ html, body {
 }
 
 .landingImage {
-  background-image: url('../resources/footercycle.jpg');
+  background-image: url('./resources/casetitle.jpg');
   position: absolute;
   top: 0px;
   background-position: center;
@@ -30,7 +30,7 @@ html, body {
 .landingOverlay {
   background: rgb(0,114,188);
   background: linear-gradient(145deg, #212121 0%, #000000 100%);
-  opacity: 0.15;
+  opacity: 0.35;
   position: absolute;
   top: 0px;
   height: 100%;
@@ -372,6 +372,8 @@ g .tick {
   background-color: #424242;
   height: 15px;
 }
+
+
 
 #circle-legend {
   width: 100px;

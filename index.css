@@ -142,7 +142,7 @@ html, body {
 }
 
 #empty {
-  background-image: url('./resources/empty.jpg');  
+  background-image: url('./resources/empty.jpg');
 }
 
 #strideProblemsAddress {
@@ -592,6 +592,11 @@ g.circles {
   fill: #fff;
 }
 
+.increase_margin {
+  margin-top: 40px;
+  font-weight: 500;
+}
+
 #progress-circle {
   transform: rotate(-90deg);
   transition: stroke-dashoffset 0.2s ease;
@@ -619,6 +624,14 @@ g.circles {
 
 .fade-in-transition--delay3 {
   transition-delay: .7s;
+}
+
+.fade-in-transition--delay4 {
+  transition-delay: .9s;
+}
+
+.fade-in-transition--delay5 {
+  transition-delay: 1.1s;
 }
 
 .fade-out-transition{
